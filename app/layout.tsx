@@ -1,13 +1,19 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import Link from "next/link";
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "CRM Portal",
   description: "CRM & Invoice Portal with Multi-Tenant Architecture",
 };
+
+const navLinks = [
+  { href: "/dashboard", label: "Dashboard" },
+  { href: "/contacts", label: "Contacts" },
+  { href: "/deals", label: "Deals" },
+  { href: "/invoices", label: "Invoices" },
+  { href: "/projects", label: "Projects" },
+];
 
 export default function RootLayout({
   children,
@@ -16,28 +22,78 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <div className="min-h-screen bg-gray-50">
-          <nav className="bg-white border-b border-gray-200">
+      <body>
+        <div className="min-h-screen" style={{ background: 'var(--color-bg)' }}>
+          <nav className="fixed top-0 left-0 right-0 z-50 glass" style={{ borderBottom: '1px solid var(--color-border)' }}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="flex justify-between h-16">
-                <div className="flex items-center">
-                  <h1 className="text-xl font-semibold text-gray-900">CRM Portal</h1>
-                </div>
-                <div className="flex items-center space-x-4">
-                  <a href="/dashboard" className="text-gray-600 hover:text-gray-900">Dashboard</a>
-                  <a href="/contacts" className="text-gray-600 hover:text-gray-900">Contacts</a>
-                  <a href="/deals" className="text-gray-600 hover:text-gray-900">Deals</a>
-                  <a href="/invoices" className="text-gray-600 hover:text-gray-900">Invoices</a>
-                  <a href="/projects" className="text-gray-600 hover:text-gray-900">Projects</a>
+              <div className="flex justify-between items-center h-17">
+                <Link href="/" className="flex items-center gap-3 group animate-fade-in-up">
+                  <div className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ background: 'linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-hover) 100%)' }}>
+                    <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                  </div>
+                  <span className="text-xl" style={{ fontFamily: 'var(--font-display)', fontWeight: 600, color: 'var(--color-text-primary)' }}>CRM Portal</span>
+                </Link>
+                
+                <div className="flex items-center gap-1">
+                  {navLinks.map((link, index) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="nav-link animate-fade-in-up"
+                      style={{ animationDelay: `${0.1 + index * 0.05}s` }}
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
                 </div>
               </div>
             </div>
           </nav>
-          <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+          
+          <main className="pt-20 pb-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
             {children}
           </main>
+          
+          <footer className="py-6 text-center text-sm animate-fade-in-up animate-stagger-6" style={{ color: 'var(--color-text-tertiary)' }}>
+            <p>&copy; 2026 CRM Portal. Built with Next.js 14.</p>
+          </footer>
         </div>
+        
+        <style jsx global>{`
+          .nav-link {
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--color-text-secondary);
+            transition: all 150ms cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+          }
+          
+          .nav-link:hover {
+            color: var(--color-text-primary);
+            background: var(--color-bg-subtle);
+          }
+          
+          .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--color-accent);
+            transition: all 150ms cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateX(-50%);
+            border-radius: 1px;
+          }
+          
+          .nav-link:hover::after {
+            width: calc(100% - 2rem);
+          }
+        `}</style>
       </body>
     </html>
   );
