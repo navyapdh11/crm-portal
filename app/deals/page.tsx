@@ -124,7 +124,7 @@ export default function Deals() {
         ))}
       </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
         {stages.map((stage, stageIndex) => {
           const stageDeals = localDeals[stage] || [];
           const stageTotal = stageDeals.reduce((s, d) => s + d.value, 0);
@@ -183,10 +183,17 @@ export default function Deals() {
                             />
                           </div>
                           <span className="text-xs" style={{ color: 'var(--color-text-tertiary)' }}>{deal.probability}%</span>
-</div>
-        )}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+        })}
       </div>
-      
+       
       <ActionModal 
         isOpen={showModal} 
         onClose={() => setShowModal(false)} 

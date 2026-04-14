@@ -61,40 +61,7 @@ export default function RootLayout({
           </footer>
         </div>
         
-        <style jsx global>{`
-          .nav-link {
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            font-weight: 500;
-            font-size: 0.9rem;
-            color: var(--color-text-secondary);
-            transition: all 150ms cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
-          }
-          
-          .nav-link:hover {
-            color: var(--color-text-primary);
-            background: var(--color-bg-subtle);
-          }
-          
-          .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 4px;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: var(--color-accent);
-            transition: all 150ms cubic-bezier(0.16, 1, 0.3, 1);
-            transform: translateX(-50%);
-            border-radius: 1px;
-          }
-          
-          .nav-link:hover::after {
-            width: calc(100% - 2rem);
-          }
-        `}</style>
-      </body>
+        </body>
     </html>
   );
 }
