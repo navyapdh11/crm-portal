@@ -1,0 +1,57 @@
+openapi: 3.1.0
+info:
+  title: Taskade CRM API
+  version: "1.0.0"
+  description: Multi-tenant CRM, Invoice, Project Portal, and AI Agent system.
+servers:
+  - url: http://localhost:4000/v1
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    Contact:
+      type: object
+      required: [tenant_id, full_name]
+      properties:
+        id: { type: string, format: uuid }
+        tenant_id: { type: string, format: uuid }
+        full_name: { type: string }
+        email: { type: string, format: email }
+        company: { type: string }
+        stage: { type: string, enum: [lead, prospect, customer, churned], default: lead }
+    Invoice:
+      type: object
+      required: [tenant_id, client_contact_id, number, total, due_date]
+      properties:
+        id: { type: string, format: uuid }
+        number: { type: string }
+        total: { type: number }
+        status: { type: string, enum: [draft, sent, paid, overdue], default: draft }
+    Flashcard:
+      type: object
+      required: [title, front, back, category]
+      properties:
+        id: { type: string, format: uuid }
+        title: { type: string }
+        front: { type: string }
+        back: { type: string }
+        category: { type: string, enum: [crm, invoices, projects, automations, agents, settings] }
+        difficulty: { type: string, enum: [beginner, intermediate, advanced], default: beginner }
+paths:
+  /health:
+    get:
+      summary: Health check
+      security: []
+      responses:
+        "200":
+          description: Service is healthy
+  /api/health:
+    get:
+      summary: API info
+      security: []
+      responses:
+        "200":
+          description: API service info

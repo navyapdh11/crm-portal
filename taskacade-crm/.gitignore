@@ -1,0 +1,25 @@
+# Node.js
+node_modules/
+*.tsbuildinfo
+dist/
+.next/
+
+# Environment
+.env
+.env*.local
+*.pem
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Build artifacts
+.vercel/

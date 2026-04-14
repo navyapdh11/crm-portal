@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: taskacade-worker
+  namespace: taskacade
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: taskacade-worker
+  template:
+    metadata:
+      labels:
+        app: taskacade-worker
+    spec:
+      containers:
+        - name: worker
+          image: your-registry/taskacade-worker:latest
+          env:
+            - name: NODE_ENV
+              value: "production"
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: taskacade-secrets
+                  key: database-url
+            - name: REDIS_URL
+              value: "redis://redis-master:6379"
+            - name: OPENAI_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: taskacade-secrets
+                  key: openai-api-key
+          resources:
+            requests:
+              cpu: "500m"
+              memory: "1Gi"
+            limits:
+              cpu: "2000m"
+              memory: "2Gi"
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: taskacade-worker-hpa
+  namespace: taskacade
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: taskacade-worker
+  minReplicas: 3
+  maxReplicas: 20
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 75
