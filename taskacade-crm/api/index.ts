@@ -55,6 +55,7 @@ async function handleContacts(req: VercelRequest, res: VercelResponse) {
       `INSERT INTO contacts (tenant_id, owner_id, full_name, email, phone, company, title, source, stage, tags, metadata) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11) RETURNING *`,
       [tenantId, owner_id||null, full_name, email||null, phone||null, company||null, title||null, source||"other", stage||"lead", tags?JSON.stringify(tags):null, metadata?JSON.stringify(metadata):null]
     );
+    if (!rows.length) return res.status(503).json({ code: "DB_UNAVAILABLE", message: "Database not connected. Configure DATABASE_URL in Vercel env vars." });
     return res.status(201).json(rows[0]);
   }
   if (req.method === "PUT" && contactId) {
