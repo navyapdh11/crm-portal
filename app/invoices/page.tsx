@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { ActionModal } from "../components/Modal";
 
 interface Invoice {
   id: string;
@@ -31,6 +32,7 @@ const statusConfig: Record<string, { label: string; class: string; icon: string 
 
 export default function Invoices() {
   const [filter, setFilter] = useState<string>("all");
+  const [showModal, setShowModal] = useState(false);
   
   const filteredInvoices = filter === "all" ? invoices : invoices.filter(i => i.status === filter);
   
@@ -57,7 +59,7 @@ export default function Invoices() {
             Manage billing and payments
           </p>
         </div>
-        <button className="btn-primary flex items-center gap-2 animate-fade-in-up animate-stagger-2">
+        <button className="btn-primary flex items-center gap-2 animate-fade-in-up animate-stagger-2" onClick={() => setShowModal(true)}>
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
           </svg>
@@ -158,6 +160,12 @@ export default function Invoices() {
           </table>
         </div>
       </div>
+      
+      <ActionModal 
+        isOpen={showModal} 
+        onClose={() => setShowModal(false)} 
+        type="invoice" 
+      />
     </div>
   );
 }

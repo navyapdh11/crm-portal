@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { ActionModal } from "../components/Modal";
 
 interface Deal {
   id: number;
@@ -50,13 +51,40 @@ const stageColors: Record<string, string> = {
 
 export default function Deals() {
   const [draggedDeal, setDraggedDeal] = useState<Deal | null>(null);
+  const [showModal, setShowModal] = useState(false);
+  const [localDeals, setLocalDeals] = useState(dealsByStage);
+  const dragOverRef = useRef<string | null>(null);
+  
+  const handleDragStart = (deal: Deal) => {
+    setDraggedDeal(deal);
+  };
+  
+  const handleDragOver = (e: React.DragEvent, stage: string) => {
+    e.preventDefault();
+    dragOverRef.current = stage;
+  };
+  
+  const handleDrop = (targetStage: string) => {
+    if (draggedDeal && targetStage !== "Closed Won" && targetStage !== "Closed Lost") {
+      setLocalDeals((prev) => {
+        const newDeals = { ...prev };
+        Object.keys(newDeals).forEach((key) => {
+          newDeals[key] = newDeals[key].filter((d) => d.id !== draggedDeal.id);
+        });
+        const updatedDeal = { ...draggedDeal, stage: targetStage };
+        newDeals[targetStage] = [...(newDeals[targetStage] || []), updatedDeal];
+        return newDeals;
+      });
+      setDraggedDeal(null);
+    }
+  };
   
   const formatCurrency = (value: number) => {
     return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 }).format(value);
   };
   
-  const totalValue = Object.values(dealsByStage).flat().reduce((sum, deal) => sum + deal.value, 0);
-  const pipelineValue = [...dealsByStage["Lead"], ...dealsByStage["Qualified"], ...dealsByStage["Proposal"], ...dealsByStage["Negotiation"]].reduce((sum, deal) => sum + deal.value, 0);
+  const totalValue = Object.values(localDeals).flat().reduce((sum, deal) => sum + deal.value, 0);
+  const pipelineValue = [...localDeals["Lead"], ...localDeals["Qualified"], ...localDeals["Proposal"], ...localDeals["Negotiation"]].reduce((sum, deal) => sum + deal.value, 0);
   
   return (
     <div className="py-6">
@@ -69,7 +97,7 @@ export default function Deals() {
             Track your sales pipeline
           </p>
         </div>
-        <button className="btn-primary flex items-center gap-2 animate-fade-in-up animate-stagger-2">
+        <button className="btn-primary flex items-center gap-2 animate-fade-in-up animate-stagger-2" onClick={() => setShowModal(true)}>
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
           </svg>
@@ -79,8 +107,8 @@ export default function Deals() {
       
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
         {[
-          { label: "Total Pipeline", value: formatCurrency(pipelineValue), sub: `${Object.values(dealsByStage).flat().filter(d => d.stage !== "Closed Won" && d.stage !== "Closed Lost").length} deals` },
-          { label: "Closed Won", value: formatCurrency(dealsByStage["Closed Won"].reduce((s, d) => s + d.value, 0)), sub: "This quarter" },
+          { label: "Total Pipeline", value: formatCurrency(pipelineValue), sub: `${Object.values(localDeals).flat().filter(d => d.stage !== "Closed Won" && d.stage !== "Closed Lost").length} deals` },
+          { label: "Closed Won", value: formatCurrency(localDeals["Closed Won"].reduce((s, d) => s + d.value, 0)), sub: "This quarter" },
           { label: "Win Rate", value: "32%", sub: "+5% vs last month" },
           { label: "Avg Deal Size", value: formatCurrency(Math.round(pipelineValue / 4)), sub: "4 active deals" },
         ].map((stat, index) => (
@@ -98,7 +126,7 @@ export default function Deals() {
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
         {stages.map((stage, stageIndex) => {
-          const stageDeals = dealsByStage[stage] || [];
+          const stageDeals = localDeals[stage] || [];
           const stageTotal = stageDeals.reduce((s, d) => s + d.value, 0);
           
           return (
@@ -110,6 +138,8 @@ export default function Deals() {
                 background: 'var(--color-bg-subtle)',
                 border: '1px solid var(--color-border)'
               }}
+              onDragOver={(e) => handleDragOver(e, stage)}
+              onDrop={() => handleDrop(stage)}
             >
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-2">
@@ -128,6 +158,7 @@ export default function Deals() {
                   <div
                     key={deal.id}
                     draggable
+                    onDragStart={() => handleDragStart(deal)}
                     className="p-3 rounded-xl cursor-grab active:cursor-grabbing transition-all card-hover"
                     style={{ 
                       background: 'var(--color-surface)',
@@ -152,22 +183,15 @@ export default function Deals() {
                             />
                           </div>
                           <span className="text-xs" style={{ color: 'var(--color-text-tertiary)' }}>{deal.probability}%</span>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
-              
-              {stageDeals.length === 0 && (
-                <div className="py-8 text-center text-sm" style={{ color: 'var(--color-text-tertiary)' }}>
-                  No deals
-                </div>
-              )}
-            </div>
-          );
-        })}
+</div>
+        )}
       </div>
+      
+      <ActionModal 
+        isOpen={showModal} 
+        onClose={() => setShowModal(false)} 
+        type="deal" 
+      />
     </div>
   );
 }

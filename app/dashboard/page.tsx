@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 
 interface Stat {
   label: string;
@@ -117,7 +118,7 @@ export default function Dashboard() {
             <h2 className="text-xl font-semibold" style={{ fontFamily: 'var(--font-display)', color: 'var(--color-text-primary)' }}>
               Recent Activity
             </h2>
-            <button className="text-sm font-medium" style={{ color: 'var(--color-accent)' }}>View all</button>
+            <button className="text-sm font-medium" style={{ color: 'var(--color-accent)' }} onClick={() => alert('View all activity')}>View all</button>
           </div>
           
           <div className="space-y-1">
@@ -160,18 +161,19 @@ export default function Dashboard() {
               { label: "New Deal", icon: "💼", href: "/deals" },
               { label: "Start Project", icon: "🚀", href: "/projects" },
             ].map((action) => (
-              <a
+              <Link
                 key={action.label}
                 href={action.href}
                 className="flex flex-col items-center gap-2 p-4 rounded-xl transition-all card-hover"
                 style={{ 
                   background: 'var(--color-bg-subtle)',
-                  border: '1px solid var(--color-border)'
+                  border: '1px solid var(--color-border)',
+                  cursor: 'pointer'
                 }}
               >
                 <span className="text-2xl">{action.icon}</span>
                 <span className="text-sm font-medium" style={{ color: 'var(--color-text-secondary)' }}>{action.label}</span>
-              </a>
+              </Link>
             ))}
           </div>
         </div>

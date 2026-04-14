@@ -119,7 +119,8 @@ export default function Home() {
             Get Started
           </Link>
           <Link 
-            href="/api" 
+            href="/spec/openapi.yaml" 
+            target="_blank"
             className="px-6 py-3 rounded-lg font-medium transition-all"
             style={{ border: '1px solid var(--color-border)', color: 'var(--color-text-secondary)' }}
           >

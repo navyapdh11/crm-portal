@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { ActionModal } from "../components/Modal";
 
 interface Project {
   id: number;
@@ -131,6 +132,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 
 export default function Projects() {
   const [filter, setFilter] = useState<string>("all");
+  const [showModal, setShowModal] = useState(false);
   
   const filteredProjects = filter === "all" ? projects : projects.filter(p => p.status === filter);
   
@@ -149,7 +151,7 @@ export default function Projects() {
             Track and manage client projects
           </p>
         </div>
-        <button className="btn-primary flex items-center gap-2 animate-fade-in-up animate-stagger-2">
+        <button className="btn-primary flex items-center gap-2 animate-fade-in-up animate-stagger-2" onClick={() => setShowModal(true)}>
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
           </svg>
@@ -200,12 +202,11 @@ export default function Projects() {
         ))}
       </div>
       
-      {filteredProjects.length === 0 && (
-        <div className="text-center py-12">
-          <p className="text-lg mb-2" style={{ color: 'var(--color-text-secondary)' }}>No projects found</p>
-          <p className="text-sm" style={{ color: 'var(--color-text-tertiary)' }}>Try changing the filter or create a new project</p>
-        </div>
-      )}
+      <ActionModal 
+        isOpen={showModal} 
+        onClose={() => setShowModal(false)} 
+        type="project" 
+      />
     </div>
   );
 }
