@@ -1,0 +1,1685 @@
+openapi: 3.1.0
+info:
+  title: CRM & Portal Workspace API
+  version: "1.0"
+  description: |
+    Multi-tenant CRM, Invoice Generator, and Client Portal system.
+    - CRM: contacts, deals, pipeline, automations.
+    - Invoices: billing, payment tracking.
+    - Portal: projects, files, comments.
+  contact:
+    name: API Support
+    email: support@example.com
+servers:
+  - url: https://api.yourhost.com/v1
+    description: Production
+  - url: https://api.staging.yourhost.com/v1
+    description: Staging
+  - url: http://localhost:3000/v1
+    description: Development
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+
+  parameters:
+    tenantId:
+      in: header
+      name: X-Tenant-Id
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Tenant identifier for multi-tenancy
+    userId:
+      in: header
+      name: X-User-Id
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: User identifier
+    tenantIdPath:
+      in: path
+      name: tenant_id
+      required: true
+      schema:
+        type: string
+        format: uuid
+    contactIdPath:
+      in: path
+      name: contact_id
+      required: true
+      schema:
+        type: string
+        format: uuid
+    dealIdPath:
+      in: path
+      name: deal_id
+      required: true
+      schema:
+        type: string
+        format: uuid
+    invoiceIdPath:
+      in: path
+      name: invoice_id
+      required: true
+      schema:
+        type: string
+        format: uuid
+    projectIdPath:
+      in: path
+      name: project_id
+      required: true
+      schema:
+        type: string
+        format: uuid
+
+  schemas:
+    Contact:
+      type: object
+      required: [id, tenant_id, full_name]
+      properties:
+        id:
+          type: string
+          format: uuid
+        tenant_id:
+          type: string
+          format: uuid
+        owner_id:
+          type: string
+          format: uuid
+          nullable: true
+        full_name:
+          type: string
+          minLength: 1
+          maxLength: 255
+        email:
+          type: string
+          format: email
+          nullable: true
+        phone:
+          type: string
+          nullable: true
+        company:
+          type: string
+          nullable: true
+        title:
+          type: string
+          nullable: true
+        source:
+          type: string
+          nullable: true
+          example: "website"
+        metadata:
+          type: object
+          additionalProperties: true
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    Deal:
+      type: object
+      required: [id, tenant_id, name, stage]
+      properties:
+        id:
+          type: string
+          format: uuid
+        tenant_id:
+          type: string
+          format: uuid
+        contact_id:
+          type: string
+          format: uuid
+          nullable: true
+        name:
+          type: string
+          minLength: 1
+          maxLength: 255
+        stage:
+          type: string
+          enum: [lead, qualified, proposal, negotiation, closed_won, closed_lost]
+          example: "lead"
+        amount:
+          type: number
+          nullable: true
+          minimum: 0
+        currency:
+          type: string
+          nullable: true
+          example: "USD"
+        close_date:
+          type: string
+          format: date
+          nullable: true
+        probability:
+          type: number
+          nullable: true
+          minimum: 0
+          maximum: 100
+        owner_id:
+          type: string
+          format: uuid
+          nullable: true
+        notes:
+          type: string
+          nullable: true
+        metadata:
+          type: object
+          additionalProperties: true
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    Invoice:
+      type: object
+      required: [id, tenant_id, client_contact_id, number, currency, total, due_date, status]
+      properties:
+        id:
+          type: string
+          format: uuid
+        tenant_id:
+          type: string
+          format: uuid
+        client_contact_id:
+          type: string
+          format: uuid
+        deal_id:
+          type: string
+          format: uuid
+          nullable: true
+        number:
+          type: string
+          minLength: 1
+          maxLength: 50
+        currency:
+          type: string
+          example: "USD"
+        subtotal:
+          type: number
+          minimum: 0
+        tax:
+          type: number
+          minimum: 0
+          default: 0
+        total:
+          type: number
+          minimum: 0
+        paid_amount:
+          type: number
+          minimum: 0
+          default: 0
+        due_date:
+          type: string
+          format: date
+        status:
+          type: string
+          enum: [draft, sent, paid, overdue, cancelled]
+          example: "draft"
+        paid_at:
+          type: string
+          format: date-time
+          nullable: true
+        notes:
+          type: string
+          nullable: true
+        metadata:
+          type: object
+          additionalProperties: true
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    InvoiceLineItem:
+      type: object
+      required: [id, invoice_id, description, quantity, unit_price]
+      properties:
+        id:
+          type: string
+          format: uuid
+        invoice_id:
+          type: string
+          format: uuid
+        description:
+          type: string
+        quantity:
+          type: number
+          minimum: 0
+          exclusiveMinimum: true
+        unit_price:
+          type: number
+          minimum: 0
+        unit:
+          type: string
+          default: "hours"
+        amount:
+          type: number
+          minimum: 0
+
+    Project:
+      type: object
+      required: [id, tenant_id, client_contact_id, name, status]
+      properties:
+        id:
+          type: string
+          format: uuid
+        tenant_id:
+          type: string
+          format: uuid
+        client_contact_id:
+          type: string
+          format: uuid
+        deal_id:
+          type: string
+          format: uuid
+          nullable: true
+        name:
+          type: string
+          minLength: 1
+          maxLength: 255
+        status:
+          type: string
+          enum: [onboarding, active, paused, completed, archived]
+          example: "onboarding"
+        description:
+          type: string
+          nullable: true
+        start_date:
+          type: string
+          format: date
+          nullable: true
+        end_date:
+          type: string
+          format: date
+          nullable: true
+        budget:
+          type: number
+          nullable: true
+          minimum: 0
+        budget_hours:
+          type: number
+          nullable: true
+          minimum: 0
+        owner_id:
+          type: string
+          format: uuid
+          nullable: true
+        metadata:
+          type: object
+          additionalProperties: true
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    File:
+      type: object
+      required: [id, tenant_id, project_id, uploader_id, filename, url]
+      properties:
+        id:
+          type: string
+          format: uuid
+        tenant_id:
+          type: string
+          format: uuid
+        project_id:
+          type: string
+          format: uuid
+        uploader_id:
+          type: string
+          format: uuid
+        filename:
+          type: string
+        url:
+          type: string
+          format: uri
+        mime_type:
+          type: string
+          nullable: true
+        size_bytes:
+          type: integer
+          nullable: true
+          minimum: 0
+        metadata:
+          type: object
+          additionalProperties: true
+        created_at:
+          type: string
+          format: date-time
+
+    Comment:
+      type: object
+      required: [id, tenant_id, project_id, user_id, content]
+      properties:
+        id:
+          type: string
+          format: uuid
+        tenant_id:
+          type: string
+          format: uuid
+        project_id:
+          type: string
+          format: uuid
+        user_id:
+          type: string
+          format: uuid
+        content:
+          type: string
+          minLength: 1
+          maxLength: 10000
+        metadata:
+          type: object
+          additionalProperties: true
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    User:
+      type: object
+      required: [id, tenant_id, email, full_name]
+      properties:
+        id:
+          type: string
+          format: uuid
+        tenant_id:
+          type: string
+          format: uuid
+        email:
+          type: string
+          format: email
+        full_name:
+          type: string
+        role:
+          type: string
+          enum: [owner, admin, member, viewer]
+          default: "member"
+        metadata:
+          type: object
+          additionalProperties: true
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    Tenant:
+      type: object
+      required: [id, name]
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          minLength: 1
+          maxLength: 255
+        slug:
+          type: string
+          pattern: "^[a-z0-9-]+$"
+        status:
+          type: string
+          enum: [active, suspended]
+          default: "active"
+        metadata:
+          type: object
+          additionalProperties: true
+        created_at:
+          type: string
+          format: date-time
+
+    Automation:
+      type: object
+      required: [id, tenant_id, name, trigger, action]
+      properties:
+        id:
+          type: string
+          format: uuid
+        tenant_id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        trigger:
+          type: string
+          enum: [contact_created, deal_stage_changed, invoice_paid, project_completed, manual]
+        action:
+          type: object
+          additionalProperties: true
+        enabled:
+          type: boolean
+          default: true
+        metadata:
+          type: object
+          additionalProperties: true
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    AutomationRun:
+      type: object
+      required: [id, tenant_id, automation_id]
+      properties:
+        id:
+          type: string
+          format: uuid
+        tenant_id:
+          type: string
+          format: uuid
+        automation_id:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum: [pending, running, completed, failed]
+        result:
+          type: object
+          additionalProperties: true
+          nullable: true
+        error:
+          type: string
+          nullable: true
+        started_at:
+          type: string
+          format: date-time
+        completed_at:
+          type: string
+          format: date-time
+          nullable: true
+
+    AuditEvent:
+      type: object
+      required: [id, tenant_id, actor_type, actor_id, action, target_type]
+      properties:
+        id:
+          type: string
+          format: uuid
+        tenant_id:
+          type: string
+          format: uuid
+        actor_type:
+          type: string
+          enum: [user, system, automation]
+        actor_id:
+          type: string
+          format: uuid
+        action:
+          type: string
+          enum: [create, read, update, delete, invoke]
+        target_type:
+          type: string
+        target_id:
+          type: string
+          format: uuid
+        fields_modified:
+          type: array
+          items:
+            type: string
+        changes:
+          type: object
+          additionalProperties: true
+        metadata:
+          type: object
+          additionalProperties: true
+        occurred_at:
+          type: string
+          format: date-time
+
+    Error:
+      type: object
+      required: [code, message]
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        details:
+          type: object
+          additionalProperties: true
+          nullable: true
+
+    PaginatedResponse:
+      type: object
+      required: [data, pagination]
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+        pagination:
+          type: object
+          properties:
+            page:
+              type: integer
+            limit:
+              type: integer
+            total:
+              type: integer
+            has_more:
+              type: boolean
+
+  responses:
+    BadRequest:
+      description: Bad Request - Invalid parameters
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    Unauthorized:
+      description: Unauthorized - Invalid or missing authentication
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    Forbidden:
+      description: Forbidden - Insufficient permissions
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    NotFound:
+      description: Not Found - Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    InternalServerError:
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+
+security:
+  - BearerAuth: []
+  - ApiKeyAuth: []
+
+paths:
+  # ====================
+  # TENANTS
+  # ====================
+  /tenants/{tenant_id}:
+    get:
+      summary: Get tenant info
+      parameters:
+        - $ref: "#/components/parameters/tenantIdPath"
+      responses:
+        "200":
+          description: Tenant info
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Tenant"
+
+  # ====================
+  # CONTACTS
+  # ====================
+  /tenants/{tenant_id}/contacts:
+    get:
+      summary: List contacts for tenant
+      parameters:
+        - $ref: "#/components/parameters/tenantId"
+        - name: search
+          in: query
+          schema:
+            type: string
+          description: Search by name or email
+        - name: company
+          in: query
+          schema:
+            type: string
+        - name: owner_id
+          in: query
+          schema:
+            type: string
+            format: uuid
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 50
+            maximum: 100
+      responses:
+        "200":
+          description: List of contacts
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PaginatedResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+    post:
+      summary: Create a contact
+      parameters:
+        - $ref: "#/components/parameters/tenantId"
+        - $ref: "#/components/parameters/userId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [full_name]
+              properties:
+                full_name:
+                  type: string
+                email:
+                  type: string
+                  format: email
+                phone:
+                  type: string
+                company:
+                  type: string
+                title:
+                  type: string
+                source:
+                  type: string
+                metadata:
+                  type: object
+      responses:
+        "201":
+          description: Contact created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Contact"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+
+  /tenants/{tenant_id}/contacts/{contact_id}:
+    get:
+      summary: Get contact by ID
+      parameters:
+        - $ref: "#/components/parameters/tenantId"
+        - $ref: "#/components/parameters/contactIdPath"
+      responses:
+        "200":
+          description: Contact
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Contact"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+    patch:
+      summary: Update contact
+      parameters:
+        - $ref: "#/components/parameters/tenantId"
+        - $ref: "#/components/parameters/contactIdPath"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                full_name:
+                  type: string
+                email:
+                  type: string
+                  format: email
+                phone:
+                  type: string
+                company:
+                  type: string
+                title:
+                  type: string
+                source:
+                  type: string
+                owner_id:
+                  type: string
+                  format: uuid
+                metadata:
+                  type: object
+      responses:
+        "200":
+          description: Contact updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Contact"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+    delete:
+      summary: Delete contact
+      parameters:
+        - $ref: "#/components/parameters/tenantId"
+        - $ref: "#/components/parameters/contactIdPath"
+      responses:
+        "204":
+          description: Contact deleted
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  # ====================
+  # DEALS
+  # ====================
+  /tenants/{tenant_id}/deals:
+    get:
+      summary: List deals for tenant
+      parameters:
+        - $ref: "#/components/parameters/tenantId"
+        - name: stage
+          in: query
+          schema:
+            type: string
+        - name: contact_id
+          in: query
+          schema:
+            type: string
+            format: uuid
+        - name: owner_id
+          in: query
+          schema:
+            type: string
+            format: uuid
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 50
+            maximum: 100
+      responses:
+        "200":
+          description: List of deals
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PaginatedResponse"
+
+    post:
+      summary: Create a deal
+      parameters:
+        - $ref: "#/components/parameters/tenantId"
+        - $ref: "#/components/parameters/userId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name, stage]
+              properties:
+                name:
+                  type: string
+                stage:
+                  type: string
+                  enum: [lead, qualified, proposal, negotiation, closed_won, closed_lost]
+                contact_id:
+                  type: string
+                  format: uuid
+                amount:
+                  type: number
+                currency:
+                  type: string
+                close_date:
+                  type: string
+                  format: date
+                probability:
+                  type: number
+                notes:
+                  type: string
+                metadata:
+                  type: object
+      responses:
+        "201":
+          description: Deal created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Deal"
+
+  /tenants/{tenant_id}/deals/{deal_id}:
+    get:
+      summary: Get deal by ID
+      parameters:
+        - $ref: "#/components/parameters/tenantId"
+        - $ref: "#/components/parameters/dealIdPath"
+      responses:
+        "200":
+          description: Deal
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Deal"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+    patch:
+      summary: Update deal
+      parameters:
+        - $ref: "#/components/parameters/tenantId"
+        - $ref: "#/components/parameters/dealIdPath"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                stage:
+                  type: string
+                contact_id:
+                  type: string
+                  format: uuid
+                amount:
+                  type: number
+                currency:
+                  type: string
+                close_date:
+                  type: string
+                  format: date
+                probability:
+                  type: number
+                owner_id:
+                  type: string
+                  format: uuid
+                notes:
+                  type: string
+                metadata:
+                  type: object
+      responses:
+        "200":
+          description: Deal updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Deal"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+    delete:
+      summary: Delete deal
+      parameters:
+        - $ref: "#/components/parameters/tenantId"
+        - $ref: "#/components/parameters/dealIdPath"
+      responses:
+        "204":
+          description: Deal deleted
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  # ====================
+  # INVOICES
+  # ====================
+  /tenants/{tenant_id}/invoices:
+    get:
+      summary: List invoices for tenant
+      parameters:
+        - $ref: "#/components/parameters/tenantId"
+        - name: status
+          in: query
+          schema:
+            type: string
+        - name: client_contact_id
+          in: query
+          schema:
+            type: string
+            format: uuid
+        - name: from_date
+          in: query
+          schema:
+            type: string
+            format: date
+        - name: to_date
+          in: query
+          schema:
+            type: string
+            format: date
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 50
+            maximum: 100
+      responses:
+        "200":
+          description: List of invoices
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PaginatedResponse"
+
+    post:
+      summary: Create an invoice
+      parameters:
+        - $ref: "#/components/parameters/tenantId"
+        - $ref: "#/components/parameters/userId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [client_contact_id, number, currency, total, due_date]
+              properties:
+                client_contact_id:
+                  type: string
+                  format: uuid
+                deal_id:
+                  type: string
+                  format: uuid
+                number:
+                  type: string
+                currency:
+                  type: string
+                subtotal:
+                  type: number
+                tax:
+                  type: number
+                  default: 0
+                total:
+                  type: number
+                due_date:
+                  type: string
+                  format: date
+                notes:
+                  type: string
+                metadata:
+                  type: object
+      responses:
+        "201":
+          description: Invoice created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Invoice"
+
+  /tenants/{tenant_id}/invoices/{invoice_id}:
+    get:
+      summary: Get invoice by ID
+      parameters:
+        - $ref: "#/components/parameters/tenantId"
+        - $ref: "#/components/parameters/invoiceIdPath"
+      responses:
+        "200":
+          description: Invoice
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Invoice"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+    patch:
+      summary: Update invoice
+      parameters:
+        - $ref: "#/components/parameters/tenantId"
+        - $ref: "#/components/parameters/invoiceIdPath"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  enum: [draft, sent, paid, overdue, cancelled]
+                paid_amount:
+                  type: number
+                paid_at:
+                  type: string
+                  format: date-time
+                notes:
+                  type: string
+                metadata:
+                  type: object
+      responses:
+        "200":
+          description: Invoice updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Invoice"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+    delete:
+      summary: Delete invoice
+      parameters:
+        - $ref: "#/components/parameters/tenantId"
+        - $ref: "#/components/parameters/invoiceIdPath"
+      responses:
+        "204":
+          description: Invoice deleted
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /tenants/{tenant_id}/invoices/{invoice_id}/line_items:
+    get:
+      summary: Get invoice line items
+      parameters:
+        - $ref: "#/components/parameters/tenantId"
+        - $ref: "#/components/parameters/invoiceIdPath"
+      responses:
+        "200":
+          description: List of line items
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/InvoiceLineItem"
+
+    post:
+      summary: Add line item to invoice
+      parameters:
+        - $ref: "#/components/parameters/tenantId"
+        - $ref: "#/components/parameters/invoiceIdPath"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [description, quantity, unit_price]
+              properties:
+                description:
+                  type: string
+                quantity:
+                  type: number
+                unit_price:
+                  type: number
+                unit:
+                  type: string
+                  default: "hours"
+      responses:
+        "201":
+          description: Line item created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InvoiceLineItem"
+
+  /tenants/{tenant_id}/invoices/{invoice_id}/send:
+    post:
+      summary: Send invoice to client
+      parameters:
+        - $ref: "#/components/parameters/tenantId"
+        - $ref: "#/components/parameters/invoiceIdPath"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                subject:
+                  type: string
+                message:
+                  type: string
+      responses:
+        "200":
+          description: Invoice sent
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Invoice"
+
+  # ====================
+  # PROJECTS
+  # ====================
+  /tenants/{tenant_id}/projects:
+    get:
+      summary: List projects for tenant
+      parameters:
+        - $ref: "#/components/parameters/tenantId"
+        - name: status
+          in: query
+          schema:
+            type: string
+        - name: client_contact_id
+          in: query
+          schema:
+            type: string
+            format: uuid
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 50
+            maximum: 100
+      responses:
+        "200":
+          description: List of projects
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PaginatedResponse"
+
+    post:
+      summary: Create a project
+      parameters:
+        - $ref: "#/components/parameters/tenantId"
+        - $ref: "#/components/parameters/userId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [client_contact_id, name]
+              properties:
+                name:
+                  type: string
+                deal_id:
+                  type: string
+                  format: uuid
+                client_contact_id:
+                  type: string
+                  format: uuid
+                description:
+                  type: string
+                status:
+                  type: string
+                  enum: [onboarding, active, paused, completed, archived]
+                start_date:
+                  type: string
+                  format: date
+                end_date:
+                  type: string
+                  format: date
+                budget:
+                  type: number
+                budget_hours:
+                  type: number
+                metadata:
+                  type: object
+      responses:
+        "201":
+          description: Project created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Project"
+
+  /tenants/{tenant_id}/projects/{project_id}:
+    get:
+      summary: Get project by ID
+      parameters:
+        - $ref: "#/components/parameters/tenantId"
+        - $ref: "#/components/parameters/projectIdPath"
+      responses:
+        "200":
+          description: Project
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Project"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+    patch:
+      summary: Update project
+      parameters:
+        - $ref: "#/components/parameters/tenantId"
+        - $ref: "#/components/parameters/projectIdPath"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                status:
+                  type: string
+                start_date:
+                  type: string
+                  format: date
+                end_date:
+                  type: string
+                  format: date
+                budget:
+                  type: number
+                budget_hours:
+                  type: number
+                owner_id:
+                  type: string
+                  format: uuid
+                metadata:
+                  type: object
+      responses:
+        "200":
+          description: Project updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Project"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+    delete:
+      summary: Delete project
+      parameters:
+        - $ref: "#/components/parameters/tenantId"
+        - $ref: "#/components/parameters/projectIdPath"
+      responses:
+        "204":
+          description: Project deleted
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  # ====================
+  # PROJECT FILES
+  # ====================
+  /tenants/{tenant_id}/projects/{project_id}/files:
+    get:
+      summary: List project files
+      parameters:
+        - $ref: "#/components/parameters/tenantId"
+        - $ref: "#/components/parameters/projectIdPath"
+      responses:
+        "200":
+          description: List of files
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/File"
+
+    post:
+      summary: Upload file metadata
+      parameters:
+        - $ref: "#/components/parameters/tenantId"
+        - $ref: "#/components/parameters/projectIdPath"
+        - $ref: "#/components/parameters/userId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [filename, url]
+              properties:
+                filename:
+                  type: string
+                url:
+                  type: string
+                  format: uri
+                mime_type:
+                  type: string
+                size_bytes:
+                  type: integer
+                metadata:
+                  type: object
+      responses:
+        "201":
+          description: File created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/File"
+
+  # ====================
+  # PROJECT COMMENTS
+  # ====================
+  /tenants/{tenant_id}/projects/{project_id}/comments:
+    get:
+      summary: List project comments
+      parameters:
+        - $ref: "#/components/parameters/tenantId"
+        - $ref: "#/components/parameters/projectIdPath"
+      responses:
+        "200":
+          description: List of comments
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Comment"
+
+    post:
+      summary: Create a comment
+      parameters:
+        - $ref: "#/components/parameters/tenantId"
+        - $ref: "#/components/parameters/projectIdPath"
+        - $ref: "#/components/parameters/userId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [content]
+              properties:
+                content:
+                  type: string
+                  minLength: 1
+                  maxLength: 10000
+                metadata:
+                  type: object
+      responses:
+        "201":
+          description: Comment created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Comment"
+
+  # ====================
+  # AUTOMATIONS
+  # ====================
+  /tenants/{tenant_id}/automations:
+    get:
+      summary: List automations for tenant
+      parameters:
+        - $ref: "#/components/parameters/tenantId"
+      responses:
+        "200":
+          description: List of automations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Automation"
+
+    post:
+      summary: Create an automation
+      parameters:
+        - $ref: "#/components/parameters/tenantId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name, trigger, action]
+              properties:
+                name:
+                  type: string
+                trigger:
+                  type: string
+                action:
+                  type: object
+                enabled:
+                  type: boolean
+                  default: true
+                metadata:
+                  type: object
+      responses:
+        "201":
+          description: Automation created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Automation"
+
+  /tenants/{tenant_id}/automations/{automation_id}:
+    get:
+      summary: Get automation by ID
+      parameters:
+        - $ref: "#/components/parameters/tenantId"
+        - name: automation_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Automation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Automation"
+
+    patch:
+      summary: Update automation
+      parameters:
+        - $ref: "#/components/parameters/tenantId"
+        - name: automation_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                enabled:
+                  type: boolean
+                action:
+                  type: object
+                metadata:
+                  type: object
+      responses:
+        "200":
+          description: Automation updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Automation"
+
+    delete:
+      summary: Delete automation
+      parameters:
+        - $ref: "#/components/parameters/tenantId"
+        - name: automation_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "204":
+          description: Automation deleted
+
+  /tenants/{tenant_id}/trigger:
+    post:
+      summary: Trigger automation by key
+      parameters:
+        - $ref: "#/components/parameters/tenantId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [key, context]
+              properties:
+                key:
+                  type: string
+                  example: "new_lead_followup"
+                context:
+                  type: object
+                  additionalProperties: true
+      responses:
+        "202":
+          description: Async run accepted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  automation_run_id:
+                    type: string
+                    format: uuid
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /tenants/{tenant_id}/automation_runs:
+    get:
+      summary: List automation runs
+      parameters:
+        - $ref: "#/components/parameters/tenantId"
+        - name: status
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: List of automation runs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/AutomationRun"
+
+  # ====================
+  # AUDIT EVENTS
+  # ====================
+  /tenants/{tenant_id}/audit_events:
+    get:
+      summary: List audit events for tenant
+      parameters:
+        - $ref: "#/components/parameters/tenantId"
+        - name: actor_type
+          in: query
+          schema:
+            type: string
+        - name: target_type
+          in: query
+          schema:
+            type: string
+        - name: from_date
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: to_date
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 50
+            maximum: 100
+      responses:
+        "200":
+          description: Audit events
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PaginatedResponse"
+
+  # ====================
+  # INTERNAL AGENT API
+  # ====================
+  /internal/agents/{agent_id}/invoke:
+    post:
+      summary: Invoke an agent (worker API)
+      operationId: invokeAgent
+      security: []
+      parameters:
+        - name: agent_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [tenant_id, context]
+              properties:
+                tenant_id:
+                  type: string
+                  format: uuid
+                context:
+                  type: object
+                  additionalProperties: true
+                prompt:
+                  type: string
+      responses:
+        "200":
+          description: Agent result
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+
+  # ====================
+  # HEALTH CHECK
+  # ====================
+  /health:
+    get:
+      summary: Health check
+      responses:
+        "200":
+          description: Service is healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  timestamp:
+                    type: string
+                    format: date-time
