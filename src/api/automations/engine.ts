@@ -1,10 +1,12 @@
 import type { Client } from "../db/client.js";
+import { invokeAgent } from "../agents/runner.js";
 
 export type AutomationTrigger = 
   | "contact_created" 
   | "deal_stage_changed" 
   | "invoice_paid" 
   | "project_completed" 
+  | "seo_audit_triggered"
   | "manual";
 
 export interface Automation {
@@ -45,14 +47,14 @@ export class AutomationEngine {
     this.handlers.set("deal_stage_changed", this.handleDealStageChanged.bind(this));
     this.handlers.set("invoice_paid", this.handleInvoicePaid.bind(this));
     this.handlers.set("project_completed", this.handleProjectCompleted.bind(this));
+    this.handlers.set("seo_audit_triggered", this.handleSeoAudit.bind(this));
   }
 
   async trigger(tenantId: string, trigger: AutomationTrigger, context: Record<string, unknown>) {
     const automations = await this.listEnabledAutomations(tenantId, trigger);
     
-    for (const automation of automations) {
-      await this.execute(automation, context);
-    }
+    // Process all matching automations concurrently
+    await Promise.all(automations.map(automation => this.execute(automation, context)));
   }
 
   private async listEnabledAutomations(tenantId: string, trigger: AutomationTrigger) {
@@ -96,5 +98,9 @@ export class AutomationEngine {
 
   private async handleProjectCompleted(context: Record<string, unknown>) {
     console.log("Project completed:", context);
+  }
+
+  private async handleSeoAudit(context: Record<string, unknown>) {
+    await invokeAgent(this.db, "seo-geo-audit", context as any);
   }
 }

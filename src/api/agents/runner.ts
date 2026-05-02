@@ -42,5 +42,8 @@ export async function loadAgents(db: Client) {
   const { LlmAgent } = await import("./llm-agent.js");
   agents.push(new LlmAgent());
 
+  const { SeoGeoAuditAgent } = await import("./seo-geo-audit-agent.js");
+  agents.push(new SeoGeoAuditAgent());
+
   return agents;
 }

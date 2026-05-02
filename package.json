@@ -8,22 +8,29 @@
     "build": "next build",
     "build:api": "tsc -p tsconfig.api.json",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "vitest",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "next": "14.2.0",
+    "openai": "^4.28.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "openai": "^4.28.0",
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "@playwright/test": "^1.59.1",
     "@types/node": "^20.11.0",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
+    "@vitest/coverage-v8": "^4.1.4",
     "autoprefixer": "^10.4.17",
+    "jsdom": "^29.0.2",
+    "playwright": "^1.59.1",
     "postcss": "^8.4.35",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5.3.0"
+    "typescript": "^5.3.0",
+    "vitest": "^4.1.4"
   }
 }
