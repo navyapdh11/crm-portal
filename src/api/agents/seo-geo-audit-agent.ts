@@ -11,7 +11,8 @@ export class SeoGeoAuditAgent extends LlmAgent {
   }
 
   async execute(context: AgentContext): Promise<AgentResult> {
-    const { url, location, task } = context as { url: string; location: string; task: string };
+    const contextData = context as unknown as { url: string; location: string; task: string };
+    const { url, location, task } = contextData;
 
     if (!url || !location || !task) {
       return { success: false, error: "Missing required context: url, location, task" };

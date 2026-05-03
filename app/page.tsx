@@ -145,7 +145,7 @@ export default function Home() {
               }}
             >
               <div className="text-3xl font-semibold mb-1" style={{ fontFamily: 'var(--font-display)', color: 'var(--color-text-primary)' }}>
-                <AnimatedStat value={stat.value} />
+                <AnimatedStat value={stat.value} label={stat.label} />
               </div>
               <div className="text-sm" style={{ color: 'var(--color-text-tertiary)' }}>{stat.label}</div>
             </div>

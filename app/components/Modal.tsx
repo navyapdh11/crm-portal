@@ -174,7 +174,7 @@ export function ActionModal({ isOpen, onClose, type }: ActionModalProps) {
           placeholder={field.placeholder}
           value={formData[field.key] || ''}
           onChange={(value) => setFormData({ ...formData, [field.key]: value })}
-          options={field.options}
+          options={(field as any).options}
         />
       ))}
       <div className="flex gap-3 mt-6">

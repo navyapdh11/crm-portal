@@ -1,5 +1,3 @@
-import { sql } from "./db.js";
-
 export type TenantId = string & { __brand: "tenantId" };
 export type UserId = string & { __brand: "userId" };
 export type ContactId = string & { __brand: "contactId" };
@@ -29,7 +27,8 @@ export async function createPgClient(): Promise<DatabaseClient> {
       return result.rows[0] as T;
     },
     async execute(strings: TemplateStringsArray, ...values: unknown[]): Promise<{ rowCount: number }> {
-      return pool.query(strings[0], values);
+      const res = await pool.query(strings[0], values);
+      return { rowCount: res.rowCount ?? 0 };
     },
   };
 }
@@ -52,5 +51,7 @@ export async function createSqliteClient(): Promise<DatabaseClient> {
   };
 }
 
+export function sql(strings: TemplateStringsArray, ...values: unknown[]): string {
+  return strings.reduce((acc, str, i) => acc + str + (values[i] ?? ""), "");
+}
 export type Client = DatabaseClient;
-export { sql };

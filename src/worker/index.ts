@@ -1,4 +1,4 @@
-import { createClient } from "../api/db/client.js";
+import { createPgClient } from "../api/db/client.js";
 import { AutomationEngine } from "../api/automations/engine.js";
 
 async function main() {

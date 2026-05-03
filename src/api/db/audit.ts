@@ -64,5 +64,5 @@ export async function listAuditEvents(
     ...params
   );
 
-  return { data, pagination: { page, limit, total: countResult.total, has_more: offset + data.length < countResult.total } };
+  return { data, pagination: { page, limit, total: (countResult as any).total, has_more: offset + (data as any[]).length < (countResult as any).total } };
 }

@@ -1,5 +1,14 @@
 // src/api/agents/seo-geo-audit-logic.ts
-import { callLLC } from "./llm-agent.js"; // Assume a helper is available or imported
+/**
+ * Helper to call LLM API
+ */
+async function callLLC(prompt: string): Promise<string> {
+  const agent = new LlmAgent();
+  const res = await agent.execute({ tenantId: "system", prompt });
+  return res.data ? (res.data as any).response : "";
+}
+
+import { LlmAgent } from "./llm-agent.js";
 
 /**
  * MCST Node for crawl exploration

@@ -69,7 +69,7 @@ async function handleContacts(req: VercelRequest, res: VercelResponse) {
   }
   if (req.method === "DELETE" && contactId) {
     await q("DELETE FROM contacts WHERE tenant_id = $1 AND id = $2", [tenantId, contactId]);
-    return res.status(204).send();
+    return res.status(204).send("");
   }
   res.status(405).json({ code: "METHOD_NOT_ALLOWED" });
 }
@@ -106,7 +106,7 @@ async function handleDeals(req: VercelRequest, res: VercelResponse) {
   }
   if (req.method === "DELETE" && dealId) {
     await q("DELETE FROM deals WHERE tenant_id = $1 AND id = $2", [tenantId, dealId]);
-    return res.status(204).send();
+    return res.status(204).send("");
   }
   res.status(405).json({ code: "METHOD_NOT_ALLOWED" });
 }
@@ -143,7 +143,7 @@ async function handleInvoices(req: VercelRequest, res: VercelResponse) {
   }
   if (req.method === "DELETE" && invoiceId) {
     await q("DELETE FROM invoices WHERE tenant_id = $1 AND id = $2", [tenantId, invoiceId]);
-    return res.status(204).send();
+    return res.status(204).send("");
   }
   res.status(405).json({ code: "METHOD_NOT_ALLOWED" });
 }
@@ -180,7 +180,7 @@ async function handleProjects(req: VercelRequest, res: VercelResponse) {
   }
   if (req.method === "DELETE" && projectId) {
     await q("DELETE FROM projects WHERE tenant_id = $1 AND id = $2", [tenantId, projectId]);
-    return res.status(204).send();
+    return res.status(204).send("");
   }
   res.status(405).json({ code: "METHOD_NOT_ALLOWED" });
 }
@@ -223,7 +223,7 @@ async function handleFlashcards(req: VercelRequest, res: VercelResponse) {
   }
   if (req.method === "DELETE" && flashcardId) {
     await q("DELETE FROM flashcards WHERE tenant_id = $1 AND id = $2", [tenantId, flashcardId]);
-    return res.status(204).send();
+    return res.status(204).send("");
   }
   res.status(405).json({ code: "METHOD_NOT_ALLOWED" });
 }
@@ -282,7 +282,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization, X-Tenant-Id");
-  if (req.method === "OPTIONS") return res.status(204).send();
+  if (req.method === "OPTIONS") return res.status(204).send("");
 
   const path = (req.url || "").split("?")[0];
 

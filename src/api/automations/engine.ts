@@ -72,15 +72,9 @@ export class AutomationEngine {
         await handler(context);
       }
 
-      await this.db.execute(
-        `UPDATE automation_runs SET status = 'completed', completed_at = $1 WHERE id = $2`,
-        now, runId
-      );
+      await this.db.execute`UPDATE automation_runs SET status = 'completed', completed_at = ${now} WHERE id = ${runId}`;
     } catch (error) {
-      await this.db.execute(
-        `UPDATE automation_runs SET status = 'failed', error = $1, completed_at = $2 WHERE id = $3`,
-        error instanceof Error ? error.message : "Unknown error", now, runId
-      );
+      await this.db.execute`UPDATE automation_runs SET status = 'failed', error = ${error instanceof Error ? error.message : "Unknown error"}, completed_at = ${now} WHERE id = ${runId}`;
     }
   }
 
