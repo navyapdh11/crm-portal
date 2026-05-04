@@ -51,5 +51,11 @@ export async function loadAgents(db: Client) {
   const { ObservabilityAgent } = await import("./observability-agent.js");
   agents.push(new ObservabilityAgent());
 
+  const { AutoOptimizer } = await import("./auto-optimizer.js");
+  agents.push(new AutoOptimizer(db));
+
+  const { SmlmRouter } = await import("./smlm-router.js");
+  agents.push(new SmlmRouter());
+
   return agents;
   }
