@@ -45,5 +45,8 @@ export async function loadAgents(db: Client) {
   const { SeoGeoAuditAgent } = await import("./seo-geo-audit-agent.js");
   agents.push(new SeoGeoAuditAgent());
 
+  const { HermesAgent } = await import("./hermes-agent.js");
+  agents.push(new HermesAgent(db));
+
   return agents;
-}
+  }
