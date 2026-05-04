@@ -1,0 +1,40 @@
+{
+  "todos": [
+    {
+      "content": "Add photos table to Drizzle schema",
+      "id": "1",
+      "status": "completed"
+    },
+    {
+      "content": "Create photo API routes (upload, list, delete)",
+      "id": "2",
+      "status": "completed"
+    },
+    {
+      "content": "Create PhotoGallery component with lazy loading",
+      "id": "3",
+      "status": "completed"
+    },
+    {
+      "content": "Create PhotoUpload component with drag-drop",
+      "id": "4",
+      "status": "completed"
+    },
+    {
+      "content": "Add photo gallery page to app",
+      "id": "5",
+      "status": "completed"
+    },
+    {
+      "content": "Add gallery link to navigation",
+      "id": "6",
+      "status": "completed"
+    },
+    {
+      "content": "Build, commit, deploy",
+      "id": "7",
+      "status": "completed"
+    }
+  ],
+  "sessionId": "b20e38b7-2975-4a4e-9284-d18d917a0ccf"
+}

@@ -33,3 +33,4 @@ coverage/
 .ssh/
 .gitconfig
 .gitignore
+.vercel

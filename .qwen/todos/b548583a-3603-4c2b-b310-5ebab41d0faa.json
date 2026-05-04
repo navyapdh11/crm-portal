@@ -1,0 +1,55 @@
+{
+  "todos": [
+    {
+      "content": "Create Binance execution provider",
+      "id": "1",
+      "status": "completed"
+    },
+    {
+      "content": "Create Bybit execution provider",
+      "id": "2",
+      "status": "completed"
+    },
+    {
+      "content": "Create Futu (FutuOpenAPI) execution provider",
+      "id": "3",
+      "status": "completed"
+    },
+    {
+      "content": "Create IBKR (ib_insync) execution provider",
+      "id": "4",
+      "status": "completed"
+    },
+    {
+      "content": "Create Tiger Securities execution provider",
+      "id": "5",
+      "status": "completed"
+    },
+    {
+      "content": "Create unified connection manager (backend)",
+      "id": "6",
+      "status": "completed"
+    },
+    {
+      "content": "Add connection management API routes",
+      "id": "7",
+      "status": "completed"
+    },
+    {
+      "content": "Add Connections tab to dashboard UI",
+      "id": "8",
+      "status": "completed"
+    },
+    {
+      "content": "Update config.py with multi-broker settings",
+      "id": "9",
+      "status": "completed"
+    },
+    {
+      "content": "Test and verify — restart engine",
+      "id": "10",
+      "status": "completed"
+    }
+  ],
+  "sessionId": "b548583a-3603-4c2b-b310-5ebab41d0faa"
+}

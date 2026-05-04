@@ -1,0 +1,11 @@
+{
+  "buildCommand": "next build",
+  "devCommand": "next dev",
+  "installCommand": "npm install",
+  "framework": "nextjs",
+  "outputDirectory": ".next",
+  "regions": ["syd1"],
+  "env": {
+    "NEXT_PUBLIC_APP_URL": "https://arcleaning.au"
+  }
+}

@@ -1,0 +1,293 @@
+Xsession: X session started for  at Thu Feb  5 11:11:08 PM UTC 2026
+dbus-update-activation-environment: systemd --user not found, ignoring --systemd argument
+dbus-update-activation-environment: setting DISPLAY=:1
+X Error of failed request:  BadValue (integer parameter out of range for operation)
+  Major opcode of failed request:  109 (X_ChangeHosts)
+  Value in failed request:  0x5
+  Serial number of failed request:  6
+  Current serial number in output stream:  8
+localuser:root being added to access control list
+dbus-update-activation-environment: systemd --user not found, ignoring --systemd argument
+dbus-update-activation-environment: setting QT_ACCESSIBILITY=1
+dbus-update-activation-environment: systemd --user not found, ignoring --systemd argument
+dbus-update-activation-environment: setting DEX2OATBOOTCLASSPATH=/apex/com.android.art/javalib/core-oj.jar:/apex/com.android.art/javalib/core-libart.jar:/apex/com.android.art/javalib/okhttp.jar:/apex/com.android.art/javalib/bouncycastle.jar:/apex/com.android.art/javalib/apache-xml.jar:/system/framework/framework.jar:/system/framework/framework-graphics.jar:/system/framework/ext.jar:/system/framework/telephony-common.jar:/system/framework/voip-common.jar:/system/framework/ims-common.jar:/system/framework/knoxsdk.jar:/system/framework/tcmiface.jar:/system/framework/telephony-ext.jar:/system/framework/QPerformance.jar:/system/framework/UxPerformance.jar:/system/framework/esecomm.jar:/apex/com.android.i18n/javalib/core-icu4j.jar
+dbus-update-activation-environment: setting LESSOPEN=| /usr/bin/lesspipe %s
+dbus-update-activation-environment: setting VNCDESKTOP=X
+dbus-update-activation-environment: setting USER=root
+dbus-update-activation-environment: setting EXTERNAL_STORAGE=/sdcard
+dbus-update-activation-environment: setting SHLVL=1
+dbus-update-activation-environment: setting HOME=/root
+dbus-update-activation-environment: setting BOOTCLASSPATH=/apex/com.android.art/javalib/core-oj.jar:/apex/com.android.art/javalib/core-libart.jar:/apex/com.android.art/javalib/okhttp.jar:/apex/com.android.art/javalib/bouncycastle.jar:/apex/com.android.art/javalib/apache-xml.jar:/system/framework/framework.jar:/system/framework/framework-graphics.jar:/system/framework/ext.jar:/system/framework/telephony-common.jar:/system/framework/voip-common.jar:/system/framework/ims-common.jar:/system/framework/knoxsdk.jar:/system/framework/tcmiface.jar:/system/framework/telephony-ext.jar:/system/framework/QPerformance.jar:/system/framework/UxPerformance.jar:/system/framework/esecomm.jar:/apex/com.android.i18n/javalib/core-icu4j.jar:/apex/com.android.adservices/javalib/framework-adservices.jar:/apex/com.android.adservices/javalib/framework-sdksandbox.jar:/apex/com.android.appsearch/javalib/framework-appsearch.jar:/apex/com.android.btservices/javalib/framework-bluetooth.jar:/apex/com.android.configinfrastructure/javalib/framework-configinfrastructure.jar:/apex/com.android.conscrypt/javalib/conscrypt.jar:/apex/com.android.devicelock/javalib/framework-devicelock.jar:/apex/com.android.healthfitness/javalib/framework-healthfitness.jar:/apex/com.android.ipsec/javalib/android.net.ipsec.ike.jar:/apex/com.android.media/javalib/updatable-media.jar:/apex/com.android.mediaprovider/javalib/framework-mediaprovider.jar:/apex/com.android.ondevicepersonalization/javalib/framework-ondevicepersonalization.jar:/apex/com.android.os.statsd/javalib/framework-statsd.jar:/apex/com.android.permission/javalib/framework-permission.jar:/apex/com.android.permission/javalib/framework-permission-s.jar:/apex/com.android.scheduling/javalib/framework-scheduling.jar:/apex/com.android.sdkext/javalib/framework-sdkextensions.jar:/apex/com.android.tethering/javalib/framework-connectivity.jar:/apex/com.android.tethering/javalib/framework-connectivity-t.jar:/apex/com.android.tethering/javalib/framework-tethering.jar:/apex/com.android.uwb/javalib/framework-uwb.jar:/apex/com.android.virt/javalib/framework-virtualization.jar:/apex/com.android.wifi/javalib/framework-wifi.jar:/apex/com.samsung.android.lifeguard/javalib/framework-lifeguard.jar:/apex/com.samsung.android.shell/javalib/framework-samsung-shell.jar
+dbus-update-activation-environment: setting DBUS_SESSION_BUS_ADDRESS=unix:path=/tmp/dbus-fadAp6zeIa,guid=fbbc147dfc94d484e18ca4516985238d
+dbus-update-activation-environment: setting COLORTERM=truecolor
+dbus-update-activation-environment: setting TMPDIR=/tmp
+dbus-update-activation-environment: setting PULSE_SERVER=127.0.0.1
+dbus-update-activation-environment: setting _=/usr/bin/vncserver
+dbus-update-activation-environment: setting TERM=xterm-256color
+dbus-update-activation-environment: setting ANDROID_DATA=/data
+dbus-update-activation-environment: setting PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games:/data/data/com.termux/files/usr/bin:/system/bin:/system/xbin:/root/.local/bin:/root/.local/bin
+dbus-update-activation-environment: setting ANDROID_I18N_ROOT=/apex/com.android.i18n
+dbus-update-activation-environment: setting ANDROID_ROOT=/system
+dbus-update-activation-environment: setting DISPLAY=:1
+dbus-update-activation-environment: setting LANG=en_US.UTF-8
+dbus-update-activation-environment: setting XKL_XMODMAP_DISABLE=1
+dbus-update-activation-environment: setting LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.7z=01;31:*.ace=01;31:*.alz=01;31:*.apk=01;31:*.arc=01;31:*.arj=01;31:*.bz=01;31:*.bz2=01;31:*.cab=01;31:*.cpio=01;31:*.crate=01;31:*.deb=01;31:*.drpm=01;31:*.dwm=01;31:*.dz=01;31:*.ear=01;31:*.egg=01;31:*.esd=01;31:*.gz=01;31:*.jar=01;31:*.lha=01;31:*.lrz=01;31:*.lz=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.lzo=01;31:*.pyz=01;31:*.rar=01;31:*.rpm=01;31:*.rz=01;31:*.sar=01;31:*.swm=01;31:*.t7z=01;31:*.tar=01;31:*.taz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tgz=01;31:*.tlz=01;31:*.txz=01;31:*.tz=01;31:*.tzo=01;31:*.tzst=01;31:*.udeb=01;31:*.war=01;31:*.whl=01;31:*.wim=01;31:*.xz=01;31:*.z=01;31:*.zip=01;31:*.zoo=01;31:*.zst=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:
+dbus-update-activation-environment: setting ANDROID_TZDATA_ROOT=/apex/com.android.tzdata
+dbus-update-activation-environment: setting QT_ACCESSIBILITY=1
+dbus-update-activation-environment: setting LESSCLOSE=/usr/bin/lesspipe %s %s
+dbus-update-activation-environment: setting GPG_AGENT_INFO=/root/.gnupg/S.gpg-agent:0:1
+dbus-update-activation-environment: setting PWD=/root
+dbus-update-activation-environment: setting XDG_DATA_DIRS=/usr/share/xfce4:/usr/local/share/:/usr/share/
+dbus-update-activation-environment: setting MOZ_FAKE_NO_SANDBOX=1
+dbus-update-activation-environment: setting ANDROID_ART_ROOT=/apex/com.android.art
+/usr/bin/x-session-manager: X server already running on display :1
+
+(xfce4-session:25086): libxfce4util-WARNING **: 23:11:09.873: Failed to get a systemd proxy: Could not connect: No such file or directory
+** Message: 23:11:09.902: XRandR initialization error: extension not found
+** Message: 23:11:09.903: Will advertise only a single monitor
+** Message: 23:11:09.904: Failed to fetch _NET_NUMBER_OF_DESKTOPS; assuming 1
+** Message: 23:11:09.905: Failed to get _NET_WORKAREA; using full screen dimensions
+** Message: 23:11:09.905: Failed to fetch _NET_CURRENT_DESKTOP; assuming 0
+xfce4-session-Message: 23:11:09.924: SSH authentication agent is already running
+gpg-agent[25230]: directory '/root/.gnupg' created
+gpg-agent[25230]: directory '/root/.gnupg/private-keys-v1.d' created
+gpg-agent[25233]: gpg-agent (GnuPG) 2.4.8 started
+
+(xfwm4:25235): xfwm4-WARNING **: 23:11:10.839: XSync extension too old (3.0).
+
+(xfwm4:25235): xfwm4-WARNING **: 23:11:10.840: The display does not support the XRender extension.
+
+(xfwm4:25235): xfwm4-WARNING **: 23:11:10.840: The display does not support the XRandr extension.
+
+(xfwm4:25235): xfwm4-WARNING **: 23:11:10.841: The display does not support the XRes extension.
+
+(xfwm4:25235): xfwm4-WARNING **: 23:11:10.841: The display does not support the XComposite extension.
+
+(xfwm4:25235): xfwm4-WARNING **: 23:11:10.841: The display does not support the XDamage extension.
+
+(xfwm4:25235): xfwm4-WARNING **: 23:11:10.842: The display does not support the XFixes extension.
+
+(xfwm4:25235): xfwm4-WARNING **: 23:11:10.843: The display does not support the XPresent extension.
+
+(xfwm4:25235): xfwm4-WARNING **: 23:11:10.843: Compositing manager disabled.
+
+(xfwm4:25235): xfwm4-WARNING **: 23:11:11.001: Cannot find visual format on screen 0
+
+(xfwm4:25235): GLib-CRITICAL **: 23:11:11.002: g_hash_table_destroy: assertion 'hash_table != NULL' failed
+** Message: 23:11:11.005: Failed to fetch _NET_CURRENT_DESKTOP; assuming 0
+xfwm4-Message: 23:11:11.244: Unsupported keyboard modifier '<Super>Tab'
+xfwm4-Message: 23:11:11.245: Unsupported keyboard modifier '<Super>KP_Down'
+xfwm4-Message: 23:11:11.246: Unsupported keyboard modifier '<Super>KP_Left'
+xfwm4-Message: 23:11:11.247: Unsupported keyboard modifier '<Super>KP_Right'
+xfwm4-Message: 23:11:11.247: Unsupported keyboard modifier '<Super>KP_Up'
+xfwm4-Message: 23:11:11.247: Unsupported keyboard modifier '<Super>KP_End'
+xfwm4-Message: 23:11:11.248: Unsupported keyboard modifier '<Super>KP_Next'
+xfwm4-Message: 23:11:11.249: Unsupported keyboard modifier '<Super>KP_Home'
+xfwm4-Message: 23:11:11.249: Unsupported keyboard modifier '<Super>KP_Page_Up'
+xfwm4-Message: 23:11:11.389: Unsupported keyboard modifier '<Super>Tab'
+xfwm4-Message: 23:11:11.390: Unsupported keyboard modifier '<Super>KP_Down'
+xfwm4-Message: 23:11:11.390: Unsupported keyboard modifier '<Super>KP_Left'
+xfwm4-Message: 23:11:11.390: Unsupported keyboard modifier '<Super>KP_Right'
+xfwm4-Message: 23:11:11.390: Unsupported keyboard modifier '<Super>KP_Up'
+xfwm4-Message: 23:11:11.391: Unsupported keyboard modifier '<Super>KP_End'
+xfwm4-Message: 23:11:11.391: Unsupported keyboard modifier '<Super>KP_Next'
+xfwm4-Message: 23:11:11.391: Unsupported keyboard modifier '<Super>KP_Home'
+xfwm4-Message: 23:11:11.391: Unsupported keyboard modifier '<Super>KP_Page_Up'
+xfwm4-Message: 23:11:11.523: Unsupported keyboard modifier '<Super>Tab'
+xfwm4-Message: 23:11:11.523: Unsupported keyboard modifier '<Super>KP_Down'
+xfwm4-Message: 23:11:11.524: Unsupported keyboard modifier '<Super>KP_Left'
+xfwm4-Message: 23:11:11.524: Unsupported keyboard modifier '<Super>KP_Right'
+xfwm4-Message: 23:11:11.524: Unsupported keyboard modifier '<Super>KP_Up'
+xfwm4-Message: 23:11:11.525: Unsupported keyboard modifier '<Super>KP_End'
+xfwm4-Message: 23:11:11.525: Unsupported keyboard modifier '<Super>KP_Next'
+xfwm4-Message: 23:11:11.525: Unsupported keyboard modifier '<Super>KP_Home'
+xfwm4-Message: 23:11:11.525: Unsupported keyboard modifier '<Super>KP_Page_Up'
+xfwm4-Message: 23:11:11.669: Unsupported keyboard modifier '<Super>Tab'
+xfwm4-Message: 23:11:11.669: Unsupported keyboard modifier '<Super>KP_Down'
+xfwm4-Message: 23:11:11.669: Unsupported keyboard modifier '<Super>KP_Left'
+xfwm4-Message: 23:11:11.670: Unsupported keyboard modifier '<Super>KP_Right'
+xfwm4-Message: 23:11:11.670: Unsupported keyboard modifier '<Super>KP_Up'
+xfwm4-Message: 23:11:11.670: Unsupported keyboard modifier '<Super>KP_End'
+xfwm4-Message: 23:11:11.670: Unsupported keyboard modifier '<Super>KP_Next'
+xfwm4-Message: 23:11:11.671: Unsupported keyboard modifier '<Super>KP_Home'
+xfwm4-Message: 23:11:11.671: Unsupported keyboard modifier '<Super>KP_Page_Up'
+xfwm4-Message: 23:11:11.806: Unsupported keyboard modifier '<Super>Tab'
+xfwm4-Message: 23:11:11.806: Unsupported keyboard modifier '<Super>KP_Down'
+xfwm4-Message: 23:11:11.807: Unsupported keyboard modifier '<Super>KP_Left'
+xfwm4-Message: 23:11:11.807: Unsupported keyboard modifier '<Super>KP_Right'
+xfwm4-Message: 23:11:11.807: Unsupported keyboard modifier '<Super>KP_Up'
+xfwm4-Message: 23:11:11.808: Unsupported keyboard modifier '<Super>KP_End'
+xfwm4-Message: 23:11:11.808: Unsupported keyboard modifier '<Super>KP_Next'
+xfwm4-Message: 23:11:11.808: Unsupported keyboard modifier '<Super>KP_Home'
+xfwm4-Message: 23:11:11.808: Unsupported keyboard modifier '<Super>KP_Page_Up'
+xfwm4-Message: 23:11:11.939: Unsupported keyboard modifier '<Super>Tab'
+xfwm4-Message: 23:11:11.940: Unsupported keyboard modifier '<Super>KP_Down'
+xfwm4-Message: 23:11:11.940: Unsupported keyboard modifier '<Super>KP_Left'
+xfwm4-Message: 23:11:11.940: Unsupported keyboard modifier '<Super>KP_Right'
+xfwm4-Message: 23:11:11.940: Unsupported keyboard modifier '<Super>KP_Up'
+xfwm4-Message: 23:11:11.941: Unsupported keyboard modifier '<Super>KP_End'
+xfwm4-Message: 23:11:11.941: Unsupported keyboard modifier '<Super>KP_Next'
+xfwm4-Message: 23:11:11.941: Unsupported keyboard modifier '<Super>KP_Home'
+xfwm4-Message: 23:11:11.941: Unsupported keyboard modifier '<Super>KP_Page_Up'
+xfwm4-Message: 23:11:12.077: Unsupported keyboard modifier '<Super>Tab'
+xfwm4-Message: 23:11:12.077: Unsupported keyboard modifier '<Super>KP_Down'
+xfwm4-Message: 23:11:12.078: Unsupported keyboard modifier '<Super>KP_Left'
+xfwm4-Message: 23:11:12.078: Unsupported keyboard modifier '<Super>KP_Right'
+xfwm4-Message: 23:11:12.078: Unsupported keyboard modifier '<Super>KP_Up'
+xfwm4-Message: 23:11:12.078: Unsupported keyboard modifier '<Super>KP_End'
+xfwm4-Message: 23:11:12.079: Unsupported keyboard modifier '<Super>KP_Next'
+xfwm4-Message: 23:11:12.079: Unsupported keyboard modifier '<Super>KP_Home'
+xfwm4-Message: 23:11:12.079: Unsupported keyboard modifier '<Super>KP_Page_Up'
+xfwm4-Message: 23:11:12.219: Unsupported keyboard modifier '<Super>Tab'
+xfwm4-Message: 23:11:12.219: Unsupported keyboard modifier '<Super>KP_Down'
+xfwm4-Message: 23:11:12.220: Unsupported keyboard modifier '<Super>KP_Left'
+xfwm4-Message: 23:11:12.220: Unsupported keyboard modifier '<Super>KP_Right'
+xfwm4-Message: 23:11:12.220: Unsupported keyboard modifier '<Super>KP_Up'
+xfwm4-Message: 23:11:12.220: Unsupported keyboard modifier '<Super>KP_End'
+xfwm4-Message: 23:11:12.221: Unsupported keyboard modifier '<Super>KP_Next'
+xfwm4-Message: 23:11:12.221: Unsupported keyboard modifier '<Super>KP_Home'
+xfwm4-Message: 23:11:12.221: Unsupported keyboard modifier '<Super>KP_Page_Up'
+xfwm4-Message: 23:11:12.362: Unsupported keyboard modifier '<Super>Tab'
+xfwm4-Message: 23:11:12.362: Unsupported keyboard modifier '<Super>KP_Down'
+xfwm4-Message: 23:11:12.362: Unsupported keyboard modifier '<Super>KP_Left'
+xfwm4-Message: 23:11:12.363: Unsupported keyboard modifier '<Super>KP_Right'
+xfwm4-Message: 23:11:12.363: Unsupported keyboard modifier '<Super>KP_Up'
+xfwm4-Message: 23:11:12.363: Unsupported keyboard modifier '<Super>KP_End'
+xfwm4-Message: 23:11:12.363: Unsupported keyboard modifier '<Super>KP_Next'
+xfwm4-Message: 23:11:12.364: Unsupported keyboard modifier '<Super>KP_Home'
+xfwm4-Message: 23:11:12.364: Unsupported keyboard modifier '<Super>KP_Page_Up'
+xfwm4-Message: 23:11:12.501: Unsupported keyboard modifier '<Super>Tab'
+xfwm4-Message: 23:11:12.501: Unsupported keyboard modifier '<Super>KP_Down'
+xfwm4-Message: 23:11:12.502: Unsupported keyboard modifier '<Super>KP_Left'
+xfwm4-Message: 23:11:12.502: Unsupported keyboard modifier '<Super>KP_Right'
+xfwm4-Message: 23:11:12.502: Unsupported keyboard modifier '<Super>KP_Up'
+xfwm4-Message: 23:11:12.502: Unsupported keyboard modifier '<Super>KP_End'
+xfwm4-Message: 23:11:12.503: Unsupported keyboard modifier '<Super>KP_Next'
+xfwm4-Message: 23:11:12.503: Unsupported keyboard modifier '<Super>KP_Home'
+xfwm4-Message: 23:11:12.503: Unsupported keyboard modifier '<Super>KP_Page_Up'
+xfwm4-Message: 23:11:12.631: Unsupported keyboard modifier '<Super>Tab'
+xfwm4-Message: 23:11:12.631: Unsupported keyboard modifier '<Super>KP_Down'
+xfwm4-Message: 23:11:12.632: Unsupported keyboard modifier '<Super>KP_Left'
+xfwm4-Message: 23:11:12.632: Unsupported keyboard modifier '<Super>KP_Right'
+xfwm4-Message: 23:11:12.632: Unsupported keyboard modifier '<Super>KP_Up'
+xfwm4-Message: 23:11:12.633: Unsupported keyboard modifier '<Super>KP_End'
+xfwm4-Message: 23:11:12.633: Unsupported keyboard modifier '<Super>KP_Next'
+xfwm4-Message: 23:11:12.633: Unsupported keyboard modifier '<Super>KP_Home'
+xfwm4-Message: 23:11:12.634: Unsupported keyboard modifier '<Super>KP_Page_Up'
+xfwm4-Message: 23:11:12.773: Unsupported keyboard modifier '<Super>Tab'
+xfwm4-Message: 23:11:12.774: Unsupported keyboard modifier '<Super>KP_Down'
+xfwm4-Message: 23:11:12.774: Unsupported keyboard modifier '<Super>KP_Left'
+xfwm4-Message: 23:11:12.774: Unsupported keyboard modifier '<Super>KP_Right'
+xfwm4-Message: 23:11:12.774: Unsupported keyboard modifier '<Super>KP_Up'
+xfwm4-Message: 23:11:12.775: Unsupported keyboard modifier '<Super>KP_End'
+xfwm4-Message: 23:11:12.775: Unsupported keyboard modifier '<Super>KP_Next'
+xfwm4-Message: 23:11:12.775: Unsupported keyboard modifier '<Super>KP_Home'
+xfwm4-Message: 23:11:12.775: Unsupported keyboard modifier '<Super>KP_Page_Up'
+xfwm4-Message: 23:11:12.910: Unsupported keyboard modifier '<Super>Tab'
+xfwm4-Message: 23:11:12.911: Unsupported keyboard modifier '<Super>KP_Down'
+xfwm4-Message: 23:11:12.911: Unsupported keyboard modifier '<Super>KP_Left'
+xfwm4-Message: 23:11:12.911: Unsupported keyboard modifier '<Super>KP_Right'
+xfwm4-Message: 23:11:12.911: Unsupported keyboard modifier '<Super>KP_Up'
+xfwm4-Message: 23:11:12.912: Unsupported keyboard modifier '<Super>KP_End'
+xfwm4-Message: 23:11:12.912: Unsupported keyboard modifier '<Super>KP_Next'
+xfwm4-Message: 23:11:12.912: Unsupported keyboard modifier '<Super>KP_Home'
+xfwm4-Message: 23:11:12.912: Unsupported keyboard modifier '<Super>KP_Page_Up'
+xfwm4-Message: 23:11:13.052: Unsupported keyboard modifier '<Super>Tab'
+xfwm4-Message: 23:11:13.053: Unsupported keyboard modifier '<Super>KP_Down'
+xfwm4-Message: 23:11:13.053: Unsupported keyboard modifier '<Super>KP_Left'
+xfwm4-Message: 23:11:13.053: Unsupported keyboard modifier '<Super>KP_Right'
+xfwm4-Message: 23:11:13.053: Unsupported keyboard modifier '<Super>KP_Up'
+xfwm4-Message: 23:11:13.054: Unsupported keyboard modifier '<Super>KP_End'
+xfwm4-Message: 23:11:13.054: Unsupported keyboard modifier '<Super>KP_Next'
+xfwm4-Message: 23:11:13.054: Unsupported keyboard modifier '<Super>KP_Home'
+xfwm4-Message: 23:11:13.054: Unsupported keyboard modifier '<Super>KP_Page_Up'
+xfwm4-Message: 23:11:13.253: Unsupported keyboard modifier '<Super>Tab'
+xfwm4-Message: 23:11:13.253: Unsupported keyboard modifier '<Super>KP_Down'
+xfwm4-Message: 23:11:13.254: Unsupported keyboard modifier '<Super>KP_Left'
+xfwm4-Message: 23:11:13.254: Unsupported keyboard modifier '<Super>KP_Right'
+xfwm4-Message: 23:11:13.255: Unsupported keyboard modifier '<Super>KP_Up'
+xfwm4-Message: 23:11:13.255: Unsupported keyboard modifier '<Super>KP_End'
+xfwm4-Message: 23:11:13.256: Unsupported keyboard modifier '<Super>KP_Next'
+xfwm4-Message: 23:11:13.256: Unsupported keyboard modifier '<Super>KP_Home'
+xfwm4-Message: 23:11:13.257: Unsupported keyboard modifier '<Super>KP_Page_Up'
+
+(xfwm4:25235): xfwm4-WARNING **: 23:11:13.302: Cannot find visual format on screen 0
+
+(xfwm4:25235): GLib-CRITICAL **: 23:11:13.302: g_hash_table_destroy: assertion 'hash_table != NULL' failed
+Xlib:  extension "XInputExtension" missing on display ":1".
+
+(xfsettingsd:25288): xfsettingsd-CRITICAL **: 23:11:13.445: XI is not present.
+
+(xfsettingsd:25288): xfsettingsd-CRITICAL **: 23:11:13.446: Failed to initialize the Xkb extension.
+
+(xfsettingsd:25288): xfsettingsd-CRITICAL **: 23:11:13.447: Failed to initialize the Accessibility extension.
+
+(xfsettingsd:25288): GLib-CRITICAL **: 23:11:13.562: g_hash_table_destroy: assertion 'hash_table != NULL' failed
+
+(xfsettingsd:25288): GLib-GObject-CRITICAL **: 23:11:13.562: Custom constructor for class XklEngine returned NULL (which is invalid). Please use GInitable instead.
+
+(xfsettingsd:25288): xfsettingsd-WARNING **: 23:11:13.562: Failed to get Xkl engine for display
+
+(xfsettingsd:25288): xfsettingsd-CRITICAL **: 23:11:13.625: No RANDR extension found in display :1. Display settings won't be applied.
+xfwm4-Message: 23:11:13.729: Unsupported keyboard modifier '<Super>Tab'
+xfwm4-Message: 23:11:13.729: Unsupported keyboard modifier '<Super>KP_Down'
+xfwm4-Message: 23:11:13.735: Unsupported keyboard modifier '<Super>KP_Left'
+xfwm4-Message: 23:11:13.736: Unsupported keyboard modifier '<Super>KP_Right'
+xfwm4-Message: 23:11:13.737: Unsupported keyboard modifier '<Super>KP_Up'
+xfwm4-Message: 23:11:13.739: Unsupported keyboard modifier '<Super>KP_End'
+xfwm4-Message: 23:11:13.741: Unsupported keyboard modifier '<Super>KP_Next'
+xfwm4-Message: 23:11:13.743: Unsupported keyboard modifier '<Super>KP_Home'
+xfwm4-Message: 23:11:13.744: Unsupported keyboard modifier '<Super>KP_Page_Up'
+** Message: 23:11:14.342: XRandR initialization error: extension not found
+** Message: 23:11:14.346: Will advertise only a single monitor
+** Message: 23:11:14.354: XRandR initialization error: extension not found
+** Message: 23:11:14.356: Will advertise only a single monitor
+Connection failure: Connection refused
+
+** (xiccd:25340): CRITICAL **: 23:11:14.753: RandR extension is not working on display :1.0
+
+** (xiccd:25340): CRITICAL **: 23:11:14.805: Failed to connect to colord: Could not connect: No such file or directory
+
+** (light-locker:25345): ERROR **: 23:11:14.901: session_id is not set, is /proc mounted with hidepid>0?
+
+(polkit-mate-authentication-agent-1:25357): polkit-mate-1-WARNING **: 23:11:14.902: Error getting authority: Error initializing authority: Could not connect: No such file or directory
+Xlib:  extension "DPMS" missing on display ":1.0".
+
+(xfce4-power-manager:25342): xfce4-power-manager-WARNING **: 23:11:14.939: Display is not DPMS capable
+
+(xfce4-power-manager:25342): GLib-GIO-CRITICAL **: 23:11:14.947: g_dbus_connection_signal_subscribe: assertion 'G_IS_DBUS_CONNECTION (connection)' failed
+
+(xfce4-power-manager:25342): libupower-glib-WARNING **: 23:11:15.110: Couldn't connect to proxy: Could not connect: No such file or directory
+
+(xfce4-power-manager:25342): libxfce4util-WARNING **: 23:11:15.123: Failed to get a systemd proxy: Could not connect: No such file or directory
+
+(xfce4-power-manager:25342): xfce4-power-manager-CRITICAL **: 23:11:15.124: Error getting system bus connection : Could not connect: No such file or directory
+
+(xfce4-power-manager:25342): xfce4-power-manager-CRITICAL **: 23:11:15.125: Unable to connect to the system bus : Could not connect: No such file or directory
+
+** (xfce4-power-manager:25342): WARNING **: 23:11:15.127: Unable to get the interface, net.hadess.PowerProfiles : Could not connect: No such file or directory
+
+(xfce4-power-manager:25342): xfce4-power-manager-WARNING **: 23:11:15.129: No idle counter.
+
+** (xfce4-power-manager:25342): WARNING **: 23:11:15.130: No XRANDR extension found
+
+** (xfpm-power-backlight-helper:25397): WARNING **: 23:11:15.139: failed to find any devices: Error opening directory “/sys/class/backlight”: Permission denied
+
+(xfce4-power-manager:25342): xfce4-power-manager-CRITICAL **: 23:11:15.140: Unable to get system bus connection : Could not connect: No such file or directory
+
+(xfce4-power-manager:25342): xfce4-power-manager-WARNING **: 23:11:15.141: Unable connect to system bus: Could not connect: No such file or directory
+
+(xfdesktop:25331): GVFS-RemoteVolumeMonitor-WARNING **: 23:11:15.553: remote volume monitor with dbus name org.gtk.vfs.UDisks2VolumeMonitor is not supported
+
+(xfdesktop:25331): GLib-GObject-CRITICAL **: 23:11:15.855: g_object_get_qdata: assertion 'G_IS_OBJECT (object)' failed
+
+(xfdesktop:25331): GLib-GIO-CRITICAL **: 23:11:15.855: g_file_get_path: assertion 'G_IS_FILE (file)' failed
+** Message: 23:11:15.856: Failed to load image file '(null)': Error opening file /usr/share/xfce4/backdrops/xubuntu-wallpaper.png: No such file or directory
+
+** (xfdesktop:25331): WARNING **: 23:11:15.862: Failed to get system bus: Could not connect: No such file or directory
+
+(xfce4-session:25086): xfce4-session-WARNING **: 23:11:16.373: failed to run script: Failed to execute child process “/usr/bin/pm-is-supported” (No such file or directory)
+
+(xfce4-session:25086): xfce4-session-WARNING **: 23:11:16.377: failed to run script: Failed to execute child process “/usr/bin/pm-is-supported” (No such file or directory)
+
+(xfce4-session:25086): xfce4-session-WARNING **: 23:11:16.380: failed to run script: Failed to execute child process “/usr/bin/pm-is-supported” (No such file or directory)

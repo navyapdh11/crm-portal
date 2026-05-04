@@ -1,0 +1,69 @@
+# Core Framework
+fastapi==0.109.0
+uvicorn[standard]==0.27.0
+pydantic==2.6.0
+pydantic-settings==2.1.0
+python-multipart==0.0.6
+
+# OpenTelemetry
+opentelemetry-api==1.22.0
+opentelemetry-sdk==1.22.0
+opentelemetry-instrumentation-fastapi==0.43b0
+opentelemetry-instrumentation-httpx==0.43b0
+opentelemetry-instrumentation-redis==0.43b0
+opentelemetry-instrumentation-sqlalchemy==0.43b0
+opentelemetry-exporter-otlp==1.22.0
+opentelemetry-exporter-prometheus==0.43b0
+opentelemetry-sdk-extension-aws==2.0.0
+
+# MCP (Model Context Protocol)
+mcp==0.9.0
+httpx==0.26.0
+
+# RAG Engine
+langchain==0.1.5
+langchain-openai==0.0.5
+langchain-community==0.0.17
+chromadb==0.4.22
+faiss-cpu==1.7.4
+tiktoken==0.5.2
+sentence-transformers==2.2.2
+
+# Redis
+redis==5.0.1
+redisvl==0.1.3
+
+# Prometheus & Metrics
+prometheus-client==0.20.0
+graphite-client==1.1.0
+
+# Database
+sqlalchemy==2.0.25
+alembic==1.13.1
+
+# Agents & AI
+openai==1.10.0
+anthropic==0.8.1
+tenacity==8.2.3
+backoff==2.2.1
+
+# Utilities
+python-dotenv==1.0.0
+loguru==0.7.2
+rich==13.7.0
+typer==0.9.0
+pyyaml==6.0.1
+aiofiles==23.2.1
+celery==5.3.6
+flower==2.0.1
+
+# Web GUI
+jinja2==3.1.3
+websockets==12.0
+
+# Testing
+pytest==7.4.4
+pytest-asyncio==0.23.3
+httpx==0.26.0
+factory-boy==3.3.0
+strawberry-graphql[fastapi]

@@ -1,0 +1,35 @@
+{
+  "todos": [
+    {
+      "content": "Create Docker deployment configuration",
+      "id": "1",
+      "status": "completed"
+    },
+    {
+      "content": "Create systemd service file for Linux",
+      "id": "2",
+      "status": "completed"
+    },
+    {
+      "content": "Create deployment scripts",
+      "id": "3",
+      "status": "completed"
+    },
+    {
+      "content": "Create production environment configuration",
+      "id": "4",
+      "status": "completed"
+    },
+    {
+      "content": "Create monitoring and health check scripts",
+      "id": "5",
+      "status": "completed"
+    },
+    {
+      "content": "Test deployment",
+      "id": "6",
+      "status": "completed"
+    }
+  ],
+  "sessionId": "97245dac-71c9-46c0-8667-bfa945f2d1a2"
+}

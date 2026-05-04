@@ -1,0 +1,60 @@
+{
+  "todos": [
+    {
+      "content": "Create DFS-driven dynamic menu navigation system (lib/menu_graph.py) with graph traversal, permission filtering, and search",
+      "id": "1",
+      "status": "completed"
+    },
+    {
+      "content": "Add DFS navigation API endpoint to FastAPI (api/app.py) — /api/v1/menu/* endpoints",
+      "id": "2",
+      "status": "completed"
+    },
+    {
+      "content": "Replace switchTab() in dashboard-agents.html with DFS-powered dynamic navigation with search, history, and keyboard shortcuts",
+      "id": "3",
+      "status": "completed"
+    },
+    {
+      "content": "Create Graph-of-Thought reasoning engine (agents/got_reasoning.py) with thought nodes, edges, confidence propagation",
+      "id": "4",
+      "status": "completed"
+    },
+    {
+      "content": "Integrate GoT into the RealTimeTradingEngine tick loop (agents/engine.py) — multi-phase reasoning",
+      "id": "5",
+      "status": "completed"
+    },
+    {
+      "content": "Create async semantic caching engine (core/semantic_cache.py) — Krites-style with embeddings, similarity search, TTL",
+      "id": "6",
+      "status": "completed"
+    },
+    {
+      "content": "Deploy semantic cache to API endpoints — wrap expensive operations (scan, sentiment, analysis) with cache",
+      "id": "7",
+      "status": "completed"
+    },
+    {
+      "content": "Add GoT state visualization to dashboard agents tab",
+      "id": "8",
+      "status": "completed"
+    },
+    {
+      "content": "Add semantic cache stats monitoring endpoint and dashboard display",
+      "id": "9",
+      "status": "completed"
+    },
+    {
+      "content": "Code review: audit all existing code for bugs, race conditions, memory leaks — apply fixes",
+      "id": "10",
+      "status": "completed"
+    },
+    {
+      "content": "Test the full system — verify it starts, API responds, dashboard loads",
+      "id": "11",
+      "status": "completed"
+    }
+  ],
+  "sessionId": "2c0c8bb4-e787-4c45-84e7-4e61d1f1c966"
+}

@@ -1,0 +1,60 @@
+{
+  "todos": [
+    {
+      "content": "Create booking form with Zod validation + React Server Actions",
+      "id": "1",
+      "status": "in_progress"
+    },
+    {
+      "content": "Create Stripe checkout API route + webhook handler",
+      "id": "2",
+      "status": "pending"
+    },
+    {
+      "content": "Create dynamic suburb pages with PPR + streaming pricing",
+      "id": "3",
+      "status": "pending"
+    },
+    {
+      "content": "Create pricing calculator component",
+      "id": "4",
+      "status": "pending"
+    },
+    {
+      "content": "Create reviews page with structured data",
+      "id": "5",
+      "status": "pending"
+    },
+    {
+      "content": "Create services page",
+      "id": "6",
+      "status": "pending"
+    },
+    {
+      "content": "Create privacy policy & terms pages (Australian compliant)",
+      "id": "7",
+      "status": "pending"
+    },
+    {
+      "content": "Add Tailwind CSS configuration",
+      "id": "8",
+      "status": "completed"
+    },
+    {
+      "content": "Push to GitHub repo",
+      "id": "9",
+      "status": "pending"
+    },
+    {
+      "content": "Deploy to Vercel",
+      "id": "10",
+      "status": "pending"
+    },
+    {
+      "content": "Build and verify zero errors",
+      "id": "11",
+      "status": "pending"
+    }
+  ],
+  "sessionId": "4c03a1ce-fa51-4a48-9e06-f2357f88d3a3"
+}

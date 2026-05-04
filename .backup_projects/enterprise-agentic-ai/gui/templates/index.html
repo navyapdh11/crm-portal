@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0d6efd;
+            --secondary-color: #6c757d;
+            --success-color: #198754;
+            --danger-color: #dc3545;
+            --warning-color: #ffc107;
+            --info-color: #0dcaf0;
+            --dark-bg: #1a1d23;
+            --card-bg: #212529;
+            --sidebar-width: 250px;
+        }
+        
+        body {
+            background-color: var(--dark-bg);
+            color: #e9ecef;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+        
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: var(--sidebar-width);
+            background-color: var(--card-bg);
+            border-right: 1px solid #495057;
+            padding: 20px;
+            overflow-y: auto;
+            z-index: 1000;
+        }
+        
+        .sidebar .nav-link {
+            color: #adb5bd;
+            padding: 12px 15px;
+            margin: 5px 0;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        
+        .sidebar .nav-link:hover, .sidebar .nav-link.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .sidebar .nav-link i {
+            margin-right: 10px;
+            width: 20px;
+        }
+        
+        .main-content {
+            margin-left: var(--sidebar-width);
+            padding: 30px;
+        }
+        
+        .stat-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #495057;
+            transition: transform 0.2s;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-card .icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        
+        .stat-card .value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .stat-card .label {
+            color: #adb5bd;
+            font-size: 0.9rem;
+        }
+        
+        .tab-content {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            border: 1px solid #495057;
+            min-height: 600px;
+        }
+        
+        .metric-value {
+            color: var(--primary-color);
+        }
+        
+        .status-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+        }
+        
+        .status-indicator.healthy { background-color: var(--success-color); }
+        .status-indicator.warning { background-color: var(--warning-color); }
+        .status-indicator.error { background-color: var(--danger-color); }
+        
+        .code-block {
+            background-color: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+        }
+        
+        .agent-card {
+            background-color: var(--card-bg);
+            border: 1px solid #495057;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .experiment-row {
+            padding: 15px;
+            border-bottom: 1px solid #495057;
+        }
+        
+        .experiment-row:last-child {
+            border-bottom: none;
+        }
+        
+        .progress-bar-custom {
+            background-color: var(--primary-color);
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--dark-bg);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #495057;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6c757d;
+        }
+        
+        .header-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <h4 class="mb-4"><i class="fas fa-robot text-primary"></i> Agentic AI</h4>
+        <nav class="nav flex-column">
+            <a class="nav-link active" href="#dashboard" data-bs-toggle="tab">
+                <i class="fas fa-chart-line"></i> Dashboard
+            </a>
+            <a class="nav-link" href="#agents" data-bs-toggle="tab">
+                <i class="fas fa-users"></i> Agents
+            </a>
+            <a class="nav-link" href="#experiments" data-bs-toggle="tab">
+                <i class="fas fa-flask"></i> Experiments
+            </a>
+            <a class="nav-link" href="#rag" data-bs-toggle="tab">
+                <i class="fas fa-database"></i> RAG Engine
+            </a>
+            <a class="nav-link" href="#mcp" data-bs-toggle="tab">
+                <i class="fas fa-tools"></i> MCP Tools
+            </a>
+            <a class="nav-link" href="#cache" data-bs-toggle="tab">
+                <i class="fas fa-memory"></i> Redis Cache
+            </a>
+            <a class="nav-link" href="#metrics" data-bs-toggle="tab">
+                <i class="fas fa-chart-bar"></i> Metrics
+            </a>
+            <a class="nav-link" href="#traces" data-bs-toggle="tab">
+                <i class="fas fa-project-diagram"></i> Traces
+            </a>
+            <a class="nav-link" href="#settings" data-bs-toggle="tab">
+                <i class="fas fa-cog"></i> Settings
+            </a>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Top Stats Row -->
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <div class="stat-card">
+                    <div class="icon text-primary"><i class="fas fa-robot"></i></div>
+                    <div class="value" id="total-agents">0</div>
+                    <div class="label">Active Agents</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stat-card">
+                    <div class="icon text-success"><i class="fas fa-flask"></i></div>
+                    <div class="value" id="total-experiments">0</div>
+                    <div class="label">Experiments Running</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stat-card">
+                    <div class="icon text-info"><i class="fas fa-database"></i></div>
+                    <div class="value" id="total-documents">0</div>
+                    <div class="label">RAG Documents</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stat-card">
+                    <div class="icon text-warning"><i class="fas fa-bolt"></i></div>
+                    <div class="value" id="cache-hit-rate">0%</div>
+                    <div class="label">Cache Hit Rate</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab Content -->
+        <div class="tab-content">
+            <!-- Dashboard Tab -->
+            <div class="tab-pane fade show active" id="dashboard">
+                <h2 class="header-title"><i class="fas fa-chart-line text-primary"></i> Platform Dashboard</h2>
+                
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <h5><i class="fas fa-heartbeat text-success"></i> System Health</h5>
+                        <div class="mt-3">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span><span class="status-indicator healthy"></span>API Server</span>
+                                <span class="text-success">Healthy</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span><span class="status-indicator healthy"></span>Redis Cache</span>
+                                <span class="text-success">Connected</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span><span class="status-indicator healthy"></span>Database</span>
+                                <span class="text-success">Connected</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span><span class="status-indicator healthy"></span>OpenTelemetry</span>
+                                <span class="text-success">Active</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span><span class="status-indicator healthy"></span>Prometheus</span>
+                                <span class="text-success">Collecting</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span><span class="status-indicator healthy"></span>Grafana</span>
+                                <span class="text-success">Running</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h5><i class="fas fa-chart-pie text-info"></i> Quick Stats</h5>
+                        <div class="mt-3">
+                            <p><strong>Total Requests:</strong> <span class="metric-value">0</span></p>
+                            <p><strong>Avg Response Time:</strong> <span class="metric-value">0ms</span></p>
+                            <p><strong>Active Traces:</strong> <span class="metric-value">0</span></p>
+                            <p><strong>MCP Tool Calls:</strong> <span class="metric-value">0</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5><i class="fas fa-link text-warning"></i> Quick Links</h5>
+                        <div class="d-flex flex-wrap gap-2 mt-3">
+                            <a href="http://localhost:9100" target="_blank" class="btn btn-outline-primary">
+                                <i class="fas fa-chart-line"></i> Prometheus
+                            </a>
+                            <a href="http://localhost:3100" target="_blank" class="btn btn-outline-success">
+                                <i class="fas fa-tachometer-alt"></i> Grafana
+                            </a>
+                            <a href="http://localhost:8103" target="_blank" class="btn btn-outline-info">
+                                <i class="fas fa-project-diagram"></i> Jaeger Traces
+                            </a>
+                            <a href="http://localhost:8101" target="_blank" class="btn btn-outline-warning">
+                                <i class="fas fa-database"></i> RedisInsight
+                            </a>
+                            <a href="/api/docs" target="_blank" class="btn btn-outline-secondary">
+                                <i class="fas fa-book"></i> API Docs
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Agents Tab -->
+            <div class="tab-pane fade" id="agents">
+                <h2 class="header-title"><i class="fas fa-users text-primary"></i> Agent Management</h2>
+                
+                <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#createAgentModal">
+                    <i class="fas fa-plus"></i> Create New Agent
+                </button>
+
+                <div id="agents-list">
+                    <div class="agent-card">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h5><i class="fas fa-robot text-primary"></i> Autoresearch Agent</h5>
+                                <p class="text-muted mb-1">Autonomous prompt optimization agent</p>
+                                <span class="badge bg-success">Active</span>
+                            </div>
+                            <div class="text-end">
+                                <div class="btn-group">
+                                    <button class="btn btn-sm btn-outline-primary"><i class="fas fa-play"></i> Start</button>
+                                    <button class="btn btn-sm btn-outline-warning"><i class="fas fa-pause"></i> Pause</button>
+                                    <button class="btn btn-sm btn-outline-danger"><i class="fas fa-stop"></i> Stop</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            <div class="progress" style="height: 8px;">
+                                <div class="progress-bar progress-bar-custom" style="width: 45%"></div>
+                            </div>
+                            <small class="text-muted">Iteration 45/100 | Best Accuracy: 87.5%</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Create Agent Modal -->
+                <div class="modal fade" id="createAgentModal" tabindex="-1">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content bg-dark">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Create New Agent</h5>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="createAgentForm">
+                                    <div class="mb-3">
+                                        <label class="form-label">Agent Name</label>
+                                        <input type="text" class="form-control bg-dark text-light" placeholder="e.g., prompt-optimizer">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Agent Type</label>
+                                        <select class="form-select bg-dark text-light">
+                                            <option value="autoresearch">Autoresearch</option>
+                                            <option value="rag">RAG Agent</option>
+                                            <option value="mcp">MCP Agent</option>
+                                            <option value="custom">Custom</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Description</label>
+                                        <textarea class="form-control bg-dark text-light" rows="3" placeholder="Agent description..."></textarea>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Configuration (JSON)</label>
+                                        <pre class="code-block">{
+  "editable_file": "prompt.txt",
+  "eval_script": "evaluate.py",
+  "metric_name": "accuracy",
+  "max_iterations": 100
+}</pre>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn btn-primary">Create Agent</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Experiments Tab -->
+            <div class="tab-pane fade" id="experiments">
+                <h2 class="header-title"><i class="fas fa-flask text-success"></i> Experiment Tracking</h2>
+                
+                <div class="mb-3">
+                    <button class="btn btn-success me-2"><i class="fas fa-plus"></i> New Experiment</button>
+                    <button class="btn btn-outline-primary"><i class="fas fa-download"></i> Export Results</button>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-dark table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Experiment ID</th>
+                                <th>Agent</th>
+                                <th>Status</th>
+                                <th>Iteration</th>
+                                <th>Metric</th>
+                                <th>Started</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>exp-001</code></td>
+                                <td>Autoresearch Agent</td>
+                                <td><span class="badge bg-success">Running</span></td>
+                                <td>45/100</td>
+                                <td><strong>87.5%</strong></td>
+                                <td>2026-04-03 10:30</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-info"><i class="fas fa-eye"></i></button>
+                                    <button class="btn btn-sm btn-outline-warning"><i class="fas fa-pause"></i></button>
+                                    <button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h5 class="mt-4">Experiment Log</h5>
+                <div class="code-block" style="max-height: 300px; overflow-y: auto;">
+                    <div class="experiment-row">
+                        <span class="text-success">✓</span> 
+                        <code>a1b2c3d</code> | 
+                        Accuracy: 87.5% | 
+                        keep | 
+                        Added few-shot examples for edge cases
+                    </div>
+                    <div class="experiment-row">
+                        <span class="text-danger">✗</span> 
+                        <code>b2c3d4e</code> | 
+                        Accuracy: 85.2% | 
+                        discard | 
+                        Tried complex prompt restructuring
+                    </div>
+                    <div class="experiment-row">
+                        <span class="text-success">✓</span> 
+                        <code>c3d4e5f</code> | 
+                        Accuracy: 86.1% | 
+                        keep | 
+                        Simplified instructions, removed redundancy
+                    </div>
+                </div>
+            </div>
+
+            <!-- RAG Engine Tab -->
+            <div class="tab-pane fade" id="rag">
+                <h2 class="header-title"><i class="fas fa-database text-info"></i> RAG Engine</h2>
+                
+                <div class="row mb-4">
+                    <div class="col-md-4">
+                        <div class="stat-card">
+                            <div class="value text-info" id="rag-docs-count">0</div>
+                            <div class="label">Documents</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="stat-card">
+                            <div class="value text-info" id="rag-chunks-count">0</div>
+                            <div class="label">Chunks</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="stat-card">
+                            <div class="value text-info" id="rag-queries-count">0</div>
+                            <div class="label">Queries</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5><i class="fas fa-upload"></i> Add Document</h5>
+                        <form id="addDocumentForm" class="mt-3">
+                            <div class="mb-3">
+                                <label class="form-label">Document ID</label>
+                                <input type="text" class="form-control bg-dark text-light" placeholder="unique-doc-id">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Content</label>
+                                <textarea class="form-control bg-dark text-light" rows="6" placeholder="Document content..."></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Metadata (JSON)</label>
+                                <textarea class="form-control bg-dark text-light" rows="3" placeholder='{"source": "manual", "category": "docs"}'></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-info"><i class="fas fa-upload"></i> Add Document</button>
+                        </form>
+                    </div>
+                    <div class="col-md-6">
+                        <h5><i class="fas fa-search"></i> Query RAG</h5>
+                        <form id="queryRAGForm" class="mt-3">
+                            <div class="mb-3">
+                                <label class="form-label">Query</label>
+                                <textarea class="form-control bg-dark text-light" rows="3" placeholder="Your query..."></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Top K Results</label>
+                                <input type="number" class="form-control bg-dark text-light" value="5" min="1" max="20">
+                            </div>
+                            <button type="submit" class="btn btn-info"><i class="fas fa-search"></i> Query</button>
+                        </form>
+                        
+                        <div id="rag-results" class="mt-4">
+                            <h6>Results</h6>
+                            <div class="code-block" style="max-height: 300px; overflow-y: auto;">
+                                Query results will appear here...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MCP Tools Tab -->
+            <div class="tab-pane fade" id="mcp">
+                <h2 class="header-title"><i class="fas fa-tools text-warning"></i> MCP Tools</h2>
+                
+                <div class="row mb-4">
+                    <div class="col-md-12">
+                        <div class="table-responsive">
+                            <table class="table table-dark table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Tool Name</th>
+                                        <th>Description</th>
+                                        <th>Status</th>
+                                        <th>Calls</th>
+                                        <th>Avg Time</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>rag_query</code></td>
+                                        <td>Query the RAG engine for relevant documents</td>
+                                        <td><span class="badge bg-success">Enabled</span></td>
+                                        <td>0</td>
+                                        <td>0ms</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>cache_manage</code></td>
+                                        <td>Manage the Redis cache (get, set, delete, stats)</td>
+                                        <td><span class="badge bg-success">Enabled</span></td>
+                                        <td>0</td>
+                                        <td>0ms</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>agent_manage</code></td>
+                                        <td>Manage AI agents (create, start, stop, status)</td>
+                                        <td><span class="badge bg-success">Enabled</span></td>
+                                        <td>0</td>
+                                        <td>0ms</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>experiment_manage</code></td>
+                                        <td>Manage experiments (create, run, status, results)</td>
+                                        <td><span class="badge bg-success">Enabled</span></td>
+                                        <td>0</td>
+                                        <td>0ms</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>metrics_query</code></td>
+                                        <td>Query Prometheus metrics for observability</td>
+                                        <td><span class="badge bg-success">Enabled</span></td>
+                                        <td>0</td>
+                                        <td>0ms</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5><i class="fas fa-play-circle"></i> Test Tool</h5>
+                        <form id="testMCPToolForm" class="mt-3">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="form-label">Tool Name</label>
+                                    <select class="form-select bg-dark text-light" id="toolSelect">
+                                        <option value="rag_query">rag_query</option>
+                                        <option value="cache_manage">cache_manage</option>
+                                        <option value="agent_manage">agent_manage</option>
+                                        <option value="experiment_manage">experiment_manage</option>
+                                        <option value="metrics_query">metrics_query</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Arguments (JSON)</label>
+                                    <input type="text" class="form-control bg-dark text-light" value='{"query": "test"}' id="toolArgs">
+                                </div>
+                                <div class="col-md-2 d-flex align-items-end">
+                                    <button type="submit" class="btn btn-warning w-100"><i class="fas fa-play"></i> Execute</button>
+                                </div>
+                            </div>
+                        </form>
+                        
+                        <div id="mcp-test-result" class="mt-4">
+                            <div class="code-block">Tool execution result will appear here...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Redis Cache Tab -->
+            <div class="tab-pane fade" id="cache">
+                <h2 class="header-title"><i class="fas fa-memory text-warning"></i> Redis Cache Management</h2>
+                
+                <div class="row mb-4">
+                    <div class="col-md-3">
+                        <div class="stat-card">
+                            <div class="value text-warning" id="cache-hits">0</div>
+                            <div class="label">Cache Hits</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stat-card">
+                            <div class="value text-danger" id="cache-misses">0</div>
+                            <div class="label">Cache Misses</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stat-card">
+                            <div class="value text-success" id="cache-hit-rate-bottom">0%</div>
+                            <div class="label">Hit Rate</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stat-card">
+                            <div class="value text-info" id="cache-size">0</div>
+                            <div class="label">Keys Stored</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5><i class="fas fa-key"></i> Cache Operations</h5>
+                        <form id="cacheOpsForm" class="mt-3">
+                            <div class="mb-3">
+                                <label class="form-label">Operation</label>
+                                <select class="form-select bg-dark text-light">
+                                    <option value="get">GET</option>
+                                    <option value="set">SET</option>
+                                    <option value="delete">DELETE</option>
+                                    <option value="exists">EXISTS</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Key</label>
+                                <input type="text" class="form-control bg-dark text-light" placeholder="cache:key">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Value (for SET)</label>
+                                <textarea class="form-control bg-dark text-light" rows="3" placeholder="Value to cache..."></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">TTL (seconds)</label>
+                                <input type="number" class="form-control bg-dark text-light" value="3600">
+                            </div>
+                            <button type="submit" class="btn btn-warning"><i class="fas fa-bolt"></i> Execute</button>
+                        </form>
+                    </div>
+                    <div class="col-md-6">
+                        <h5><i class="fas fa-chart-bar"></i> Redis Stats</h5>
+                        <div class="mt-3">
+                            <p><strong>Connected Clients:</strong> <span class="metric-value">1</span></p>
+                            <p><strong>Used Memory:</strong> <span class="metric-value">0 MB</span></p>
+                            <p><strong>Total Commands:</strong> <span class="metric-value">0</span></p>
+                            <p><strong>Ops/sec:</strong> <span class="metric-value">0</span></p>
+                        </div>
+                        
+                        <h5 class="mt-4"><i class="fas fa-broom"></i> Cache Management</h5>
+                        <div class="mt-3">
+                            <button class="btn btn-outline-danger me-2"><i class="fas fa-trash"></i> Flush Cache</button>
+                            <button class="btn btn-outline-primary"><i class="fas fa-sync"></i> Refresh Stats</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Metrics Tab -->
+            <div class="tab-pane fade" id="metrics">
+                <h2 class="header-title"><i class="fas fa-chart-bar text-info"></i> Prometheus Metrics</h2>
+                
+                <div class="row mb-4">
+                    <div class="col-md-12">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="mb-0">Live Metrics</h5>
+                            <div>
+                                <button class="btn btn-outline-primary me-2" onclick="window.open('http://localhost:9100', '_blank')">
+                                    <i class="fas fa-external-link-alt"></i> Open Prometheus
+                                </button>
+                                <button class="btn btn-outline-success" onclick="window.open('http://localhost:3100', '_blank')">
+                                    <i class="fas fa-external-link-alt"></i> Open Grafana
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6><i class="fas fa-globe"></i> HTTP Metrics</h6>
+                        <div class="code-block" style="max-height: 250px; overflow-y: auto;">
+                            <div class="mb-2"><strong>http_requests_total</strong></div>
+                            <div class="mb-2">Total HTTP requests by method, endpoint, and status</div>
+                            <div class="mb-3"><em>Value: 0</em></div>
+                            
+                            <div class="mb-2"><strong>http_request_duration_seconds</strong></div>
+                            <div class="mb-2">HTTP request duration histogram</div>
+                            <div class="mb-3"><em>Avg: 0ms</em></div>
+                            
+                            <div class="mb-2"><strong>http_requests_in_progress</strong></div>
+                            <div class="mb-2">Currently active HTTP requests</div>
+                            <div><em>Value: 0</em></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h6><i class="fas fa-robot"></i> Agent Metrics</h6>
+                        <div class="code-block" style="max-height: 250px; overflow-y: auto;">
+                            <div class="mb-2"><strong>agent_iterations_total</strong></div>
+                            <div class="mb-2">Total agent iterations by name, type, status</div>
+                            <div class="mb-3"><em>Value: 0</em></div>
+                            
+                            <div class="mb-2"><strong>agent_experiment_accuracy</strong></div>
+                            <div class="mb-2">Current experiment accuracy gauge</div>
+                            <div class="mb-3"><em>Value: 0%</em></div>
+                            
+                            <div class="mb-2"><strong>agent_active_experiments</strong></div>
+                            <div class="mb-2">Number of active experiments</div>
+                            <div><em>Value: 0</em></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <h6><i class="fas fa-database"></i> RAG Metrics</h6>
+                        <div class="code-block" style="max-height: 250px; overflow-y: auto;">
+                            <div class="mb-2"><strong>rag_queries_total</strong></div>
+                            <div class="mb-2">Total RAG queries by status</div>
+                            <div class="mb-3"><em>Value: 0</em></div>
+                            
+                            <div class="mb-2"><strong>rag_retrieval_time_seconds</strong></div>
+                            <div class="mb-2">Document retrieval time histogram</div>
+                            <div><em>Avg: 0ms</em></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h6><i class="fas fa-tools"></i> MCP Metrics</h6>
+                        <div class="code-block" style="max-height: 250px; overflow-y: auto;">
+                            <div class="mb-2"><strong>mcp_tool_calls_total</strong></div>
+                            <div class="mb-2">Total MCP tool calls by name and status</div>
+                            <div class="mb-3"><em>Value: 0</em></div>
+                            
+                            <div class="mb-2"><strong>mcp_tool_execution_time_seconds</strong></div>
+                            <div class="mb-2">Tool execution time histogram</div>
+                            <div><em>Avg: 0ms</em></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Traces Tab -->
+            <div class="tab-pane fade" id="traces">
+                <h2 class="header-title"><i class="fas fa-project-diagram text-success"></i> Distributed Traces (OpenTelemetry)</h2>
+                
+                <div class="row mb-4">
+                    <div class="col-md-12">
+                        <div class="alert alert-info bg-dark border-info">
+                            <i class="fas fa-info-circle"></i> 
+                            View detailed traces in <a href="http://localhost:8103" target="_blank" class="text-info">Jaeger UI</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5><i class="fas fa-stream"></i> Recent Traces</h5>
+                        <div class="table-responsive mt-3">
+                            <table class="table table-dark table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Trace ID</th>
+                                        <th>Operation</th>
+                                        <th>Service</th>
+                                        <th>Duration</th>
+                                        <th>Status</th>
+                                        <th>Timestamp</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>a1b2c3d...</code></td>
+                                        <td>POST /api/v1/agents</td>
+                                        <td>agentic-ai-platform</td>
+                                        <td>45ms</td>
+                                        <td><span class="badge bg-success">OK</span></td>
+                                        <td>2026-04-03 10:30:15</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-md-12">
+                        <h5><i class="fas fa-cog"></i> Trace Configuration</h5>
+                        <div class="mt-3">
+                            <div class="mb-3">
+                                <label class="form-label">OTLP Endpoint</label>
+                                <input type="text" class="form-control bg-dark text-light" value="http://localhost:4317" readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Service Name</label>
+                                <input type="text" class="form-control bg-dark text-light" value="agentic-ai-platform" readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Sampler</label>
+                                <select class="form-select bg-dark text-light">
+                                    <option value="always_on">Always On</option>
+                                    <option value="always_off">Always Off</option>
+                                    <option value="traceidratio" selected>Trace ID Ratio Based</option>
+                                </select>
+                            </div>
+                            <button class="btn btn-success"><i class="fas fa-save"></i> Save Configuration</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Tab -->
+            <div class="tab-pane fade" id="settings">
+                <h2 class="header-title"><i class="fas fa-cog text-secondary"></i> Platform Settings</h2>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5><i class="fas fa-key"></i> API Keys</h5>
+                        <form class="mt-3">
+                            <div class="mb-3">
+                                <label class="form-label">OpenAI API Key</label>
+                                <input type="password" class="form-control bg-dark text-light" placeholder="sk-...">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Anthropic API Key</label>
+                                <input type="password" class="form-control bg-dark text-light" placeholder="sk-ant-...">
+                            </div>
+                            <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Save Keys</button>
+                        </form>
+                    </div>
+                    <div class="col-md-6">
+                        <h5><i class="fas fa-server"></i> Service Configuration</h5>
+                        <form class="mt-3">
+                            <div class="mb-3">
+                                <label class="form-label">Redis Host</label>
+                                <input type="text" class="form-control bg-dark text-light" value="localhost">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Redis Port</label>
+                                <input type="number" class="form-control bg-dark text-light" value="6379">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Database URL</label>
+                                <input type="text" class="form-control bg-dark text-light" value="postgresql://postgres:postgres@localhost:5432/agentic_ai">
+                            </div>
+                            <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Save Config</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-md-12">
+                        <h5><i class="fas fa-file-code"></i> Environment Configuration</h5>
+                        <div class="code-block mt-3">
+# Copy this to .env file
+OPENAI_API_KEY=your_openai_api_key_here
+ANTHROPIC_API_KEY=your_anthropic_api_key_here
+
+REDIS_HOST=localhost
+REDIS_PORT=6379
+
+DATABASE_URL=postgresql+psycopg2://postgres:postgres@localhost:5432/agentic_ai
+
+OTEL_SERVICE_NAME=agentic-ai-platform
+OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4317
+                        </div>
+                        <button class="btn btn-outline-primary mt-3"><i class="fas fa-copy"></i> Copy to Clipboard</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        // Tab navigation
+        document.querySelectorAll('.sidebar .nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                document.querySelectorAll('.sidebar .nav-link').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Auto-refresh stats
+        setInterval(async () => {
+            try {
+                const response = await fetch('/api/status');
+                const data = await response.json();
+                // Update dashboard stats
+                document.getElementById('total-agents').textContent = data.agents.total;
+                document.getElementById('total-experiments').textContent = data.agents.active;
+            } catch (error) {
+                console.error('Failed to fetch status:', error);
+            }
+        }, 5000);
+
+        // Form handlers
+        document.getElementById('addDocumentForm')?.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            // Add document logic
+        });
+
+        document.getElementById('queryRAGForm')?.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            // Query RAG logic
+        });
+    </script>
+</body>
+</html>

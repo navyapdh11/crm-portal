@@ -1,0 +1,30 @@
+{
+  "todos": [
+    {
+      "content": "Update config with 15 liquid equity pairs",
+      "id": "1",
+      "status": "completed"
+    },
+    {
+      "content": "Create pairs configuration file",
+      "id": "2",
+      "status": "completed"
+    },
+    {
+      "content": "Add OpenAPI specification",
+      "id": "3",
+      "status": "completed"
+    },
+    {
+      "content": "Create Python client snippet",
+      "id": "4",
+      "status": "completed"
+    },
+    {
+      "content": "Restart server and test all features",
+      "id": "5",
+      "status": "in_progress"
+    }
+  ],
+  "sessionId": "7cde8b9c-72f9-4d0c-9eac-f2890c5840e9"
+}

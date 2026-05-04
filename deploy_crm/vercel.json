@@ -1,0 +1,13 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "framework": "nextjs",
+  "env": {
+    "NODE_ENV": "production",
+    "LLM_PROVIDER": "openai",
+    "LLM_MODEL": "gpt-4"
+  },
+  "regions": ["sfo1"],
+  "cleanUrls": true,
+  "trailingSlash": false
+}

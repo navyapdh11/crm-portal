@@ -1,0 +1,30 @@
+{
+  "todos": [
+    {
+      "content": "Install PostgreSQL",
+      "id": "1",
+      "status": "completed"
+    },
+    {
+      "content": "Start PostgreSQL service",
+      "id": "2",
+      "status": "completed"
+    },
+    {
+      "content": "Create database and run migrations",
+      "id": "3",
+      "status": "completed"
+    },
+    {
+      "content": "Restart API with DB connection",
+      "id": "4",
+      "status": "completed"
+    },
+    {
+      "content": "Verify all CRUD endpoints work",
+      "id": "5",
+      "status": "completed"
+    }
+  ],
+  "sessionId": "fdfa3814-ac6d-4734-aa12-da3c5b492308"
+}

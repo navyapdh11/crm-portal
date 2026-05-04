@@ -1,0 +1,17 @@
+#!/bin/bash
+# Pilot wrapper - runs the compiled pilot module with uv-managed Python 3.12
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+exec uv run --python 3.12 --no-project --with cryptography python -c "
+import sys
+import os
+cwd = os.getcwd()
+sys.path = [p for p in sys.path if p and p != cwd and not (os.path.isdir(os.path.join(p, 'launcher')) and os.path.isfile(os.path.join(p, 'launcher', '__init__.py')))]
+sys.path.insert(0, '$SCRIPT_DIR')
+
+from pilot import app
+code = app()
+sys.stdout.flush()
+sys.stderr.flush()
+os._exit(code)
+" "$@"

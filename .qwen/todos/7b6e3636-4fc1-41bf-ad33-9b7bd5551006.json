@@ -1,0 +1,95 @@
+{
+  "todos": [
+    {
+      "content": "Deep code review: Read all core modules",
+      "id": "1",
+      "status": "completed"
+    },
+    {
+      "content": "Apply Tree of Thoughts analysis",
+      "id": "2",
+      "status": "completed"
+    },
+    {
+      "content": "Apply MCTS + Graph of Thoughts analysis",
+      "id": "3",
+      "status": "completed"
+    },
+    {
+      "content": "P0 CRITICAL: Fix Kalman UnboundLocalError in core/kalman.py",
+      "id": "4",
+      "status": "completed"
+    },
+    {
+      "content": "P0 CRITICAL: Fix ActionType.BUY/SELL in api/app.py and add to models.py",
+      "id": "5",
+      "status": "completed"
+    },
+    {
+      "content": "P1 HIGH: Fix Query() misuse in api/app.py kelly endpoint",
+      "id": "6",
+      "status": "completed"
+    },
+    {
+      "content": "P1 HIGH: Add graceful shutdown handler to main.py",
+      "id": "7",
+      "status": "completed"
+    },
+    {
+      "content": "P1 HIGH: Fix ScoutAgent market_data format mismatch",
+      "id": "8",
+      "status": "completed"
+    },
+    {
+      "content": "P2 MEDIUM: Fix Kalman cache memory leak in api/app.py",
+      "id": "9",
+      "status": "completed"
+    },
+    {
+      "content": "P2 MEDIUM: Fix backtest PnL formula in backtest.py",
+      "id": "10",
+      "status": "completed"
+    },
+    {
+      "content": "P2 MEDIUM: Add risk config min_confidence and use it in core/risk.py",
+      "id": "11",
+      "status": "completed"
+    },
+    {
+      "content": "P2 MEDIUM: Fix datetime.now() timezone in api_layer/alpaca_api.py",
+      "id": "12",
+      "status": "completed"
+    },
+    {
+      "content": "P2 MEDIUM: Add MCTS timeout safety in core/mcts.py",
+      "id": "13",
+      "status": "completed"
+    },
+    {
+      "content": "P3 LOW: Unify version strings across codebase",
+      "id": "14",
+      "status": "completed"
+    },
+    {
+      "content": "Add Recommendation Engine tab HTML with flash cards",
+      "id": "18",
+      "status": "completed"
+    },
+    {
+      "content": "Add Recommendation Engine backend API endpoints",
+      "id": "19",
+      "status": "completed"
+    },
+    {
+      "content": "Integrate new tab into dashboard navigation",
+      "id": "20",
+      "status": "completed"
+    },
+    {
+      "content": "Final validation: restart engine, test all endpoints",
+      "id": "21",
+      "status": "completed"
+    }
+  ],
+  "sessionId": "7b6e3636-4fc1-41bf-ad33-9b7bd5551006"
+}

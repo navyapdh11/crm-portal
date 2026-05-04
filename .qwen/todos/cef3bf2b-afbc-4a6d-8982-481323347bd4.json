@@ -1,0 +1,30 @@
+{
+  "todos": [
+    {
+      "content": "Create Dockerfile for NestJS production build",
+      "id": "1",
+      "status": "in_progress"
+    },
+    {
+      "content": "Create render.yaml blueprint config",
+      "id": "2",
+      "status": "pending"
+    },
+    {
+      "content": "Create .env.production template",
+      "id": "3",
+      "status": "pending"
+    },
+    {
+      "content": "Add .dockerignore",
+      "id": "4",
+      "status": "pending"
+    },
+    {
+      "content": "Provide step-by-step Render deployment guide",
+      "id": "5",
+      "status": "pending"
+    }
+  ],
+  "sessionId": "cef3bf2b-afbc-4a6d-8982-481323347bd4"
+}

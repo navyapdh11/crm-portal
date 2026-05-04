@@ -1,0 +1,35 @@
+{
+  "todos": [
+    {
+      "content": "Set up project structure with Next.js",
+      "id": "1",
+      "status": "completed"
+    },
+    {
+      "content": "Create homepage with hero section and services overview",
+      "id": "2",
+      "status": "completed"
+    },
+    {
+      "content": "Build services page with detailed cleaning offerings",
+      "id": "3",
+      "status": "completed"
+    },
+    {
+      "content": "Create about page and contact page",
+      "id": "4",
+      "status": "completed"
+    },
+    {
+      "content": "Add Australian-themed styling and content",
+      "id": "5",
+      "status": "completed"
+    },
+    {
+      "content": "Build and verify the application",
+      "id": "6",
+      "status": "completed"
+    }
+  ],
+  "sessionId": "626e5a8e-7326-46a4-a122-8e94b716635e"
+}

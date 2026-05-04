@@ -1,0 +1,3168 @@
+Command: cd /root/.openclaw/workspace/tools/g4h_quant_engine && curl -s "http://localhost:8000/api/v1/backtest?base=AAPL&quote=MSFT&start_date=2024-01-01&end_date=2026-04-08&initial_capital=100000" | python3 -m json.tool
+Directory: (root)
+Output: {
+    "pair": "AAPL/MSFT",
+    "metrics": {
+        "total_return": -8.4595,
+        "sharpe_ratio": -1.3,
+        "max_drawdown": 0.028,
+        "win_rate": 0.598,
+        "total_trades": 82,
+        "avg_trade_pnl": -0.103165,
+        "profit_factor": 0.77,
+        "equity_curve": [
+            100000.0,
+            100000.0,
+            100000.0,
+            100000.0,
+            99858.25,
+            99988.54,
+            99305.05,
+            99409.85,
+            99537.3,
+            99396.03,
+            99574.69,
+            99810.53,
+            99979.92,
+            99493.41,
+            99493.41,
+            99758.23,
+            100169.59,
+            100413.38,
+            100648.88,
+            100675.88,
+            100753.81,
+            100689.23,
+            100689.23,
+            101026.55,
+            100885.04,
+            100885.04,
+            100969.9,
+            100490.92,
+            99883.0,
+            100122.16,
+            100166.21,
+            100281.77,
+            100281.77,
+            100425.47,
+            100391.49,
+            100391.49,
+            100157.42,
+            100155.98,
+            99489.58,
+            99489.58,
+            99602.96,
+            99745.07,
+            99688.84,
+            99845.49,
+            99845.49,
+            99965.44,
+            99917.46,
+            99917.46,
+            100151.43,
+            100151.43,
+            100293.95,
+            100293.95,
+            100271.47,
+            100361.51,
+            100477.89,
+            100325.25,
+            100325.25,
+            100214.86,
+            100310.37,
+            100310.37,
+            100356.38,
+            99733.08,
+            99733.08,
+            99907.8,
+            99608.62,
+            99711.32,
+            99784.22,
+            99784.22,
+            100013.77,
+            99817.95,
+            99817.95,
+            99839.35,
+            100041.0,
+            100041.0,
+            100102.23,
+            100102.23,
+            100501.38,
+            100591.63,
+            100535.07,
+            100521.15,
+            100521.15,
+            100031.81,
+            100070.02,
+            99968.76,
+            99907.23,
+            100119.3,
+            100234.14,
+            99951.39,
+            99951.39,
+            99762.08,
+            99912.16,
+            99912.16,
+            100157.16,
+            100165.99,
+            100165.99,
+            100147.35,
+            99114.05,
+            99080.26,
+            98928.14,
+            99121.19,
+            99407.23,
+            98210.32,
+            98244.06,
+            98194.06,
+            98256.86,
+            98284.75,
+            98399.83
+        ],
+        "sortino_ratio": -1.15,
+        "calmar_ratio": -927.26,
+        "max_consecutive_wins": 6,
+        "max_consecutive_losses": 4
+    },
+    "signals": [
+        {
+            "pair": "AAPL/MSFT",
+            "action": "LONG_SPREAD",
+            "confidence": 0.1933707426497109,
+            "kalman": {
+                "beta": 0.34451162330306495,
+                "alpha": 0.0,
+                "spread": 1.1191638619721118,
+                "innovation_variance": 1.0,
+                "pure_z_score": 0.58011222794913
+28,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": -0.39155077760
+299906,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.16
+7451Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "SHORT_SPREAD",
+            "confidence": 0.2096963432853618,
+            "kalman": {
+                "beta": 0.3501704581265509,
+                "alpha": 0.0,
+                "spread": -1.2154259752279586,
+                "innovation_variance": 1.0,
+                "pure_z_score": -0.6290890298560
+854,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": 0.377450986258
+6025,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.16
+7548Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "SHORT_SPREAD",
+            "confidence": 0.028397434568610627,
+            "kalman": {
+                "beta": 0.36350497733305076,
+                "alpha": 0.0,
+                "spread": -0.15677224769697773,
+                "innovation_variance": 1.0,
+                "pure_z_score": -0.0851923037058
+3188,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": -1.85315080863
+87167,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.16
+7613Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "SHORT_SPREAD",
+            "confidence": 0.22775974306243985,
+            "kalman": {
+                "beta": 0.3622954586364251,
+                "alpha": 0.0,
+                "spread": -1.2868781069385307,
+                "innovation_variance": 1.0,
+                "pure_z_score": -0.6832792291873
+195,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": 0.502012000646
+83,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.16
+7654Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "LONG_SPREAD",
+            "confidence": 0.11943469070532912,
+            "kalman": {
+                "beta": 0.3336548823002274,
+                "alpha": 0.0,
+                "spread": 0.6777386535957248,
+                "innovation_variance": 1.0,
+                "pure_z_score": 0.35830407211598
+736,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": 0.291314532275
+3806,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.16
+7688Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "SHORT_SPREAD",
+            "confidence": 0.1780232652017195,
+            "kalman": {
+                "beta": 0.33881734246056705,
+                "alpha": 0.0,
+                "spread": -0.9933395249748571,
+                "innovation_variance": 1.0,
+                "pure_z_score": -0.5340697956051
+584,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": -0.53169175281
+35602,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.16
+7727Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "SHORT_SPREAD",
+            "confidence": 0.5354585996301308,
+            "kalman": {
+                "beta": 0.33797495755582857,
+                "alpha": 0.0,
+                "spread": -2.9318471199424607,
+                "innovation_variance": 1.0,
+                "pure_z_score": -1.6063757988903
+922,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": 0.912039866125
+3578,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.16
+7765Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "SHORT_SPREAD",
+            "confidence": 0.6617110599769738,
+            "kalman": {
+                "beta": 0.33283118228825587,
+                "alpha": 0.0,
+                "spread": -3.6127502155396485,
+                "innovation_variance": 1.0,
+                "pure_z_score": -1.9851331799309
+213,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": 1.021546670340
+7907,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.16
+7794Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "LONG_SPREAD",
+            "confidence": 0.6426406229029208,
+            "kalman": {
+                "beta": 0.3215942781211963,
+                "alpha": 0.0,
+                "spread": 3.4697519216165347,
+                "innovation_variance": 1.0,
+                "pure_z_score": 1.92792186870876
+25,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": 0.742594283500
+0665,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.16
+7846Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "SHORT_SPREAD",
+            "confidence": 0.04547863794009272,
+            "kalman": {
+                "beta": 0.35501315212785767,
+                "alpha": 0.0,
+                "spread": -0.24440799160652205,
+                "innovation_variance": 1.0,
+                "pure_z_score": -0.1364359138202
+7817,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": -1.53689991323
+95917,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.16
+7922Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "LONG_SPREAD",
+            "confidence": 0.8589764247707722,
+            "kalman": {
+                "beta": 0.31794384647034596,
+                "alpha": 0.0,
+                "spread": 4.6888408816419656,
+                "innovation_variance": 1.0,
+                "pure_z_score": 2.57692927431231
+67,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": 0.511517245801
+8403,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.16
+7985Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "LONG_SPREAD",
+            "confidence": 1.0,
+            "kalman": {
+                "beta": 0.30736624626001063,
+                "alpha": 0.0,
+                "spread": 6.468208096750487,
+                "innovation_variance": 1.0,
+                "pure_z_score": 3.53593401333342
+2,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": 1.202765084689
+5135,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.16
+8037Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "LONG_SPREAD",
+            "confidence": 0.8657812792802865,
+            "kalman": {
+                "beta": 0.2992459148904467,
+                "alpha": 0.0,
+                "spread": 4.811347726937157,
+                "innovation_variance": 1.0,
+                "pure_z_score": 2.59734383784085
+93,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": 1.181117561196
+6591,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.16
+8084Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "SHORT_SPREAD",
+            "confidence": 0.7431440280224137,
+            "kalman": {
+                "beta": 0.30026456870030294,
+                "alpha": 0.0,
+                "spread": -4.210635908607685,
+                "innovation_variance": 1.0,
+                "pure_z_score": -2.2294320840672
+412,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": 1.220262859683
+0996,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.16
+8120Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "SHORT_SPREAD",
+            "confidence": 0.12721254740140303,
+            "kalman": {
+                "beta": 0.30259470814342415,
+                "alpha": 0.0,
+                "spread": -0.7115708058053087,
+                "innovation_variance": 1.0,
+                "pure_z_score": -0.3816376422042
+091,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": 0.114680634686
+75353,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.16
+8154Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "SHORT_SPREAD",
+            "confidence": 0.39780909164297834,
+            "kalman": {
+                "beta": 0.3218424802616221,
+                "alpha": 0.0,
+                "spread": -2.209528176337642,
+                "innovation_variance": 1.0,
+                "pure_z_score": -1.1934272749289
+35,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": 0.322089200042
+18183,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.16
+8205Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "LONG_SPREAD",
+            "confidence": 0.29149953227489445,
+            "kalman": {
+                "beta": 0.30060678623610515,
+                "alpha": 0.0,
+                "spread": 1.665242931861286,
+                "innovation_variance": 1.0,
+                "pure_z_score": 0.87449859682468
+33,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": -0.28645831857
+671894,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.16
+8272Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "LONG_SPREAD",
+            "confidence": 1.0,
+            "kalman": {
+                "beta": 0.31402207226926326,
+                "alpha": 0.0,
+                "spread": 5.9024561835890665,
+                "innovation_variance": 1.0,
+                "pure_z_score": 3.21661974882199
+43,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": 1.320340253721
+722,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.16
+8353Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "LONG_SPREAD",
+            "confidence": 0.15710483115171556,
+            "kalman": {
+                "beta": 0.29317691278216396,
+                "alpha": 0.0,
+                "spread": 0.871873584805968,
+                "innovation_variance": 1.0,
+                "pure_z_score": 0.47131449345514
+67,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": -0.53800574964
+2416,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.16
+8403Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "SHORT_SPREAD",
+            "confidence": 0.4096787323354057,
+            "kalman": {
+                "beta": 0.312772251490985,
+                "alpha": 0.0,
+                "spread": -2.2676001066388665,
+                "innovation_variance": 1.0,
+                "pure_z_score": -1.2290361970062
+171,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": 0.248299297342
+6092,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.16
+8465Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "LONG_SPREAD",
+            "confidence": 0.07220366254708027,
+            "kalman": {
+                "beta": 0.2559896534516758,
+                "alpha": 0.0,
+                "spread": 0.41259339643795556,
+                "innovation_variance": 1.0,
+                "pure_z_score": 0.21661098764124
+082,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": -1.18240969760
+94827,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.16
+8537Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "SHORT_SPREAD",
+            "confidence": 0.8448940553608568,
+            "kalman": {
+                "beta": 0.2916287053150754,
+                "alpha": 0.0,
+                "spread": -4.752911326752809,
+                "innovation_variance": 1.0,
+                "pure_z_score": -2.5346821660825
+705,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": -2.70461393722
+7752,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.16
+8631Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "LONG_SPREAD",
+            "confidence": 1.0,
+            "kalman": {
+                "beta": 0.27934854542057,
+                "alpha": 0.0,
+                "spread": 6.278842171068078,
+                "innovation_variance": 1.0,
+                "pure_z_score": 3.35738220569613
+15,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": 1.162605172063
+3204,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.16
+8681Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "SHORT_SPREAD",
+            "confidence": 0.4157801062879092,
+            "kalman": {
+                "beta": 0.28854139631968084,
+                "alpha": 0.0,
+                "spread": -2.31890892003193,
+                "innovation_variance": 1.0,
+                "pure_z_score": -1.2473403188637
+275,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": 0.183694000354
+76052,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.16
+8716Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "SHORT_SPREAD",
+            "confidence": 0.5118067704793984,
+            "kalman": {
+                "beta": 0.2870732561944967,
+                "alpha": 0.0,
+                "spread": -2.8145171610291584,
+                "innovation_variance": 1.0,
+                "pure_z_score": -1.5354203114381
+952,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": 0.606681722282
+6578,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.16
+8781Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "LONG_SPREAD",
+            "confidence": 0.32553991704371565,
+            "kalman": {
+                "beta": 0.266920727041808,
+                "alpha": 0.0,
+                "spread": 1.7393763233337154,
+                "innovation_variance": 1.0,
+                "pure_z_score": 0.97661975113114
+7,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": 0.545793050898
+6661,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.16
+8847Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "SHORT_SPREAD",
+            "confidence": 0.7438241921000297,
+            "kalman": {
+                "beta": 0.28505910860445394,
+                "alpha": 0.0,
+                "spread": -4.079559887613101,
+                "innovation_variance": 1.0,
+                "pure_z_score": -2.2314725763000
+89,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": -0.15789190853
+814944,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.16
+8897Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "SHORT_SPREAD",
+            "confidence": 1.0,
+            "kalman": {
+                "beta": 0.32018577586381675,
+                "alpha": 0.0,
+                "spread": -6.599334195898081,
+                "innovation_variance": 1.0,
+                "pure_z_score": -3.5902785331347
+418,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": -0.69743931002
+20014,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.16
+8972Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "LONG_SPREAD",
+            "confidence": 0.06266634632518495,
+            "kalman": {
+                "beta": 0.3097560366337844,
+                "alpha": 0.0,
+                "spread": 0.3432378691285862,
+                "innovation_variance": 1.0,
+                "pure_z_score": 0.18799903897555
+484,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": -0.00802267308
+4028783,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.16
+9009Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "LONG_SPREAD",
+            "confidence": 0.41289635801544394,
+            "kalman": {
+                "beta": 0.2507756192183351,
+                "alpha": 0.0,
+                "spread": 2.3987902488470922,
+                "innovation_variance": 1.0,
+                "pure_z_score": 1.23868907404633
+19,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": -3.35546465695
+6545,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.16
+9119Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "SHORT_SPREAD",
+            "confidence": 0.8199569737751662,
+            "kalman": {
+                "beta": 0.24760368427099355,
+                "alpha": 0.0,
+                "spread": -4.914319093710219,
+                "innovation_variance": 1.0,
+                "pure_z_score": -2.4598709213254
+986,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": 0.577828495685
+8655,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.16
+9198Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "SHORT_SPREAD",
+            "confidence": 0.8915152179116536,
+            "kalman": {
+                "beta": 0.26486407102623055,
+                "alpha": 0.0,
+                "spread": -5.376512865287168,
+                "innovation_variance": 1.0,
+                "pure_z_score": -2.6745456537349
+606,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": 0.325959542582
+15354,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.16
+9267Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "LONG_SPREAD",
+            "confidence": 0.006841303907887852,
+            "kalman": {
+                "beta": 0.24910448742009586,
+                "alpha": 0.0,
+                "spread": 0.040613409644009835,
+                "innovation_variance": 1.0,
+                "pure_z_score": 0.02052391172366
+3555,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": -0.19393890955
+23335,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.16
+9305Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "LONG_SPREAD",
+            "confidence": 0.6771762307617806,
+            "kalman": {
+                "beta": 0.24081578441342064,
+                "alpha": 0.0,
+                "spread": 4.01868290425449,
+                "innovation_variance": 1.0,
+                "pure_z_score": 2.03152869228534
+17,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": 0.644000829495
+9535,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.16
+9339Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "LONG_SPREAD",
+            "confidence": 0.298013705981473,
+            "kalman": {
+                "beta": 0.24091831679685805,
+                "alpha": 0.0,
+                "spread": 1.7994456783070518,
+                "innovation_variance": 1.0,
+                "pure_z_score": 0.89404111794441
+9,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": 0.617854049154
+3908,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.16
+9388Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "SHORT_SPREAD",
+            "confidence": 0.6584252369337028,
+            "kalman": {
+                "beta": 0.24369587026835784,
+                "alpha": 0.0,
+                "spread": -3.8938398836957617,
+                "innovation_variance": 1.0,
+                "pure_z_score": -1.9752757108011
+085,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": -0.28257575422
+8438,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.16
+9448Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "SHORT_SPREAD",
+            "confidence": 0.7085616655452398,
+            "kalman": {
+                "beta": 0.24880501415975603,
+                "alpha": 0.0,
+                "spread": -4.063942024796717,
+                "innovation_variance": 1.0,
+                "pure_z_score": -2.1256849966357
+194,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": 0.739934419457
+3343,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.16
+9500Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "LONG_SPREAD",
+            "confidence": 0.4946538607706557,
+            "kalman": {
+                "beta": 0.22687836305149645,
+                "alpha": 0.0,
+                "spread": 2.851087405695722,
+                "innovation_variance": 1.0,
+                "pure_z_score": 1.48396158231196
+72,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": 0.705593907404
+4223,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.16
+9582Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "SHORT_SPREAD",
+            "confidence": 0.18203943627559774,
+            "kalman": {
+                "beta": 0.2510931760868079,
+                "alpha": 0.0,
+                "spread": -1.0261669408431828,
+                "innovation_variance": 1.0,
+                "pure_z_score": -0.5461183088267
+932,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": -0.12573509551
+428538,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.16
+9680Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "SHORT_SPREAD",
+            "confidence": 0.6492035358747232,
+            "kalman": {
+                "beta": 0.2687270594956879,
+                "alpha": 0.0,
+                "spread": -3.5189597198854585,
+                "innovation_variance": 1.0,
+                "pure_z_score": -1.9476106076241
+697,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": 0.231932746238
+38267,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.16
+9736Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "LONG_SPREAD",
+            "confidence": 0.17075510469053298,
+            "kalman": {
+                "beta": 0.26068048314641407,
+                "alpha": 0.0,
+                "spread": 0.9209213211487111,
+                "innovation_variance": 1.0,
+                "pure_z_score": 0.51226531407159
+89,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": 0.391250240342
+5282,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.17
+0983Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "SHORT_SPREAD",
+            "confidence": 0.6252387441248698,
+            "kalman": {
+                "beta": 0.2858130501286284,
+                "alpha": 0.0,
+                "spread": -3.3535305346516964,
+                "innovation_variance": 1.0,
+                "pure_z_score": -1.8757162323746
+095,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": -0.39183508325
+11871,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.17
+1032Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "LONG_SPREAD",
+            "confidence": 0.05049475320561938,
+            "kalman": {
+                "beta": 0.2655789005026284,
+                "alpha": 0.0,
+                "spread": 0.26498069459626095,
+                "innovation_variance": 1.0,
+                "pure_z_score": 0.15148425961685
+813,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": -0.47521105639
+29465,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.17
+1095Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "LONG_SPREAD",
+            "confidence": 0.3025400587462884,
+            "kalman": {
+                "beta": 0.25521524025152464,
+                "alpha": 0.0,
+                "spread": 1.591555419503834,
+                "innovation_variance": 1.0,
+                "pure_z_score": 0.90762017623886
+53,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": 0.514559415193
+523,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.17
+1143Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "LONG_SPREAD",
+            "confidence": 0.039040078447976245,
+            "kalman": {
+                "beta": 0.2603661559960612,
+                "alpha": 0.0,
+                "spread": 0.20396039382603703,
+                "innovation_variance": 1.0,
+                "pure_z_score": 0.11712023534392
+874,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": 0.292400167455
+25654,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.17
+1193Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "LONG_SPREAD",
+            "confidence": 0.5168359969035724,
+            "kalman": {
+                "beta": 0.2051147216541204,
+                "alpha": 0.0,
+                "spread": 2.700901885495824,
+                "innovation_variance": 1.0,
+                "pure_z_score": 1.55050799071071
+7,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": -2.39828075924
+91033,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.17
+1262Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "LONG_SPREAD",
+            "confidence": 0.6484257420292106,
+            "kalman": {
+                "beta": 0.20120323763300282,
+                "alpha": 0.0,
+                "spread": 3.322023224957462,
+                "innovation_variance": 1.0,
+                "pure_z_score": 1.94527722608763
+17,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": 1.016131914043
+2858,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.17
+1376Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "SHORT_SPREAD",
+            "confidence": 0.5858327004907847,
+            "kalman": {
+                "beta": 0.23172085233394746,
+                "alpha": 0.0,
+                "spread": -2.889039965102171,
+                "innovation_variance": 1.0,
+                "pure_z_score": -1.7574981014723
+543,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": -1.68250298120
+41121,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.17
+1454Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "LONG_SPREAD",
+            "confidence": 0.2662273404999348,
+            "kalman": {
+                "beta": 0.22580661924495046,
+                "alpha": 0.0,
+                "spread": 1.3174258120884588,
+                "innovation_variance": 1.0,
+                "pure_z_score": 0.79868202149980
+44,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": 0.656957218334
+4775,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.17
+1491Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "SHORT_SPREAD",
+            "confidence": 0.01659690764726832,
+            "kalman": {
+                "beta": 0.2312114798185635,
+                "alpha": 0.0,
+                "spread": -0.0834444031375483,
+                "innovation_variance": 1.0,
+                "pure_z_score": -0.0497907229418
+0496,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": 0.312389062924
+4138,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.17
+1556Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "LONG_SPREAD",
+            "confidence": 0.7176812818060573,
+            "kalman": {
+                "beta": 0.22230661102006555,
+                "alpha": 0.0,
+                "spread": 3.5797202882867225,
+                "innovation_variance": 1.0,
+                "pure_z_score": 2.15304384541817
+17,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": 1.051919001863
+3644,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.17
+1608Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "SHORT_SPREAD",
+            "confidence": 0.30769543257782045,
+            "kalman": {
+                "beta": 0.24404456129584068,
+                "alpha": 0.0,
+                "spread": -1.523155112684151,
+                "innovation_variance": 1.0,
+                "pure_z_score": -0.9230862977334
+614,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": -0.96342692779
+15811,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.17
+1666Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "LONG_SPREAD",
+            "confidence": 0.26135309634403037,
+            "kalman": {
+                "beta": 0.22039862923657705,
+                "alpha": 0.0,
+                "spread": 1.30351966146128,
+                "innovation_variance": 1.0,
+                "pure_z_score": 0.78405928903209
+11,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": 0.081946302147
+98612,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.17
+1727Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "LONG_SPREAD",
+            "confidence": 1.0,
+            "kalman": {
+                "beta": 0.20821606703123008,
+                "alpha": 0.0,
+                "spread": 5.5339890604471975,
+                "innovation_variance": 1.0,
+                "pure_z_score": 3.31661030250866
+64,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": 0.843780148397
+4284,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.17
+1768Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "LONG_SPREAD",
+            "confidence": 0.008243121042442214,
+            "kalman": {
+                "beta": 0.198450952634529,
+                "alpha": 0.0,
+                "spread": 0.0410216899362581,
+                "innovation_variance": 1.0,
+                "pure_z_score": 0.02472936312732
+664,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": 0.299950875065
+604,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.17
+1803Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "LONG_SPREAD",
+            "confidence": 1.0,
+            "kalman": {
+                "beta": 0.16630467728186638,
+                "alpha": 0.0,
+                "spread": 5.932428760749048,
+                "innovation_variance": 1.0,
+                "pure_z_score": 3.47781521328205
+26,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": 0.865674650391
+9037,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.17
+1900Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "SHORT_SPREAD",
+            "confidence": 0.15128797052100124,
+            "kalman": {
+                "beta": 0.171700594825046,
+                "alpha": 0.0,
+                "spread": -0.7837964186541058,
+                "innovation_variance": 1.0,
+                "pure_z_score": -0.4538639115630
+037,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": 0.461787291767
+50055,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.17
+1937Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "LONG_SPREAD",
+            "confidence": 0.316755891764387,
+            "kalman": {
+                "beta": 0.15308867344199542,
+                "alpha": 0.0,
+                "spread": 1.627045683859933,
+                "innovation_variance": 1.0,
+                "pure_z_score": 0.95026767529316
+1,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": -0.28329706833
+107104,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.17
+1982Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "SHORT_SPREAD",
+            "confidence": 0.10149650566997494,
+            "kalman": {
+                "beta": 0.16365993519698135,
+                "alpha": 0.0,
+                "spread": -0.5148523606902131,
+                "innovation_variance": 1.0,
+                "pure_z_score": -0.3044895170099
+248,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": -0.07605210267
+506221,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.17
+2023Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "LONG_SPREAD",
+            "confidence": 0.41699244219745063,
+            "kalman": {
+                "beta": 0.11689398617770175,
+                "alpha": 0.0,
+                "spread": 2.13039490395235,
+                "innovation_variance": 1.0,
+                "pure_z_score": 1.25097732659235
+18,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": -1.84332005835
+4031,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.17
+2127Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "LONG_SPREAD",
+            "confidence": 0.5586786949910797,
+            "kalman": {
+                "beta": 0.10154305016826301,
+                "alpha": 0.0,
+                "spread": 2.930440074269171,
+                "innovation_variance": 1.0,
+                "pure_z_score": 1.67603608497323
+9,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": 0.164703950226
+82843,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.17
+2186Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "LONG_SPREAD",
+            "confidence": 0.043862706716333556,
+            "kalman": {
+                "beta": 0.07727060256710855,
+                "alpha": 0.0,
+                "spread": 0.22047257171922752,
+                "innovation_variance": 1.0,
+                "pure_z_score": 0.13158812014900
+068,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": -0.34250910609
+27179,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.17
+2253Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "SHORT_SPREAD",
+            "confidence": 0.12487696496001648,
+            "kalman": {
+                "beta": 0.08839252441914282,
+                "alpha": 0.0,
+                "spread": -0.628881844837764,
+                "innovation_variance": 1.0,
+                "pure_z_score": -0.3746308948800
+494,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": -0.33052049506
+225445,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.17
+2308Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "LONG_SPREAD",
+            "confidence": 0.4090811927464333,
+            "kalman": {
+                "beta": 0.07895344785743184,
+                "alpha": 0.0,
+                "spread": 2.061037862194098,
+                "innovation_variance": 1.0,
+                "pure_z_score": 1.22724357823929
+99,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": 0.666411002015
+8681,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.17
+2336Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "LONG_SPREAD",
+            "confidence": 0.17918364021957658,
+            "kalman": {
+                "beta": 0.07352133639447403,
+                "alpha": 0.0,
+                "spread": 0.9108606019517254,
+                "innovation_variance": 1.0,
+                "pure_z_score": 0.53755092065872
+98,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": 0.539605132146
+9515,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.17
+2374Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "SHORT_SPREAD",
+            "confidence": 0.17301269293744811,
+            "kalman": {
+                "beta": 0.09669787395301882,
+                "alpha": 0.0,
+                "spread": -0.8480769771607015,
+                "innovation_variance": 1.0,
+                "pure_z_score": -0.5190380788123
+443,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": -1.29119904227
+07698,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.17
+2444Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "LONG_SPREAD",
+            "confidence": 0.15852650405719368,
+            "kalman": {
+                "beta": 0.0651486030938097,
+                "alpha": 0.0,
+                "spread": 0.7973734455338786,
+                "innovation_variance": 1.0,
+                "pure_z_score": 0.47557951217158
+106,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": -0.73569894964
+49698,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.17
+2521Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "SHORT_SPREAD",
+            "confidence": 0.25469922161409936,
+            "kalman": {
+                "beta": 0.071464871418156,
+                "alpha": 0.0,
+                "spread": -1.2652181861993768,
+                "innovation_variance": 1.0,
+                "pure_z_score": -0.7640976648422
+981,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": 0.596218931819
+4183,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.17
+2551Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "SHORT_SPREAD",
+            "confidence": 0.6354499116136154,
+            "kalman": {
+                "beta": 0.08137745395471864,
+                "alpha": 0.0,
+                "spread": -3.149575005932803,
+                "innovation_variance": 1.0,
+                "pure_z_score": -1.9063497348408
+462,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": 0.614488218582
+5717,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.17
+2614Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "LONG_SPREAD",
+            "confidence": 0.3083337498788224,
+            "kalman": {
+                "beta": 0.0687537584175356,
+                "alpha": 0.0,
+                "spread": 1.4699857533749991,
+                "innovation_variance": 1.0,
+                "pure_z_score": 0.92500124963646
+71,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": 0.040743340994
+13502,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.17
+2665Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "LONG_SPREAD",
+            "confidence": 0.6300804653808413,
+            "kalman": {
+                "beta": 0.036921991071005425,
+                "alpha": 0.0,
+                "spread": 3.00437461196492,
+                "innovation_variance": 1.0,
+                "pure_z_score": 1.89024139614252
+4,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": -0.06941090293
+909058,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.17
+2763Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "SHORT_SPREAD",
+            "confidence": 0.17515270643966,
+            "kalman": {
+                "beta": 0.11445540553205043,
+                "alpha": 0.0,
+                "spread": -0.8497491022840507,
+                "innovation_variance": 1.0,
+                "pure_z_score": -0.5254581193189
+8,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": -4.59191845356
+0194,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.17
+2869Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "SHORT_SPREAD",
+            "confidence": 0.0473544935612924,
+            "kalman": {
+                "beta": 0.13794345445939876,
+                "alpha": 0.0,
+                "spread": -0.23243393100312915,
+                "innovation_variance": 1.0,
+                "pure_z_score": -0.1420634806838
+772,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": -0.10877233664
+349778,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.17
+2912Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "SHORT_SPREAD",
+            "confidence": 1.0,
+            "kalman": {
+                "beta": 0.17780615545080378,
+                "alpha": 0.0,
+                "spread": -7.980535740450648,
+                "innovation_variance": 1.0,
+                "pure_z_score": -4.8557565104712
+05,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": -0.54069446197
+60201,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.17
+2983Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "LONG_SPREAD",
+            "confidence": 1.0,
+            "kalman": {
+                "beta": 0.16604492689153275,
+                "alpha": 0.0,
+                "spread": 5.336556237963833,
+                "innovation_variance": 1.0,
+                "pure_z_score": 3.24211944801768
+27,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": 1.135963329617
+4754,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.17
+3038Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "LONG_SPREAD",
+            "confidence": 0.5985725332457411,
+            "kalman": {
+                "beta": 0.15260343118978298,
+                "alpha": 0.0,
+                "spread": 3.0637142746876123,
+                "innovation_variance": 1.0,
+                "pure_z_score": 1.79571759973722
+32,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": 0.682081026470
+8155,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.17
+3074Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "SHORT_SPREAD",
+            "confidence": 0.21110492199936506,
+            "kalman": {
+                "beta": 0.2424485612272562,
+                "alpha": 0.0,
+                "spread": -1.0464328546355262,
+                "innovation_variance": 1.0,
+                "pure_z_score": -0.6333147659980
+952,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": -6.63444675578
+5834,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.17
+3195Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "SHORT_SPREAD",
+            "confidence": 0.501600227098473,
+            "kalman": {
+                "beta": 0.26049835453630704,
+                "alpha": 0.0,
+                "spread": -2.508196565864324,
+                "innovation_variance": 1.0,
+                "pure_z_score": -1.5048006812954
+189,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": 0.169309859541
+63616,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.17
+3239Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "LONG_SPREAD",
+            "confidence": 0.041895331532222156,
+            "kalman": {
+                "beta": 0.2453659732254907,
+                "alpha": 0.0,
+                "spread": 0.20887750111637615,
+                "innovation_variance": 1.0,
+                "pure_z_score": 0.12568599459666
+646,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": -0.36867089495
+296906,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.17
+3283Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "LONG_SPREAD",
+            "confidence": 0.10396772189752647,
+            "kalman": {
+                "beta": 0.23195805976835077,
+                "alpha": 0.0,
+                "spread": 0.5133748840878809,
+                "innovation_variance": 1.0,
+                "pure_z_score": 0.31190316569257
+94,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": 0.206067603119
+61952,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.17
+3321Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "LONG_SPREAD",
+            "confidence": 0.7889698648875294,
+            "kalman": {
+                "beta": 0.20055283909172913,
+                "alpha": 0.0,
+                "spread": 4.043250332578452,
+                "innovation_variance": 1.0,
+                "pure_z_score": 2.36690959466258
+8,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": 0.064970570502
+0999,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.17
+3379Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        },
+        {
+            "pair": "AAPL/MSFT",
+            "action": "LONG_SPREAD",
+            "confidence": 0.6894265443688066,
+            "kalman": {
+                "beta": 0.19381477648943335,
+                "alpha": 0.0,
+                "spread": 3.5671091807670336,
+                "innovation_variance": 1.0,
+                "pure_z_score": 2.06827963310641
+97,
+                "converged": true
+            },
+            "egarch": {
+                "annualized_vol": 0.2,
+                "forecast_vol": 0.2,
+                "leverage_gamma": null,
+                "regime": "NORMAL",
+                "params": null
+            },
+            "mcts": {
+                "action": "HOLD",
+                "expected_value": 0.534854439422
+5458,
+                "visit_distribution": {},
+                "avg_reward_distribution": {}
+            },
+            "source": "BACKTEST",
+            "timestamp": "2026-04-08T09:26:23.17
+3442Z",
+            "reasoning": "",
+            "agent_signals": null,
+            "sentiment": null,
+            "options_details": null,
+            "sentiment_adjusted_confidence": nul
+l
+        }
+    ],
+    "warnings": []
+}
+Error: (none)
+Exit Code: 0
+Signal: 0
+Process Group PGID: 13677

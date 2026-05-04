@@ -1,0 +1,3 @@
+
+[plugins."vercel-plugin@plugins-cli"]
+enabled = true

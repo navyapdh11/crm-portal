@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: agentic-ai-platform
+  labels:
+    app: agentic-ai
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: agentic-ai
+  template:
+    metadata:
+      labels:
+        app: agentic-ai
+    spec:
+      containers:
+      - name: agentic-ai
+        image: agentic-ai-platform:latest
+        ports:
+        - containerPort: 8000
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: 8000
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: agentic-ai-service
+spec:
+  selector:
+    app: agentic-ai
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8000
+  type: ClusterIP

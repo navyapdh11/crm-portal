@@ -1,0 +1,5 @@
+{"input": "What is machine learning?", "expected": "A subset of AI that enables systems to learn from data", "required_keywords": ["learn", "data", "pattern"]}
+{"input": "Explain neural networks", "expected": "Computing systems inspired by biological neural networks", "required_keywords": ["neural", "layers", "weights"]}
+{"input": "What is overfitting?", "expected": "When a model learns training data too well and fails to generalize", "required_keywords": ["generalize", "training", "performance"]}
+{"input": "Define reinforcement learning", "expected": "Learning through interaction with environment using rewards", "required_keywords": ["reward", "action", "environment"]}
+{"input": "What is transfer learning?", "expected": "Using a pre-trained model as starting point for new task", "required_keywords": ["pre-trained", "adapt", "task"]}

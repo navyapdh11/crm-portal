@@ -1,0 +1,111 @@
+{
+  "numStartups": 188,
+  "installMethod": "npm",
+  "verbose": true,
+  "tipsHistory": {
+    "custom-tip-0": 185,
+    "custom-tip-1": 185,
+    "custom-tip-2": 186,
+    "custom-tip-3": 186,
+    "custom-tip-4": 186,
+    "custom-tip-5": 186,
+    "custom-tip-6": 187,
+    "custom-tip-7": 187,
+    "custom-tip-8": 188,
+    "custom-tip-9": 188,
+    "custom-tip-10": 188,
+    "custom-tip-11": 188,
+    "custom-tip-12": 188,
+    "custom-tip-13": 188,
+    "custom-tip-14": 188,
+    "custom-tip-15": 188,
+    "custom-tip-16": 188,
+    "custom-tip-17": 188,
+    "custom-tip-18": 188,
+    "custom-tip-19": 188,
+    "custom-tip-20": 188,
+    "custom-tip-21": 188,
+    "custom-tip-22": 188
+  },
+  "autoConnectIde": true,
+  "autoUpdaterStatus": "enabled",
+  "userID": "88836d47dbbdd62852092f65831f61e282d219a4813b0fbd113fd2a835f8bbe6",
+  "hasCompletedOnboarding": true,
+  "lastOnboardingVersion": "1.0.17",
+  "projects": {
+    "/root": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "mcpServers": {},
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": false,
+      "projectOnboardingSeenCount": 1,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false,
+      "exampleFiles": [],
+      "lastCost": 0,
+      "lastAPIDuration": 0,
+      "lastAPIDurationWithoutRetries": 0,
+      "lastToolDuration": 0,
+      "lastDuration": 40707528,
+      "lastLinesAdded": 0,
+      "lastLinesRemoved": 0,
+      "lastTotalInputTokens": 0,
+      "lastTotalOutputTokens": 0,
+      "lastTotalCacheCreationInputTokens": 0,
+      "lastTotalCacheReadInputTokens": 0,
+      "lastTotalWebSearchRequests": 0,
+      "lastFpsAverage": 1.07,
+      "lastFpsLow1Pct": 39.84,
+      "lastModelUsage": {},
+      "lastSessionId": "d0bdb3d4-33f0-406b-8c5b-13dd48cfc3c2",
+      "lastSessionMetrics": {
+        "frame_duration_ms_count": 47,
+        "frame_duration_ms_min": 0.09083399999508401,
+        "frame_duration_ms_max": 25.10333300000002,
+        "frame_duration_ms_avg": 2.945533042552868,
+        "frame_duration_ms_p50": 2.1647400000001653,
+        "frame_duration_ms_p95": 7.16791599999922,
+        "frame_duration_ms_p99": 21.22347266000022
+      }
+    }
+  },
+  "lspRecommendationDisabled": true,
+  "showSpinnerTree": false,
+  "firstStartTime": "2026-02-27T05:43:03.354Z",
+  "opusProMigrationComplete": true,
+  "sonnet1m45MigrationComplete": true,
+  "cachedChromeExtensionInstalled": false,
+  "clientDataCache": {
+    "data": null,
+    "timestamp": 1772170983681
+  },
+  "changelogLastFetched": 1772171007906,
+  "lastReleaseNotesSeen": "2.1.62",
+  "officialMarketplaceAutoInstallAttempted": true,
+  "officialMarketplaceAutoInstalled": true,
+  "skillUsage": {
+    "sync": {
+      "usageCount": 1,
+      "lastUsedAt": 1772220813797
+    },
+    "auth": {
+      "usageCount": 1,
+      "lastUsedAt": 1776296810489
+    },
+    "ai-gateway": {
+      "usageCount": 1,
+      "lastUsedAt": 1776296864355
+    },
+    "routing-middleware": {
+      "usageCount": 1,
+      "lastUsedAt": 1776296884198
+    }
+  },
+  "githubRepoPaths": {
+    "navyapdh11/crm-portal": [
+      "/root"
+    ]
+  }
+}

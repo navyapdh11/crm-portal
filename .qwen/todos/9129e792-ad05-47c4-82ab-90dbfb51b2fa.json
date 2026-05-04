@@ -1,0 +1,80 @@
+{
+  "todos": [
+    {
+      "content": "CRITICAL: Fix drawdown circuit breaker never resetting (core/risk.py)",
+      "id": "1",
+      "status": "completed"
+    },
+    {
+      "content": "CRITICAL: Fix VaR confidence config being ignored (core/risk.py)",
+      "id": "2",
+      "status": "completed"
+    },
+    {
+      "content": "CRITICAL: Add timeout to yfinance download (data/fetcher.py)",
+      "id": "3",
+      "status": "completed"
+    },
+    {
+      "content": "CRITICAL: Fix backtest equity curve not in dollar terms (backtest.py)",
+      "id": "4",
+      "status": "completed"
+    },
+    {
+      "content": "HIGH: Add commission + slippage modeling to backtest",
+      "id": "5",
+      "status": "completed"
+    },
+    {
+      "content": "HIGH: Centralize version string to single __version__ constant",
+      "id": "6",
+      "status": "completed"
+    },
+    {
+      "content": "HIGH: Make MCTS regime shift probability configurable",
+      "id": "7",
+      "status": "completed"
+    },
+    {
+      "content": "HIGH: Fix overly restrictive duplicate position check (core/risk.py)",
+      "id": "8",
+      "status": "completed"
+    },
+    {
+      "content": "HIGH: Add per-source cache TTL configuration",
+      "id": "9",
+      "status": "completed"
+    },
+    {
+      "content": "MEDIUM: Compute eigenvalues periodically not every step (core/kalman.py)",
+      "id": "10",
+      "status": "completed"
+    },
+    {
+      "content": "MEDIUM: Add WebSocket streaming endpoint to api/app.py",
+      "id": "11",
+      "status": "pending"
+    },
+    {
+      "content": "MEDIUM: Add API rate limit response headers",
+      "id": "12",
+      "status": "completed"
+    },
+    {
+      "content": "MEDIUM: Add PortfolioManagerAgent for cross-pair capital allocation",
+      "id": "13",
+      "status": "pending"
+    },
+    {
+      "content": "MEDIUM: Add benchmark comparison to backtest",
+      "id": "14",
+      "status": "completed"
+    },
+    {
+      "content": "Update version to V10.0 across all files + commit + push + deploy",
+      "id": "15",
+      "status": "completed"
+    }
+  ],
+  "sessionId": "9129e792-ad05-47c4-82ab-90dbfb51b2fa"
+}

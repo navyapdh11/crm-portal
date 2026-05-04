@@ -1,0 +1,1091 @@
+Command: find /root/lumina-clean-v6 -not -path '*/node_modules/*' -not -path '*/.git/*' -type f -printf '%s %T+ %p\n' | sort -k3
+Directory: (root)
+Output: 1810 2026-04-07+23:01:30.9432875670 /root/lumina
+-clean-v6/app/429.tsx
+2347 2026-04-07+13:59:49.2503006520 /root/lumina
+-clean-v6/app/actions.ts
+6458 2026-04-07+23:52:06.6992864090 /root/lumina
+-clean-v6/app/admin-dashboard/LeadsList.tsx
+2354 2026-04-07+21:57:58.9719461080 /root/lumina
+-clean-v6/app/admin-dashboard/loading.tsx
+27947 2026-04-07+23:06:57.4512874420 /root/lumin
+a-clean-v6/app/admin-dashboard/page.tsx
+6214 2026-04-06+05:56:02.8190938530 /root/lumina
+-clean-v6/app/airbnb/page.tsx
+4309 2026-04-07+23:51:38.1392864200 /root/lumina
+-clean-v6/app/api/leads/route.ts
+842 2026-04-07+23:04:42.2392874940 /root/lumina-
+clean-v6/app/api/scraping/linkedin-strata/route.
+ts
+805 2026-04-06+03:27:46.4118348600 /root/lumina-
+clean-v6/app/api/tenders/ndis-bot/route.ts
+797 2026-04-07+23:10:33.6992873600 /root/lumina-
+clean-v6/app/api/trpc/[trpc]/route.ts
+978 2026-04-06+03:27:06.0438348750 /root/lumina-
+clean-v6/app/api/vision/ar-measure/route.ts
+3431 2026-04-07+23:03:21.6912875250 /root/lumina
+-clean-v6/app/api/voice/dispatch/route.ts
+3072 2026-04-07+22:59:57.2032876030 /root/lumina
+-clean-v6/app/api/webhooks/stripe/route.ts
+8789 2026-04-07+16:11:40.9155856500 /root/lumina
+-clean-v6/app/booking-confirmation/[jobId]/page.
+tsx
+7770 2026-04-07+23:10:48.4312873540 /root/lumina
+-clean-v6/app/book/page.tsx
+3624 2026-04-06+03:24:46.9558349280 /root/lumina
+-clean-v6/app/commercial/page.tsx
+13105 2026-04-07+16:09:12.7835857070 /root/lumin
+a-clean-v6/app/commercial/quote/page.tsx
+1069 2026-04-07+14:10:34.8045871230 /root/lumina
+-clean-v6/app/components/BookingButton.tsx
+13050 2026-04-07+23:09:39.5192873810 /root/lumin
+a-clean-v6/app/components/BookingForm.tsx
+32620 2026-04-07+23:07:45.5432874240 /root/lumin
+a-clean-v6/app/components/HomeClient.tsx
+2077 2026-04-07+21:57:30.2719461190 /root/lumina
+-clean-v6/app/components/Map.tsx
+1106 2026-04-07+15:34:16.8275865060 /root/lumina
+-clean-v6/app/components/Reveal.tsx
+1277 2026-04-07+23:08:44.7112874020 /root/lumina
+-clean-v6/app/components/ThemeProvider.tsx
+3917 2026-04-07+15:29:10.8435866230 /root/lumina
+-clean-v6/app/components/ToggleSwitch.tsx
+668 2026-04-06+10:01:17.5840410120 /root/lumina-
+clean-v6/app/emerald/error.tsx
+2122 2026-04-07+21:57:53.5359461100 /root/lumina
+-clean-v6/app/emerald/loading.tsx
+1945 2026-04-07+21:58:03.5199461060 /root/lumina
+-clean-v6/app/emerald/not-found.tsx
+914 2026-04-07+16:37:38.4763498420 /root/lumina-
+clean-v6/app/emerald/page.tsx
+436 2026-04-07+23:14:44.7552872640 /root/lumina-
+clean-v6/app/emerald/pricing/page.tsx
+13092 2026-04-07+23:16:56.4552872140 /root/lumin
+a-clean-v6/app/emerald/pricing/PricingClient.tsx
+468 2026-04-07+23:35:51.4272867810 /root/lumina-
+clean-v6/app/emerald/services/page.tsx
+12390 2026-04-07+23:40:14.5272866810 /root/lumin
+a-clean-v6/app/emerald/services/ServicesClient.t
+sx
+1381 2026-04-07+23:44:42.8392865780 /root/lumina
+-clean-v6/app/error.tsx
+11080 2026-04-07+23:05:01.3152874870 /root/lumin
+a-clean-v6/app/globals.css
+535 2026-04-07+16:28:28.9955852660 /root/lumina-
+clean-v6/app/icon.svg
+1954 2026-04-07+16:33:29.8635851510 /root/lumina
+-clean-v6/app/layout.tsx
+388 2026-04-07+13:59:31.9783006590 /root/lumina-
+clean-v6/app/lib/supabase.ts
+1357 2026-04-07+13:53:24.0175574760 /root/lumina
+-clean-v6/app/lib/validation.ts
+419 2026-04-07+23:44:51.4512865750 /root/lumina-
+clean-v6/app/loading.tsx
+13544 2026-04-07+16:10:00.3915856890 /root/lumin
+a-clean-v6/app/ndis/assessment/page.tsx
+3531 2026-04-06+03:25:04.6678349210 /root/lumina
+-clean-v6/app/ndis/page.tsx
+905 2026-04-07+16:28:20.3275852690 /root/lumina-
+clean-v6/app/not-found.tsx
+11011 2026-04-07+23:05:20.9992874790 /root/lumin
+a-clean-v6/app/page.tsx
+6568 2026-04-06+05:56:42.7750938380 /root/lumina
+-clean-v6/app/real-estate/page.tsx
+4942 2026-04-07+23:05:32.1272874750 /root/lumina
+-clean-v6/app/residential/ar-scanner/page.tsx
+3471 2026-04-07+23:06:58.4552874420 /root/lumina
+-clean-v6/app/residential/page.tsx
+308 2026-04-07+23:01:17.1112875720 /root/lumina-
+clean-v6/app/robots.ts
+516 2026-04-07+13:14:27.1169519870 /root/lumina-
+clean-v6/app/sign-in/[[...sign-in]]/page.tsx
+516 2026-04-07+13:14:34.7249519840 /root/lumina-
+clean-v6/app/sign-up/[[...sign-up]]/page.tsx
+1638 2026-04-07+23:01:17.1632875720 /root/lumina
+-clean-v6/app/sitemap.ts
+3471 2026-04-06+03:25:33.4918349100 /root/lumina
+-clean-v6/app/strata/page.tsx
+14442 2026-04-07+16:10:43.1635856720 /root/lumin
+a-clean-v6/app/strata/quote/page.tsx
+1772 2026-04-07+23:01:17.2152875720 /root/lumina
+-clean-v6/components/error-boundary.tsx
+4908 2026-04-07+23:04:48.2592874920 /root/lumina
+-clean-v6/components/navigation.tsx
+11463 2026-04-07+23:00:52.9832875820 /root/lumin
+a-clean-v6/components/pricing-calculator.tsx
+5090 2026-04-07+11:59:37.0037435570 /root/lumina
+-clean-v6/components/testimonials-section.tsx
+1604 2026-04-06+03:19:38.7078350460 /root/lumina
+-clean-v6/components/ui/button.tsx
+1825 2026-04-06+03:19:59.3758350380 /root/lumina
+-clean-v6/components/ui/tabs.tsx
+582 2026-04-06+03:20:32.9478350250 /root/lumina-
+clean-v6/components/ui/toaster.tsx
+2812 2026-04-06+03:20:17.6958350310 /root/lumina
+-clean-v6/components/ui/toast.tsx
+1160 2026-04-07+22:59:57.2712876030 /root/lumina
+-clean-v6/db/index.ts
+3976 2026-04-07+16:25:02.5915853450 /root/lumina
+-clean-v6/db/schema.ts
+4886 2026-04-07+12:21:06.3243359690 /root/lumina
+-clean-v6/DEPLOYMENT_CHECKLIST.md
+5681 2026-04-07+22:47:23.1192878900 /root/lumina
+-clean-v6/DEVELOPMENT_SUMMARY.md
+780 2026-04-06+03:17:41.8998350900 /root/lumina-
+clean-v6/.env.example
+919 2026-04-07+15:10:29.7835870510 /root/lumina-
+clean-v6/.env.local
+557 2026-04-07+13:59:58.5783006490 /root/lumina-
+clean-v6/.env.local.example
+427 2026-04-07+23:06:02.9512874630 /root/lumina-
+clean-v6/.gitignore
+3114 2026-04-07+23:05:51.9592874670 /root/lumina
+-clean-v6/lib/ai-agents/graph-rag.ts
+2303 2026-04-06+03:28:17.9118348480 /root/lumina
+-clean-v6/lib/ai-agents/rag-dispatch.ts
+5071 2026-04-07+23:51:17.8952864280 /root/lumina
+-clean-v6/lib/email.ts
+742 2026-04-06+03:20:25.1438350280 /root/lumina-
+clean-v6/lib/hooks/use-toast.ts
+2259 2026-04-07+22:59:57.3312876030 /root/lumina
+-clean-v6/lib/kafka.ts
+2873 2026-04-07+23:00:52.8392875820 /root/lumina
+-clean-v6/lib/pricing.ts
+1585 2026-04-07+22:59:36.0632876110 /root/lumina
+-clean-v6/lib/rate-limit.ts
+167 2026-04-07+12:14:17.6563361250 /root/lumina-
+clean-v6/lib/trpc/client.ts
+930 2026-04-06+03:18:56.4278350620 /root/lumina-
+clean-v6/lib/trpc/react.tsx
+5384 2026-04-07+23:08:44.5552874020 /root/lumina
+-clean-v6/lib/trpc/server.ts
+169 2026-04-06+03:19:23.6478350520 /root/lumina-
+clean-v6/lib/utils.ts
+3292 2026-04-07+22:59:35.7512876110 /root/lumina
+-clean-v6/middleware.ts
+14279 2026-04-07+23:49:36.7192864660 /root/lumin
+a-clean-v6/.next/app-build-manifest.json
+1343 2026-04-07+23:50:00.4232864570 /root/lumina
+-clean-v6/.next/app-path-routes-manifest.json
+21 2026-04-07+23:50:05.0192864550 /root/lumina-c
+lean-v6/.next/BUILD_ID
+996 2026-04-07+23:49:36.7232864660 /root/lumina-
+clean-v6/.next/build-manifest.json
+262 2026-04-07+23:43:07.1752866150 /root/lumina-
+clean-v6/.next/cache/.previewinfo
+102 2026-04-07+23:43:07.0632866150 /root/lumina-
+clean-v6/.next/cache/.rscinfo
+2862657 2026-04-07+23:49:51.9272864600 /root/lum
+ina-clean-v6/.next/cache/.tsbuildinfo
+43133139 2026-04-07+23:48:30.7072864910 /root/lu
+mina-clean-v6/.next/cache/webpack/client-product
+ion/0.pack
+94803986 2026-04-07+23:49:18.0392864730 /root/lu
+mina-clean-v6/.next/cache/webpack/client-product
+ion/1.pack
+13732824 2026-04-07+23:47:01.8872865250 /root/lu
+mina-clean-v6/.next/cache/webpack/client-product
+ion/2.pack
+4280 2026-04-07+23:49:18.0312864730 /root/lumina
+-clean-v6/.next/cache/webpack/client-production/
+3.pack
+37847 2026-04-07+23:48:30.7072864910 /root/lumin
+a-clean-v6/.next/cache/webpack/client-production
+/4.pack
+3846 2026-04-07+23:49:36.9352864660 /root/lumina
+-clean-v6/.next/cache/webpack/client-production/
+5.pack
+253510 2026-04-07+23:49:18.0312864730 /root/lumi
+na-clean-v6/.next/cache/webpack/client-productio
+n/6.pack
+20404 2026-04-07+23:49:36.9352864660 /root/lumin
+a-clean-v6/.next/cache/webpack/client-production
+/7.pack
+23375317 2026-04-07+23:49:36.9352864660 /root/lu
+mina-clean-v6/.next/cache/webpack/client-product
+ion/index.pack
+23374840 2026-04-07+23:49:18.0352864730 /root/lu
+mina-clean-v6/.next/cache/webpack/client-product
+ion/index.pack.old
+23854553 2026-04-07+23:43:50.0872865980 /root/lu
+mina-clean-v6/.next/cache/webpack/edge-server-pr
+oduction/0.pack
+2086105 2026-04-07+23:43:50.0832865980 /root/lum
+ina-clean-v6/.next/cache/webpack/edge-server-pro
+duction/index.pack
+133064585 2026-04-07+23:46:39.0192865340 /root/l
+umina-clean-v6/.next/cache/webpack/server-produc
+tion/0.pack
+46047393 2026-04-07+23:49:03.0832864790 /root/lu
+mina-clean-v6/.next/cache/webpack/server-product
+ion/1.pack
+38768235 2026-04-07+23:46:38.4432865340 /root/lu
+mina-clean-v6/.next/cache/webpack/server-product
+ion/2.pack
+10226 2026-04-07+23:48:20.3752864950 /root/lumin
+a-clean-v6/.next/cache/webpack/server-production
+/3.pack
+18975263 2026-04-07+23:49:22.6512864720 /root/lu
+mina-clean-v6/.next/cache/webpack/server-product
+ion/4.pack
+37698207 2026-04-07+23:49:22.6472864720 /root/lu
+mina-clean-v6/.next/cache/webpack/server-product
+ion/index.pack
+37698207 2026-04-07+23:49:03.0872864790 /root/lu
+mina-clean-v6/.next/cache/webpack/server-product
+ion/index.pack.old
+2400 2026-04-07+23:04:06.3832875080 /root/lumina
+-clean-v6/next.config.ts
+93 2026-04-07+23:50:06.8152864550 /root/lumina-c
+lean-v6/.next/diagnostics/build-diagnostics.json
+37 2026-04-07+23:49:05.9192864780 /root/lumina-c
+lean-v6/.next/diagnostics/framework.json
+262 2026-04-07+12:09:52.4401076380 /root/lumina-
+clean-v6/next-env.d.ts
+111 2026-04-07+23:50:16.7432864510 /root/lumina-
+clean-v6/.next/export-marker.json
+1772 2026-04-07+23:50:16.4712864510 /root/lumina
+-clean-v6/.next/images-manifest.json
+16418 2026-04-07+23:50:44.7912864400 /root/lumin
+a-clean-v6/.next/next-minimal-server.js.nft.json
+90100 2026-04-07+23:50:44.7912864400 /root/lumin
+a-clean-v6/.next/next-server.js.nft.json
+20 2026-04-07+23:49:05.9152864780 /root/lumina-c
+lean-v6/.next/package.json
+13410 2026-04-07+23:50:15.8832864510 /root/lumin
+a-clean-v6/.next/prerender-manifest.json
+1587 2026-04-07+23:49:17.6672864730 /root/lumina
+-clean-v6/.next/react-loadable-manifest.json
+9601 2026-04-07+23:50:05.0832864550 /root/lumina
+-clean-v6/.next/required-server-files.json
+6395 2026-04-07+23:50:15.5192864510 /root/lumina
+-clean-v6/.next/routes-manifest.json
+47641 2026-04-07+23:50:12.9832864520 /root/lumin
+a-clean-v6/.next/server/app/admin-dashboard.html
+205 2026-04-07+23:50:12.9832864520 /root/lumina-
+clean-v6/.next/server/app/admin-dashboard.meta
+16876 2026-04-07+23:49:36.7752864660 /root/lumin
+a-clean-v6/.next/server/app/admin-dashboard/page
+_client-reference-manifest.js
+44492 2026-04-07+23:49:22.3272864720 /root/lumin
+a-clean-v6/.next/server/app/admin-dashboard/page
+.js
+7523 2026-04-07+23:50:44.7512864400 /root/lumina
+-clean-v6/.next/server/app/admin-dashboard/page.
+js.nft.json
+9770 2026-04-07+23:50:12.9832864520 /root/lumina
+-clean-v6/.next/server/app/admin-dashboard.rsc
+29355 2026-04-07+23:50:12.9832864520 /root/lumin
+a-clean-v6/.next/server/app/airbnb.html
+178 2026-04-07+23:50:12.9832864520 /root/lumina-
+clean-v6/.next/server/app/airbnb.meta
+16795 2026-04-07+23:49:36.7792864660 /root/lumin
+a-clean-v6/.next/server/app/airbnb/page_client-r
+eference-manifest.js
+27045 2026-04-07+23:49:22.3432864720 /root/lumin
+a-clean-v6/.next/server/app/airbnb/page.js
+7546 2026-04-07+23:50:44.7512864400 /root/lumina
+-clean-v6/.next/server/app/airbnb/page.js.nft.js
+on
+6643 2026-04-07+23:50:12.9832864520 /root/lumina
+-clean-v6/.next/server/app/airbnb.rsc
+16649 2026-04-07+23:49:36.7752864660 /root/lumin
+a-clean-v6/.next/server/app/api/leads/route_clie
+nt-reference-manifest.js
+13239 2026-04-07+23:49:22.3232864720 /root/lumin
+a-clean-v6/.next/server/app/api/leads/route.js
+7604 2026-04-07+23:50:44.7512864400 /root/lumina
+-clean-v6/.next/server/app/api/leads/route.js.nf
+t.json
+16687 2026-04-07+23:49:36.7752864660 /root/lumin
+a-clean-v6/.next/server/app/api/scraping/linkedi
+n-strata/route_client-reference-manifest.js
+6882 2026-04-07+23:49:22.3232864720 /root/lumina
+-clean-v6/.next/server/app/api/scraping/linkedin
+-strata/route.js
+7712 2026-04-07+23:50:44.7512864400 /root/lumina
+-clean-v6/.next/server/app/api/scraping/linkedin
+-strata/route.js.nft.json
+16671 2026-04-07+23:49:36.7752864660 /root/lumin
+a-clean-v6/.next/server/app/api/tenders/ndis-bot
+/route_client-reference-manifest.js
+7122 2026-04-07+23:49:22.3232864720 /root/lumina
+-clean-v6/.next/server/app/api/tenders/ndis-bot/
+route.js
+7712 2026-04-07+23:50:44.7512864400 /root/lumina
+-clean-v6/.next/server/app/api/tenders/ndis-bot/
+route.js.nft.json
+16661 2026-04-07+23:49:36.7752864660 /root/lumin
+a-clean-v6/.next/server/app/api/trpc/[trpc]/rout
+e_client-reference-manifest.js
+87734 2026-04-07+23:49:22.3232864720 /root/lumin
+a-clean-v6/.next/server/app/api/trpc/[trpc]/rout
+e.js
+7856 2026-04-07+23:50:44.7512864400 /root/lumina
+-clean-v6/.next/server/app/api/trpc/[trpc]/route
+.js.nft.json
+16673 2026-04-07+23:49:36.7752864660 /root/lumin
+a-clean-v6/.next/server/app/api/vision/ar-measur
+e/route_client-reference-manifest.js
+7222 2026-04-07+23:49:22.3232864720 /root/lumina
+-clean-v6/.next/server/app/api/vision/ar-measure
+/route.js
+7741 2026-04-07+23:50:44.7512864400 /root/lumina
+-clean-v6/.next/server/app/api/vision/ar-measure
+/route.js.nft.json
+16667 2026-04-07+23:49:36.7752864660 /root/lumin
+a-clean-v6/.next/server/app/api/voice/dispatch/r
+oute_client-reference-manifest.js
+11286 2026-04-07+23:49:22.3232864720 /root/lumin
+a-clean-v6/.next/server/app/api/voice/dispatch/r
+oute.js
+7798 2026-04-07+23:50:44.7512864400 /root/lumina
+-clean-v6/.next/server/app/api/voice/dispatch/ro
+ute.js.nft.json
+16669 2026-04-07+23:49:36.7752864660 /root/lumin
+a-clean-v6/.next/server/app/api/webhooks/stripe/
+route_client-reference-manifest.js
+12322 2026-04-07+23:49:22.3232864720 /root/lumin
+a-clean-v6/.next/server/app/api/webhooks/stripe/
+route.js
+7768 2026-04-07+23:50:44.7512864400 /root/lumina
+-clean-v6/.next/server/app/api/webhooks/stripe/r
+oute.js.nft.json
+15379 2026-04-07+23:50:12.9832864520 /root/lumin
+a-clean-v6/.next/server/app/book.html
+16865 2026-04-07+23:49:36.7792864660 /root/lumin
+a-clean-v6/.next/server/app/booking-confirmation
+/[jobId]/page_client-reference-manifest.js
+27522 2026-04-07+23:49:22.3432864720 /root/lumin
+a-clean-v6/.next/server/app/booking-confirmation
+/[jobId]/page.js
+7711 2026-04-07+23:50:44.7512864400 /root/lumina
+-clean-v6/.next/server/app/booking-confirmation/
+[jobId]/page.js.nft.json
+172 2026-04-07+23:50:12.9832864520 /root/lumina-
+clean-v6/.next/server/app/book.meta
+16885 2026-04-07+23:49:36.8152864660 /root/lumin
+a-clean-v6/.next/server/app/book/page_client-ref
+erence-manifest.js
+27487 2026-04-07+23:49:22.3432864720 /root/lumin
+a-clean-v6/.next/server/app/book/page.js
+7546 2026-04-07+23:50:44.7512864400 /root/lumina
+-clean-v6/.next/server/app/book/page.js.nft.json
+6731 2026-04-07+23:50:12.9832864520 /root/lumina
+-clean-v6/.next/server/app/book.rsc
+22750 2026-04-07+23:50:12.9832864520 /root/lumin
+a-clean-v6/.next/server/app/commercial.html
+190 2026-04-07+23:50:12.9832864520 /root/lumina-
+clean-v6/.next/server/app/commercial.meta
+16807 2026-04-07+23:49:36.7792864660 /root/lumin
+a-clean-v6/.next/server/app/commercial/page_clie
+nt-reference-manifest.js
+25349 2026-04-07+23:49:22.3432864720 /root/lumin
+a-clean-v6/.next/server/app/commercial/page.js
+7546 2026-04-07+23:50:44.7512864400 /root/lumina
+-clean-v6/.next/server/app/commercial/page.js.nf
+t.json
+29220 2026-04-07+23:50:12.9832864520 /root/lumin
+a-clean-v6/.next/server/app/commercial/quote.htm
+l
+232 2026-04-07+23:50:12.9872864520 /root/lumina-
+clean-v6/.next/server/app/commercial/quote.meta
+17030 2026-04-07+23:49:36.7792864660 /root/lumin
+a-clean-v6/.next/server/app/commercial/quote/pag
+e_client-reference-manifest.js
+31772 2026-04-07+23:49:22.3432864720 /root/lumin
+a-clean-v6/.next/server/app/commercial/quote/pag
+e.js
+7711 2026-04-07+23:50:44.7512864400 /root/lumina
+-clean-v6/.next/server/app/commercial/quote/page
+.js.nft.json
+7071 2026-04-07+23:50:12.9832864520 /root/lumina
+-clean-v6/.next/server/app/commercial/quote.rsc
+6659 2026-04-07+23:50:12.9832864520 /root/lumina
+-clean-v6/.next/server/app/commercial.rsc
+67620 2026-04-07+23:50:13.0752864520 /root/lumin
+a-clean-v6/.next/server/app/emerald.html
+181 2026-04-07+23:50:13.0752864520 /root/lumina-
+clean-v6/.next/server/app/emerald.meta
+17161 2026-04-07+23:49:36.8272864660 /root/lumin
+a-clean-v6/.next/server/app/emerald/page_client-
+reference-manifest.js
+45896 2026-04-07+23:49:22.3432864720 /root/lumin
+a-clean-v6/.next/server/app/emerald/page.js
+7617 2026-04-07+23:50:44.7552864400 /root/lumina
+-clean-v6/.next/server/app/emerald/page.js.nft.j
+son
+46846 2026-04-07+23:50:13.0792864520 /root/lumin
+a-clean-v6/.next/server/app/emerald/pricing.html
+226 2026-04-07+23:50:13.0792864520 /root/lumina-
+clean-v6/.next/server/app/emerald/pricing.meta
+17484 2026-04-07+23:49:36.8272864660 /root/lumin
+a-clean-v6/.next/server/app/emerald/pricing/page
+_client-reference-manifest.js
+30874 2026-04-07+23:49:22.3432864720 /root/lumin
+a-clean-v6/.next/server/app/emerald/pricing/page
+.js
+7766 2026-04-07+23:50:44.7552864400 /root/lumina
+-clean-v6/.next/server/app/emerald/pricing/page.
+js.nft.json
+11932 2026-04-07+23:50:13.0792864520 /root/lumin
+a-clean-v6/.next/server/app/emerald/pricing.rsc
+11968 2026-04-07+23:50:13.0752864520 /root/lumin
+a-clean-v6/.next/server/app/emerald.rsc
+53483 2026-04-07+23:50:13.0752864520 /root/lumin
+a-clean-v6/.next/server/app/emerald/services.htm
+l
+229 2026-04-07+23:50:13.0752864520 /root/lumina-
+clean-v6/.next/server/app/emerald/services.meta
+17583 2026-04-07+23:49:36.8272864660 /root/lumin
+a-clean-v6/.next/server/app/emerald/services/pag
+e_client-reference-manifest.js
+27528 2026-04-07+23:49:22.3432864720 /root/lumin
+a-clean-v6/.next/server/app/emerald/services/pag
+e.js
+7791 2026-04-07+23:50:44.7552864400 /root/lumina
+-clean-v6/.next/server/app/emerald/services/page
+.js.nft.json
+12060 2026-04-07+23:50:13.0672864520 /root/lumin
+a-clean-v6/.next/server/app/emerald/services.rsc
+535 2026-04-07+23:50:13.0632864520 /root/lumina-
+clean-v6/.next/server/app/icon.svg.body
+218 2026-04-07+23:50:13.0632864520 /root/lumina-
+clean-v6/.next/server/app/icon.svg.meta
+7428 2026-04-07+23:49:22.3272864720 /root/lumina
+-clean-v6/.next/server/app/icon.svg/route.js
+7357 2026-04-07+23:50:44.7512864400 /root/lumina
+-clean-v6/.next/server/app/icon.svg/route.js.nft
+.json
+65244 2026-04-07+23:50:12.6552864520 /root/lumin
+a-clean-v6/.next/server/app/index.html
+145 2026-04-07+23:50:12.6552864520 /root/lumina-
+clean-v6/.next/server/app/index.meta
+6430 2026-04-07+23:50:12.6552864520 /root/lumina
+-clean-v6/.next/server/app/index.rsc
+30409 2026-04-07+23:50:12.6472864530 /root/lumin
+a-clean-v6/.next/server/app/ndis/assessment.html
+223 2026-04-07+23:50:12.6472864530 /root/lumina-
+clean-v6/.next/server/app/ndis/assessment.meta
+17015 2026-04-07+23:49:36.8272864660 /root/lumin
+a-clean-v6/.next/server/app/ndis/assessment/page
+_client-reference-manifest.js
+32247 2026-04-07+23:49:22.3512864720 /root/lumin
+a-clean-v6/.next/server/app/ndis/assessment/page
+.js
+7711 2026-04-07+23:50:44.7552864400 /root/lumina
+-clean-v6/.next/server/app/ndis/assessment/page.
+js.nft.json
+7067 2026-04-07+23:50:12.6472864530 /root/lumina
+-clean-v6/.next/server/app/ndis/assessment.rsc
+23066 2026-04-07+23:50:12.6472864530 /root/lumin
+a-clean-v6/.next/server/app/ndis.html
+172 2026-04-07+23:50:12.6512864520 /root/lumina-
+clean-v6/.next/server/app/ndis.meta
+16789 2026-04-07+23:49:36.8152864660 /root/lumin
+a-clean-v6/.next/server/app/ndis/page_client-ref
+erence-manifest.js
+23599 2026-04-07+23:49:22.3432864720 /root/lumin
+a-clean-v6/.next/server/app/ndis/page.js
+7546 2026-04-07+23:50:44.7512864400 /root/lumina
+-clean-v6/.next/server/app/ndis/page.js.nft.json
+6635 2026-04-07+23:50:12.6472864530 /root/lumina
+-clean-v6/.next/server/app/ndis.rsc
+12462 2026-04-07+23:50:13.0832864520 /root/lumin
+a-clean-v6/.next/server/app/_not-found.html
+207 2026-04-07+23:50:13.0832864520 /root/lumina-
+clean-v6/.next/server/app/_not-found.meta
+16649 2026-04-07+23:49:36.7752864660 /root/lumin
+a-clean-v6/.next/server/app/_not-found/page_clie
+nt-reference-manifest.js
+15369 2026-04-07+23:49:22.3232864720 /root/lumin
+a-clean-v6/.next/server/app/_not-found/page.js
+7523 2026-04-07+23:50:44.7512864400 /root/lumina
+-clean-v6/.next/server/app/_not-found/page.js.nf
+t.json
+7133 2026-04-07+23:50:13.0792864520 /root/lumina
+-clean-v6/.next/server/app/_not-found.rsc
+16591 2026-04-07+23:49:36.8192864660 /root/lumin
+a-clean-v6/.next/server/app/page_client-referenc
+e-manifest.js
+95457 2026-04-07+23:49:22.3432864720 /root/lumin
+a-clean-v6/.next/server/app/page.js
+7401 2026-04-07+23:50:44.7512864400 /root/lumina
+-clean-v6/.next/server/app/page.js.nft.json
+1682 2026-04-07+23:49:28.0912864690 /root/lumina
+-clean-v6/.next/server/app-paths-manifest.json
+29631 2026-04-07+23:50:12.6512864520 /root/lumin
+a-clean-v6/.next/server/app/real-estate.html
+193 2026-04-07+23:50:12.6552864520 /root/lumina-
+clean-v6/.next/server/app/real-estate.meta
+16810 2026-04-07+23:49:36.8192864660 /root/lumin
+a-clean-v6/.next/server/app/real-estate/page_cli
+ent-reference-manifest.js
+27073 2026-04-07+23:49:22.3432864720 /root/lumin
+a-clean-v6/.next/server/app/real-estate/page.js
+7546 2026-04-07+23:50:44.7512864400 /root/lumina
+-clean-v6/.next/server/app/real-estate/page.js.n
+ft.json
+6663 2026-04-07+23:50:12.6512864520 /root/lumina
+-clean-v6/.next/server/app/real-estate.rsc
+17153 2026-04-07+23:50:12.6552864520 /root/lumin
+a-clean-v6/.next/server/app/residential/ar-scann
+er.html
+251 2026-04-07+23:50:12.6552864520 /root/lumina-
+clean-v6/.next/server/app/residential/ar-scanner
+.meta
+17250 2026-04-07+23:49:36.8192864660 /root/lumin
+a-clean-v6/.next/server/app/residential/ar-scann
+er/page_client-reference-manifest.js
+24681 2026-04-07+23:49:22.3432864720 /root/lumin
+a-clean-v6/.next/server/app/residential/ar-scann
+er/page.js
+7737 2026-04-07+23:50:44.7512864400 /root/lumina
+-clean-v6/.next/server/app/residential/ar-scanne
+r/page.js.nft.json
+7295 2026-04-07+23:50:12.6552864520 /root/lumina
+-clean-v6/.next/server/app/residential/ar-scanne
+r.rsc
+22577 2026-04-07+23:50:12.6632864520 /root/lumin
+a-clean-v6/.next/server/app/residential.html
+193 2026-04-07+23:50:12.6632864520 /root/lumina-
+clean-v6/.next/server/app/residential.meta
+16810 2026-04-07+23:49:36.8192864660 /root/lumin
+a-clean-v6/.next/server/app/residential/page_cli
+ent-reference-manifest.js
+23691 2026-04-07+23:49:22.3432864720 /root/lumin
+a-clean-v6/.next/server/app/residential/page.js
+7546 2026-04-07+23:50:44.7512864400 /root/lumina
+-clean-v6/.next/server/app/residential/page.js.n
+ft.json
+6663 2026-04-07+23:50:12.6632864520 /root/lumina
+-clean-v6/.next/server/app/residential.rsc
+161 2026-04-07+23:50:12.9632864520 /root/lumina-
+clean-v6/.next/server/app/robots.txt.body
+206 2026-04-07+23:50:12.9632864520 /root/lumina-
+clean-v6/.next/server/app/robots.txt.meta
+16651 2026-04-07+23:49:36.7752864660 /root/lumin
+a-clean-v6/.next/server/app/robots.txt/route_cli
+ent-reference-manifest.js
+10982 2026-04-07+23:49:22.3232864720 /root/lumin
+a-clean-v6/.next/server/app/robots.txt/route.js
+7394 2026-04-07+23:50:44.7512864400 /root/lumina
+-clean-v6/.next/server/app/robots.txt/route.js.n
+ft.json
+17441 2026-04-07+23:49:36.8272864660 /root/lumin
+a-clean-v6/.next/server/app/sign-in/[[...sign-in
+]]/page_client-reference-manifest.js
+17824 2026-04-07+23:49:22.3512864720 /root/lumin
+a-clean-v6/.next/server/app/sign-in/[[...sign-in
+]]/page.js
+7948 2026-04-07+23:50:44.7552864400 /root/lumina
+-clean-v6/.next/server/app/sign-in/[[...sign-in]
+]/page.js.nft.json
+17441 2026-04-07+23:49:36.8272864660 /root/lumin
+a-clean-v6/.next/server/app/sign-up/[[...sign-up
+]]/page_client-reference-manifest.js
+17824 2026-04-07+23:49:22.3472864720 /root/lumin
+a-clean-v6/.next/server/app/sign-up/[[...sign-up
+]]/page.js
+7948 2026-04-07+23:50:44.7552864400 /root/lumina
+-clean-v6/.next/server/app/sign-up/[[...sign-up]
+]/page.js.nft.json
+1976 2026-04-07+23:50:12.4432864530 /root/lumina
+-clean-v6/.next/server/app/sitemap.xml.body
+214 2026-04-07+23:50:12.4432864530 /root/lumina-
+clean-v6/.next/server/app/sitemap.xml.meta
+16653 2026-04-07+23:49:36.7752864660 /root/lumin
+a-clean-v6/.next/server/app/sitemap.xml/route_cl
+ient-reference-manifest.js
+12147 2026-04-07+23:49:22.3272864720 /root/lumin
+a-clean-v6/.next/server/app/sitemap.xml/route.js
+7394 2026-04-07+23:50:44.7512864400 /root/lumina
+-clean-v6/.next/server/app/sitemap.xml/route.js.
+nft.json
+26545 2026-04-07+23:50:12.6632864520 /root/lumin
+a-clean-v6/.next/server/app/strata.html
+178 2026-04-07+23:50:12.6592864520 /root/lumina-
+clean-v6/.next/server/app/strata.meta
+16795 2026-04-07+23:49:36.8192864660 /root/lumin
+a-clean-v6/.next/server/app/strata/page_client-r
+eference-manifest.js
+23999 2026-04-07+23:49:22.3432864720 /root/lumin
+a-clean-v6/.next/server/app/strata/page.js
+7546 2026-04-07+23:50:44.7552864400 /root/lumina
+-clean-v6/.next/server/app/strata/page.js.nft.js
+on
+34177 2026-04-07+23:50:12.6632864520 /root/lumin
+a-clean-v6/.next/server/app/strata/quote.html
+216 2026-04-07+23:50:12.6632864520 /root/lumina-
+clean-v6/.next/server/app/strata/quote.meta
+17010 2026-04-07+23:49:36.8192864660 /root/lumin
+a-clean-v6/.next/server/app/strata/quote/page_cl
+ient-reference-manifest.js
+33527 2026-04-07+23:49:22.3432864720 /root/lumin
+a-clean-v6/.next/server/app/strata/quote/page.js
+7711 2026-04-07+23:50:44.7512864400 /root/lumina
+-clean-v6/.next/server/app/strata/quote/page.js.
+nft.json
+7055 2026-04-07+23:50:12.6672864520 /root/lumina
+-clean-v6/.next/server/app/strata/quote.rsc
+6643 2026-04-07+23:50:12.6592864520 /root/lumina
+-clean-v6/.next/server/app/strata.rsc
+6869 2026-04-07+23:49:22.3592864720 /root/lumina
+-clean-v6/.next/server/chunks/1476.js
+1044 2026-04-07+23:49:22.3472864720 /root/lumina
+-clean-v6/.next/server/chunks/1858.js
+458697 2026-04-07+23:49:22.3472864720 /root/lumi
+na-clean-v6/.next/server/chunks/217.js
+16739 2026-04-07+23:49:22.3592864720 /root/lumin
+a-clean-v6/.next/server/chunks/234.js
+746 2026-04-07+23:49:22.3472864720 /root/lumina-
+clean-v6/.next/server/chunks/2607.js
+60108 2026-04-07+23:49:22.3552864720 /root/lumin
+a-clean-v6/.next/server/chunks/2643.js
+16952 2026-04-07+23:49:22.3592864720 /root/lumin
+a-clean-v6/.next/server/chunks/379.js
+848492 2026-04-07+23:49:22.3552864720 /root/lumi
+na-clean-v6/.next/server/chunks/4263.js
+265668 2026-04-07+23:49:22.3592864720 /root/lumi
+na-clean-v6/.next/server/chunks/4421.js
+1900 2026-04-07+23:49:22.3472864720 /root/lumina
+-clean-v6/.next/server/chunks/4567.js
+144942 2026-04-07+23:49:22.3472864720 /root/lumi
+na-clean-v6/.next/server/chunks/4887.js
+908 2026-04-07+23:49:22.3472864720 /root/lumina-
+clean-v6/.next/server/chunks/4911.js
+69021 2026-04-07+23:49:22.3592864720 /root/lumin
+a-clean-v6/.next/server/chunks/5335.js
+123893 2026-04-07+23:49:22.3592864720 /root/lumi
+na-clean-v6/.next/server/chunks/642.js
+1474 2026-04-07+23:49:22.3472864720 /root/lumina
+-clean-v6/.next/server/chunks/6444.js
+113391 2026-04-07+23:49:22.3472864720 /root/lumi
+na-clean-v6/.next/server/chunks/6608.js
+276206 2026-04-07+23:49:22.3552864720 /root/lumi
+na-clean-v6/.next/server/chunks/6939.js
+1900 2026-04-07+23:49:22.3472864720 /root/lumina
+-clean-v6/.next/server/chunks/6948.js
+126922 2026-04-07+23:49:22.3552864720 /root/lumi
+na-clean-v6/.next/server/chunks/7363.js
+31307 2026-04-07+23:49:22.3512864720 /root/lumin
+a-clean-v6/.next/server/chunks/8207.js
+1496 2026-04-07+23:49:22.3472864720 /root/lumina
+-clean-v6/.next/server/chunks/8830.js
+326688 2026-04-07+23:49:22.3592864720 /root/lumi
+na-clean-v6/.next/server/chunks/909.js
+198027 2026-04-07+23:49:22.3552864720 /root/lumi
+na-clean-v6/.next/server/chunks/986.js
+11096 2026-04-07+23:49:22.3592864720 /root/lumin
+a-clean-v6/.next/server/chunks/999.js
+1504 2026-04-07+23:49:07.6232864770 /root/lumina
+-clean-v6/.next/server/edge-runtime-webpack.js
+6132 2026-04-07+23:49:07.6232864770 /root/lumina
+-clean-v6/.next/server/edge-runtime-webpack.js.m
+ap
+37 2026-04-07+23:50:04.9112864550 /root/lumina-c
+lean-v6/.next/server/functions-config-manifest.j
+son
+48 2026-04-07+23:49:07.6232864770 /root/lumina-c
+lean-v6/.next/server/interception-route-rewrite-
+manifest.js
+922 2026-04-07+23:49:17.6952864730 /root/lumina-
+clean-v6/.next/server/middleware-build-manifest.
+js
+280688 2026-04-07+23:49:07.6232864770 /root/lumi
+na-clean-v6/.next/server/middleware.js
+1010174 2026-04-07+23:49:07.6232864770 /root/lum
+ina-clean-v6/.next/server/middleware.js.map
+1092 2026-04-07+23:49:28.1232864690 /root/lumina
+-clean-v6/.next/server/middleware-manifest.json
+1444 2026-04-07+23:49:17.6872864730 /root/lumina
+-clean-v6/.next/server/middleware-react-loadable
+-manifest.js
+225 2026-04-07+23:49:17.6952864730 /root/lumina-
+clean-v6/.next/server/next-font-manifest.js
+196 2026-04-07+23:49:17.6952864730 /root/lumina-
+clean-v6/.next/server/next-font-manifest.json
+12462 2026-04-07+23:50:13.6872864520 /root/lumin
+a-clean-v6/.next/server/pages/404.html
+2007 2026-04-07+23:50:12.4432864530 /root/lumina
+-clean-v6/.next/server/pages/500.html
+3363 2026-04-07+23:49:22.3272864720 /root/lumina
+-clean-v6/.next/server/pages/_app.js
+838 2026-04-07+23:50:44.7512864400 /root/lumina-
+clean-v6/.next/server/pages/_app.js.nft.json
+427 2026-04-07+23:49:22.3272864720 /root/lumina-
+clean-v6/.next/server/pages/_document.js
+8118 2026-04-07+23:50:44.7512864400 /root/lumina
+-clean-v6/.next/server/pages/_document.js.nft.js
+on
+73164 2026-04-07+23:49:22.3272864720 /root/lumin
+a-clean-v6/.next/server/pages/_error.js
+8116 2026-04-07+23:50:44.7512864400 /root/lumina
+-clean-v6/.next/server/pages/_error.js.nft.json
+128 2026-04-07+23:50:15.2232864520 /root/lumina-
+clean-v6/.next/server/pages-manifest.json
+4241 2026-04-07+23:49:22.4352864720 /root/lumina
+-clean-v6/.next/server/server-reference-manifest
+.js
+3936 2026-04-07+23:49:22.4352864720 /root/lumina
+-clean-v6/.next/server/server-reference-manifest
+.json
+1483 2026-04-07+23:49:22.3512864720 /root/lumina
+-clean-v6/.next/server/webpack-runtime.js
+689122 2026-04-07+23:49:17.7632864730 /root/lumi
+na-clean-v6/.next/static/chunks/198f8915-700fcbb
+d30acaab5.js
+12524 2026-04-07+23:49:17.7752864730 /root/lumin
+a-clean-v6/.next/static/chunks/2604-4f27faa3c0f6
+1405.js
+54862 2026-04-07+23:49:17.7752864730 /root/lumin
+a-clean-v6/.next/static/chunks/2775-dc6e16302057
+e76e.js
+109723 2026-04-07+23:49:17.7632864730 /root/lumi
+na-clean-v6/.next/static/chunks/2ef6b231-4ef766d
+dd84a2b37.js
+17618 2026-04-07+23:49:17.7752864730 /root/lumin
+a-clean-v6/.next/static/chunks/4305-c71aae0cc377
+f097.js
+57486 2026-04-07+23:49:17.7752864730 /root/lumin
+a-clean-v6/.next/static/chunks/5665-bd8078776fde
+41e0.js
+114584 2026-04-07+23:49:17.7712864730 /root/lumi
+na-clean-v6/.next/static/chunks/5714-1e2545b5b1e
+03905.js
+173020 2026-04-07+23:49:17.7632864730 /root/lumi
+na-clean-v6/.next/static/chunks/5ebec514-530d3cf
+2c2aeb254.js
+1559 2026-04-07+23:49:17.7632864730 /root/lumina
+-clean-v6/.next/static/chunks/6184.3c5e8d36a47e1
+f5a.js
+8535 2026-04-07+23:49:17.7712864730 /root/lumina
+-clean-v6/.next/static/chunks/6404-0148f37980fae
+18b.js
+84527 2026-04-07+23:49:17.7752864730 /root/lumin
+a-clean-v6/.next/static/chunks/6523-68f9c464981c
+1950.js
+20071 2026-04-07+23:49:17.7752864730 /root/lumin
+a-clean-v6/.next/static/chunks/7199-15208179a33d
+c35f.js
+900 2026-04-07+23:49:17.7512864730 /root/lumina-
+clean-v6/.next/static/chunks/7235.4d60c48c75d534
+57.js
+756 2026-04-07+23:49:17.7592864730 /root/lumina-
+clean-v6/.next/static/chunks/7257.58fb2acdeef584
+66.js
+53032 2026-04-07+23:49:17.7632864730 /root/lumin
+a-clean-v6/.next/static/chunks/73b44d3b-cce043ef
+bb6bef3f.js
+12606 2026-04-07+23:49:17.7712864730 /root/lumin
+a-clean-v6/.next/static/chunks/8124-5e810aa62d16
+3f93.js
+16709 2026-04-07+23:49:17.7752864730 /root/lumin
+a-clean-v6/.next/static/chunks/844-8f4575692c434
+44a.js
+252227 2026-04-07+23:49:17.7712864730 /root/lumi
+na-clean-v6/.next/static/chunks/8480-93821c1d928
+5bbea.js
+136091 2026-04-07+23:49:17.7752864730 /root/lumi
+na-clean-v6/.next/static/chunks/856-e2eac0f5dc2d
+cc91.js
+171720 2026-04-07+23:49:17.7792864730 /root/lumi
+na-clean-v6/.next/static/chunks/9782-cc5f6bef1fd
+9ca2c.js
+194 2026-04-07+23:49:17.7312864730 /root/lumina-
+clean-v6/.next/static/chunks/app/admin-dashboard
+/loading-848a2fcacf478943.js
+28345 2026-04-07+23:49:17.7352864730 /root/lumin
+a-clean-v6/.next/static/chunks/app/admin-dashboa
+rd/page-9759e481195de86e.js
+11119 2026-04-07+23:49:17.7112864730 /root/lumin
+a-clean-v6/.next/static/chunks/app/airbnb/page-3
+478b9e0ff92088b.js
+194 2026-04-07+23:49:17.7032864730 /root/lumina-
+clean-v6/.next/static/chunks/app/api/leads/route
+-848a2fcacf478943.js
+194 2026-04-07+23:49:17.7032864730 /root/lumina-
+clean-v6/.next/static/chunks/app/api/scraping/li
+nkedin-strata/route-848a2fcacf478943.js
+194 2026-04-07+23:49:17.7072864730 /root/lumina-
+clean-v6/.next/static/chunks/app/api/tenders/ndi
+s-bot/route-848a2fcacf478943.js
+194 2026-04-07+23:49:17.7152864730 /root/lumina-
+clean-v6/.next/static/chunks/app/api/trpc/[trpc]
+/route-848a2fcacf478943.js
+194 2026-04-07+23:49:17.7112864730 /root/lumina-
+clean-v6/.next/static/chunks/app/api/vision/ar-m
+easure/route-848a2fcacf478943.js
+194 2026-04-07+23:49:17.7152864730 /root/lumina-
+clean-v6/.next/static/chunks/app/api/voice/dispa
+tch/route-848a2fcacf478943.js
+194 2026-04-07+23:49:17.7112864730 /root/lumina-
+clean-v6/.next/static/chunks/app/api/webhooks/st
+ripe/route-848a2fcacf478943.js
+11509 2026-04-07+23:49:17.7232864730 /root/lumin
+a-clean-v6/.next/static/chunks/app/booking-confi
+rmation/[jobId]/page-7111af99c33f18c2.js
+12258 2026-04-07+23:49:17.7152864730 /root/lumin
+a-clean-v6/.next/static/chunks/app/book/page-532
+93ebfe581b5fd.js
+9395 2026-04-07+23:49:17.7152864730 /root/lumina
+-clean-v6/.next/static/chunks/app/commercial/pag
+e-bbeb756a26766f4b.js
+15758 2026-04-07+23:49:17.7232864730 /root/lumin
+a-clean-v6/.next/static/chunks/app/commercial/qu
+ote/page-d75ab0352766ab8f.js
+784 2026-04-07+23:49:17.7352864730 /root/lumina-
+clean-v6/.next/static/chunks/app/emerald/error-1
+33d2690b5cf434a.js
+194 2026-04-07+23:49:17.7352864730 /root/lumina-
+clean-v6/.next/static/chunks/app/emerald/loading
+-848a2fcacf478943.js
+192 2026-04-07+23:49:17.7352864730 /root/lumina-
+clean-v6/.next/static/chunks/app/emerald/not-fou
+nd-ee8bad349cfefba6.js
+31074 2026-04-07+23:49:17.7472864730 /root/lumin
+a-clean-v6/.next/static/chunks/app/emerald/page-
+94cc6a5ddeafa0d5.js
+14183 2026-04-07+23:49:17.7512864730 /root/lumin
+a-clean-v6/.next/static/chunks/app/emerald/prici
+ng/page-110434fbd8afe5e5.js
+10985 2026-04-07+23:49:17.7512864730 /root/lumin
+a-clean-v6/.next/static/chunks/app/emerald/servi
+ces/page-882719ceb1941e6e.js
+1409 2026-04-07+23:49:17.7112864730 /root/lumina
+-clean-v6/.next/static/chunks/app/error-b3df528e
+28f83207.js
+3893 2026-04-07+23:49:17.7112864730 /root/lumina
+-clean-v6/.next/static/chunks/app/layout-9309b7a
+abbf96e9f.js
+194 2026-04-07+23:49:17.7112864730 /root/lumina-
+clean-v6/.next/static/chunks/app/loading-848a2fc
+acf478943.js
+16244 2026-04-07+23:49:17.7312864730 /root/lumin
+a-clean-v6/.next/static/chunks/app/ndis/assessme
+nt/page-d9620acbf3d74d2d.js
+7699 2026-04-07+23:49:17.7232864730 /root/lumina
+-clean-v6/.next/static/chunks/app/ndis/page-6dad
+aa484056a452.js
+192 2026-04-07+23:49:17.7112864730 /root/lumina-
+clean-v6/.next/static/chunks/app/not-found-ee8ba
+d349cfefba6.js
+194 2026-04-07+23:49:17.6992864730 /root/lumina-
+clean-v6/.next/static/chunks/app/_not-found/page
+-848a2fcacf478943.js
+24800 2026-04-07+23:49:17.7232864730 /root/lumin
+a-clean-v6/.next/static/chunks/app/page-fcfd472e
+f949e408.js
+11112 2026-04-07+23:49:17.7272864730 /root/lumin
+a-clean-v6/.next/static/chunks/app/real-estate/p
+age-2c3f72385037a0d0.js
+9036 2026-04-07+23:49:17.7312864730 /root/lumina
+-clean-v6/.next/static/chunks/app/residential/ar
+-scanner/page-e3ee78c01f727e63.js
+7734 2026-04-07+23:49:17.7232864730 /root/lumina
+-clean-v6/.next/static/chunks/app/residential/pa
+ge-05f270f683743fb6.js
+194 2026-04-07+23:49:17.7072864730 /root/lumina-
+clean-v6/.next/static/chunks/app/robots.txt/rout
+e-848a2fcacf478943.js
+792 2026-04-07+23:49:17.7632864730 /root/lumina-
+clean-v6/.next/static/chunks/app/sign-in/[[...si
+gn-in]]/page-4831a1a8fb725891.js
+792 2026-04-07+23:49:17.7632864730 /root/lumina-
+clean-v6/.next/static/chunks/app/sign-up/[[...si
+gn-up]]/page-4831a1a8fb725891.js
+194 2026-04-07+23:49:17.7072864730 /root/lumina-
+clean-v6/.next/static/chunks/app/sitemap.xml/rou
+te-848a2fcacf478943.js
+8081 2026-04-07+23:49:17.7272864730 /root/lumina
+-clean-v6/.next/static/chunks/app/strata/page-d5
+22beb1d0efcb15.js
+17550 2026-04-07+23:49:17.7272864730 /root/lumin
+a-clean-v6/.next/static/chunks/app/strata/quote/
+page-561be2fac793ea6e.js
+148504 2026-04-07+23:49:17.7712864730 /root/lumi
+na-clean-v6/.next/static/chunks/ed48eaa7.db4755b
+9d3ec75c1.js
+181560 2026-04-07+23:49:17.7632864730 /root/lumi
+na-clean-v6/.next/static/chunks/framework-0f4b7d
+ebb5ed1043.js
+127818 2026-04-07+23:49:17.6952864730 /root/lumi
+na-clean-v6/.next/static/chunks/main-0e28c9e2cf5
+a6ea3.js
+558 2026-04-07+23:49:17.6952864730 /root/lumina-
+clean-v6/.next/static/chunks/main-app-0f64201d61
+9447df.js
+238 2026-04-07+23:49:17.6952864730 /root/lumina-
+clean-v6/.next/static/chunks/pages/_app-84c11299
+82f92566.js
+221 2026-04-07+23:49:17.6952864730 /root/lumina-
+clean-v6/.next/static/chunks/pages/_error-796c9b
+26557c989d.js
+112594 2026-04-07+23:49:17.6792864730 /root/lumi
+na-clean-v6/.next/static/chunks/polyfills-42372e
+d130431b0a.js
+3587 2026-04-07+23:49:17.7512864730 /root/lumina
+-clean-v6/.next/static/chunks/webpack-1bda1ce51f
+29d2fa.js
+62216 2026-04-07+23:49:17.7632864730 /root/lumin
+a-clean-v6/.next/static/css/ad8f6e4e68af467d.css
+19044 2026-04-07+23:49:17.6792864730 /root/lumin
+a-clean-v6/.next/static/media/19cfc7226ec3afaa-s
+.woff2
+18744 2026-04-07+23:49:17.6792864730 /root/lumin
+a-clean-v6/.next/static/media/21350d82a1f187e9-s
+.woff2
+2592 2026-04-07+23:49:17.6792864730 /root/lumina
+-clean-v6/.next/static/media/438aa629764e75f3-s.
+woff2
+24576 2026-04-07+23:49:17.6792864730 /root/lumin
+a-clean-v6/.next/static/media/4c9affa5bc8f420e-s
+.p.woff2
+9360 2026-04-07+23:49:17.6792864730 /root/lumina
+-clean-v6/.next/static/media/51251f8b9793cdb3-s.
+woff2
+14544 2026-04-07+23:49:17.6792864730 /root/lumin
+a-clean-v6/.next/static/media/875ae681bfde4580-s
+.woff2
+85272 2026-04-07+23:49:17.6792864730 /root/lumin
+a-clean-v6/.next/static/media/8e9860b6e62d6359-s
+.woff2
+25844 2026-04-07+23:49:17.6792864730 /root/lumin
+a-clean-v6/.next/static/media/ba9851c3c22cd980-s
+.woff2
+11272 2026-04-07+23:49:17.6792864730 /root/lumin
+a-clean-v6/.next/static/media/c5fe6dc8356a8c31-s
+.woff2
+15240 2026-04-07+23:49:17.6792864730 /root/lumin
+a-clean-v6/.next/static/media/cc978ac5ee68c2b6-s
+.woff2
+10280 2026-04-07+23:49:17.6792864730 /root/lumin
+a-clean-v6/.next/static/media/df0a9ae256c0569c-s
+.woff2
+48432 2026-04-07+23:49:17.6792864730 /root/lumin
+a-clean-v6/.next/static/media/e4af272ccee01ff0-s
+.p.woff2
+8492 2026-04-07+23:49:17.6792864730 /root/lumina
+-clean-v6/.next/static/media/e857b654a2caa584-s.
+woff2
+1585 2026-04-07+23:49:36.7112864660 /root/lumina
+-clean-v6/.next/static/Nd2DXpeu6XLLXpGz4Bo-S/_bu
+ildManifest.js
+80 2026-04-07+23:50:16.2072864510 /root/lumina-c
+lean-v6/.next/static/Nd2DXpeu6XLLXpGz4Bo-S/_ssgM
+anifest.js
+1585 2026-04-07+23:49:17.6952864730 /root/lumina
+-clean-v6/.next/static/SjrecNDBrC40E-sRoJGNR/_bu
+ildManifest.js
+80 2026-04-07+23:49:58.1792864580 /root/lumina-c
+lean-v6/.next/static/SjrecNDBrC40E-sRoJGNR/_ssgM
+anifest.js
+97353 2026-04-07+23:50:44.8232864400 /root/lumin
+a-clean-v6/.next/trace
+3731 2026-04-07+23:49:22.4152864720 /root/lumina
+-clean-v6/.next/types/app/admin-dashboard/page.t
+s
+3704 2026-04-07+23:49:22.4152864720 /root/lumina
+-clean-v6/.next/types/app/airbnb/page.ts
+8709 2026-04-07+23:49:22.4192864720 /root/lumina
+-clean-v6/.next/types/app/api/leads/route.ts
+8772 2026-04-07+23:49:22.4192864720 /root/lumina
+-clean-v6/.next/types/app/api/scraping/linkedin-
+strata/route.ts
+8748 2026-04-07+23:49:22.4192864720 /root/lumina
+-clean-v6/.next/types/app/api/tenders/ndis-bot/r
+oute.ts
+8733 2026-04-07+23:49:22.4192864720 /root/lumina
+-clean-v6/.next/types/app/api/trpc/[trpc]/route.
+ts
+8751 2026-04-07+23:49:22.4192864720 /root/lumina
+-clean-v6/.next/types/app/api/vision/ar-measure/
+route.ts
+8742 2026-04-07+23:49:22.4192864720 /root/lumina
+-clean-v6/.next/types/app/api/voice/dispatch/rou
+te.ts
+8745 2026-04-07+23:49:22.4192864720 /root/lumina
+-clean-v6/.next/types/app/api/webhooks/stripe/ro
+ute.ts
+3776 2026-04-07+23:49:22.4152864720 /root/lumina
+-clean-v6/.next/types/app/booking-confirmation/[
+jobId]/page.ts
+3698 2026-04-07+23:49:22.4152864720 /root/lumina
+-clean-v6/.next/types/app/book/page.ts
+3716 2026-04-07+23:49:22.4152864720 /root/lumina
+-clean-v6/.next/types/app/commercial/page.ts
+3740 2026-04-07+23:49:22.4152864720 /root/lumina
+-clean-v6/.next/types/app/commercial/quote/page.
+ts
+3707 2026-04-07+23:49:22.4272864720 /root/lumina
+-clean-v6/.next/types/app/emerald/page.ts
+3737 2026-04-07+23:49:22.4312864720 /root/lumina
+-clean-v6/.next/types/app/emerald/pricing/page.t
+s
+3740 2026-04-07+23:49:22.4272864720 /root/lumina
+-clean-v6/.next/types/app/emerald/services/page.
+ts
+3737 2026-04-07+23:49:22.4272864720 /root/lumina
+-clean-v6/.next/types/app/ndis/assessment/page.t
+s
+3698 2026-04-07+23:49:22.4152864720 /root/lumina
+-clean-v6/.next/types/app/ndis/page.ts
+3677 2026-04-07+23:49:22.4192864720 /root/lumina
+-clean-v6/.next/types/app/page.ts
+3719 2026-04-07+23:49:22.4232864720 /root/lumina
+-clean-v6/.next/types/app/real-estate/page.ts
+3758 2026-04-07+23:49:22.4272864720 /root/lumina
+-clean-v6/.next/types/app/residential/ar-scanner
+/page.ts
+3719 2026-04-07+23:49:22.4232864720 /root/lumina
+-clean-v6/.next/types/app/residential/page.ts
+3758 2026-04-07+23:49:22.4312864720 /root/lumina
+-clean-v6/.next/types/app/sign-in/[[...sign-in]]
+/page.ts
+3758 2026-04-07+23:49:22.4312864720 /root/lumina
+-clean-v6/.next/types/app/sign-up/[[...sign-up]]
+/page.ts
+3704 2026-04-07+23:49:22.4272864720 /root/lumina
+-clean-v6/.next/types/app/strata/page.ts
+3728 2026-04-07+23:49:22.4312864720 /root/lumina
+-clean-v6/.next/types/app/strata/quote/page.ts
+5863 2026-04-07+23:49:07.6272864770 /root/lumina
+-clean-v6/.next/types/cache-life.d.ts
+18 2026-04-07+23:49:07.6272864770 /root/lumina-c
+lean-v6/.next/types/package.json
+3131 2026-04-07+23:49:05.9072864780 /root/lumina
+-clean-v6/.next/types/routes.d.ts
+7498 2026-04-07+23:49:05.9112864780 /root/lumina
+-clean-v6/.next/types/validator.ts
+58 2026-04-07+23:34:15.1352868180 /root/lumina-c
+lean-v6/.npmrc
+2043 2026-04-07+23:05:24.3712874780 /root/lumina
+-clean-v6/package.json
+252721 2026-04-07+14:51:28.5475874860 /root/lumi
+na-clean-v6/pnpm-lock.yaml
+156 2026-04-06+03:17:29.4398350950 /root/lumina-
+clean-v6/postcss.config.mjs
+7687 2026-04-07+12:20:26.0363359850 /root/lumina
+-clean-v6/README.md
+588 2026-04-06+03:28:36.3518348410 /root/lumina-
+clean-v6/scripts/deploy-v6.sh
+1858 2026-04-07+14:00:07.7623006450 /root/lumina
+-clean-v6/supabase/schema.sql
+2586 2026-04-06+09:59:00.5440410650 /root/lumina
+-clean-v6/tailwind.config.ts
+592 2026-04-06+03:17:12.1798351020 /root/lumina-
+clean-v6/tsconfig.json
+2759662 2026-04-07+23:37:59.6472867320 /root/lum
+ina-clean-v6/tsconfig.tsbuildinfo
+1213 2026-04-07+23:33:23.4152868370 /root/lumina
+-clean-v6/.vercel/.env.development.local
+140 2026-04-07+23:34:11.3312868190 /root/lumina-
+clean-v6/vercel.json
+120 2026-04-07+23:50:56.9192864360 /root/lumina-
+clean-v6/.vercel/project.json
+520 2026-04-07+23:50:56.9272864360 /root/lumina-
+clean-v6/.vercel/README.txt
+Error: (none)
+Exit Code: 0
+Signal: 0
+Process Group PGID: 16371

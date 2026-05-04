@@ -1,0 +1,85 @@
+{
+  "todos": [
+    {
+      "content": "Research Perth-based cleaning services best practices",
+      "id": "1",
+      "status": "completed"
+    },
+    {
+      "content": "Rebrand entire site for Perth, Australia (6007) cleaning company",
+      "id": "2",
+      "status": "in_progress"
+    },
+    {
+      "content": "Update Hero section with Perth-specific content",
+      "id": "3",
+      "status": "pending"
+    },
+    {
+      "content": "Redesign Services section with enterprise-grade cleaning services",
+      "id": "4",
+      "status": "pending"
+    },
+    {
+      "content": "Add Perth suburb coverage (WA focus)",
+      "id": "5",
+      "status": "pending"
+    },
+    {
+      "content": "Add Before/After gallery feature",
+      "id": "6",
+      "status": "pending"
+    },
+    {
+      "content": "Add instant quote calculator",
+      "id": "7",
+      "status": "pending"
+    },
+    {
+      "content": "Add team/staff section with trust badges",
+      "id": "8",
+      "status": "pending"
+    },
+    {
+      "content": "Add service area map with Perth suburbs",
+      "id": "9",
+      "status": "pending"
+    },
+    {
+      "content": "Add FAQ section",
+      "id": "10",
+      "status": "pending"
+    },
+    {
+      "content": "Add testimonials carousel",
+      "id": "11",
+      "status": "pending"
+    },
+    {
+      "content": "Add WhatsApp/phone floating CTA",
+      "id": "12",
+      "status": "pending"
+    },
+    {
+      "content": "Add trust certifications (police check, insurance, eco-friendly)",
+      "id": "13",
+      "status": "pending"
+    },
+    {
+      "content": "Redesign dashboard for Perth coverage management",
+      "id": "14",
+      "status": "pending"
+    },
+    {
+      "content": "Update all navigation and footer",
+      "id": "15",
+      "status": "pending"
+    },
+    {
+      "content": "Build and deploy to Vercel",
+      "id": "16",
+      "status": "pending"
+    }
+  ],
+  "sessionId": "6aa0b876-423d-47c4-96ae-ed60b4cb7960"
+}

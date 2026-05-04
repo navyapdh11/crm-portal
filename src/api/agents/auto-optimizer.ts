@@ -18,12 +18,12 @@ export class AutoOptimizer extends AgentRunner {
   }
 
   async execute(context: AgentContext): Promise<AgentResult> {
-    const { event, metrics } = context as { event: string; metrics: Record<string, any> };
+    const { event, metrics } = context as unknown as { event: string; metrics: Record<string, any> };
     
     console.log(`[Optimizer] Received signal '${event}'. Analyzing metrics for optimization...`);
 
     // Logic: If latency is high, suggest switching to SSM or optimizing routes
-    if (metrics.latency > 1000) {
+    if (metrics && metrics.latency > 1000) {
       await this.triggerOptimization("switch_to_ssm_tier");
     }
 

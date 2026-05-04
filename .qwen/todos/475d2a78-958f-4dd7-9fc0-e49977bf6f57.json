@@ -1,0 +1,50 @@
+{
+  "todos": [
+    {
+      "content": "Fix CRITICAL: airbnb/page.tsx metadata + use client conflict",
+      "id": "1",
+      "status": "in_progress"
+    },
+    {
+      "content": "Fix CRITICAL: real-estate/page.tsx invalid identifier",
+      "id": "2",
+      "status": "pending"
+    },
+    {
+      "content": "Fix CRITICAL: app/429.tsx metadata + framer-motion conflict",
+      "id": "3",
+      "status": "pending"
+    },
+    {
+      "content": "Fix HIGH: LeadsList.tsx implicit any types",
+      "id": "4",
+      "status": "pending"
+    },
+    {
+      "content": "Fix HIGH: db null check in /api/leads",
+      "id": "5",
+      "status": "pending"
+    },
+    {
+      "content": "Fix HIGH: BookingForm dual useActionState",
+      "id": "6",
+      "status": "pending"
+    },
+    {
+      "content": "Fix MEDIUM: Leaflet CSS missing, pricing keys, CSP, tRPC URL",
+      "id": "7",
+      "status": "pending"
+    },
+    {
+      "content": "Fix LOW: emoji a11y, price from client, robots URL, Map icons",
+      "id": "8",
+      "status": "pending"
+    },
+    {
+      "content": "Build, typecheck, commit, push, deploy",
+      "id": "9",
+      "status": "pending"
+    }
+  ],
+  "sessionId": "475d2a78-958f-4dd7-9fc0-e49977bf6f57"
+}

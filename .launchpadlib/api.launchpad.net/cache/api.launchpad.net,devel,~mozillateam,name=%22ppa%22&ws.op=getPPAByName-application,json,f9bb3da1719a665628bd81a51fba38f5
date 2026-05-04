@@ -1,0 +1,22 @@
+status: 200
+date: Thu, 18 Dec 2025 23:33:53 GMT
+server: gunicorn
+x-powered-by: Zope (www.zope.org), Python (www.python.org)
+content-security-policy: frame-ancestors 'self';
+content-type: application/json
+strict-transport-security: max-age=15552000
+vary: Accept,Accept-Encoding
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+x-launchpad-revision: 99c00f518760bdd50fc6e353e7736d2fff8fba4a
+x-lazr-notifications: []
+x-xss-protection: 1; mode=block
+x-vcs-revision: 99c00f518760bdd50fc6e353e7736d2fff8fba4a
+x-request-id: 2cea0ade-94e6-464b-a00e-913cd88b535c
+content-length: 1635
+-content-encoding: gzip
+content-location: https://api.launchpad.net/devel/~mozillateam?name=%22ppa%22&ws.op=getPPAByName
+-varied-accept: application/json
+-varied-accept-encoding: gzip, deflate
+
+{"self_link": "https://api.launchpad.net/devel/~mozillateam/+archive/ubuntu/ppa", "web_link": "https://launchpad.net/~mozillateam/+archive/ubuntu/ppa", "resource_type_link": "https://api.launchpad.net/devel/#archive", "webhooks_collection_link": "https://api.launchpad.net/devel/~mozillateam/+archive/ubuntu/ppa/webhooks", "owner_link": "https://api.launchpad.net/devel/~mozillateam", "name": "ppa", "displayname": "Firefox ESR and Thunderbird stable builds", "reference": "~mozillateam/ubuntu/ppa", "distribution_link": "https://api.launchpad.net/devel/ubuntu", "private": false, "suppress_subscription_notifications": false, "dependencies_collection_link": "https://api.launchpad.net/devel/~mozillateam/+archive/ubuntu/ppa/dependencies", "description": "Mozilla Team's Firefox stable + 140 ESR and Thunderbird 140 ESR builds\n\nSupport for Ubuntu 20.04 and later", "signing_key_fingerprint": "738BEB9321D1AAEC13EA9391AEBDF4819BE21867", "require_virtualized": true, "build_debug_symbols": true, "publish_debug_symbols": true, "permit_obsolete_series_uploads": false, "authorized_size": 81920, "status": "Active", "external_dependencies": null, "metadata_overrides": null, "processors_collection_link": "https://api.launchpad.net/devel/~mozillateam/+archive/ubuntu/ppa/processors", "enabled_restricted_processors_collection_link": "https://api.launchpad.net/devel/~mozillateam/+archive/ubuntu/ppa/enabled_restricted_processors", "publishing_method": "Local", "repository_format": "Debian", "publish": true, "relative_build_score": 0, "http_etag": "\"10eb60e61ffcc53441bf70cbed57e89c0b92aec2-1784b4ef8aeef382f61ad9da4b1051024d59d4be\""}

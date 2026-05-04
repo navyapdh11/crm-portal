@@ -1,0 +1,25 @@
+{
+  "todos": [
+    {
+      "content": "Configure broker connections (Alpaca, Binance, IBKR, etc.)",
+      "id": "1",
+      "status": "in_progress"
+    },
+    {
+      "content": "Run a scan of trading pairs",
+      "id": "2",
+      "status": "pending"
+    },
+    {
+      "content": "Run a backtest",
+      "id": "3",
+      "status": "pending"
+    },
+    {
+      "content": "Work on the dashboard/frontend",
+      "id": "4",
+      "status": "pending"
+    }
+  ],
+  "sessionId": "5e6355dd-0ee6-4eb0-875f-24e87fc5e32e"
+}

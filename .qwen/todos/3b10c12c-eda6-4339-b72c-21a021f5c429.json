@@ -1,0 +1,55 @@
+{
+  "todos": [
+    {
+      "id": "1",
+      "content": "Create monorepo structure with apps/, packages/, infrastructure/",
+      "status": "in_progress"
+    },
+    {
+      "id": "2",
+      "content": "Build Prisma database schema with PostGIS support",
+      "status": "pending"
+    },
+    {
+      "id": "3",
+      "content": "Set up Next.js 15 public site with App Router",
+      "status": "pending"
+    },
+    {
+      "id": "4",
+      "content": "Build admin dashboard shell with dark theme",
+      "status": "pending"
+    },
+    {
+      "id": "5",
+      "content": "Create booking engine with multi-step flow",
+      "status": "pending"
+    },
+    {
+      "id": "6",
+      "content": "Configure AI/RAG pipeline architecture",
+      "status": "pending"
+    },
+    {
+      "id": "7",
+      "content": "Build UI component system with glassmorphism",
+      "status": "pending"
+    },
+    {
+      "id": "8",
+      "content": "Create LocalBusiness schema, FAQ, SEO engine",
+      "status": "pending"
+    },
+    {
+      "id": "9",
+      "content": "Set up deployment configuration (Docker, CI/CD)",
+      "status": "pending"
+    },
+    {
+      "id": "10",
+      "content": "Build API layer with NestJS modules",
+      "status": "pending"
+    }
+  ],
+  "sessionId": "3b10c12c-eda6-4339-b72c-21a021f5c429"
+}

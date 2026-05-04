@@ -1,0 +1,29 @@
+{
+  "sessionCount": 16,
+  "tips": {
+    "new-user-slash": {
+      "totalShown": 3,
+      "lastSessionTimestamp": 1776175381987
+    },
+    "new-user-qwenmd": {
+      "totalShown": 7,
+      "lastSessionTimestamp": 1776313515339
+    },
+    "new-user-resume": {
+      "totalShown": 6,
+      "lastSessionTimestamp": 1776391641280
+    },
+    "shell-commands": {
+      "totalShown": 11,
+      "lastSessionTimestamp": 1776432807719
+    },
+    "compress-startup": {
+      "totalShown": 1,
+      "lastSessionTimestamp": 1776480536516
+    },
+    "approval-mode": {
+      "totalShown": 1,
+      "lastSessionTimestamp": 1776692339976
+    }
+  }
+}

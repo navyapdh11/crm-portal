@@ -1,0 +1,43 @@
+{
+  "PORT": 3456,
+  "Providers": [
+    {
+      "name": "vertex ai",
+      "api_base_url": "https://aistudio.google.com/api-keys?project=gen-lang-client-0084210086",
+      "api_key": "AIzaSyCXskqBE17kWet5vlAnV3pBLh4Ycw_Qnoo",
+      "models": [
+        "geminimznpdh"
+      ],
+      "transformer": {
+        "use": [
+          "anthropic",
+          "deepseek",
+          "gemini",
+          "groq",
+          [
+            "maxtoken",
+            {
+              "max_tokens": 30000
+            }
+          ],
+          "tooluse",
+          "gemini-cli",
+          "gemini-cli",
+          "reasoning",
+          "sampling",
+          "enhancetool",
+          "cleancache",
+          "vertex-gemini",
+          "chutes-glm",
+          "qwen-cli",
+          "rovo-cli",
+          "anthropic",
+          "anthropic"
+        ]
+      }
+    }
+  ],
+  "Router": {
+    "default": "vertex ai,geminimznpdh"
+  }
+}

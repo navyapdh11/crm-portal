@@ -1,0 +1,40 @@
+{
+  "todos": [
+    {
+      "content": "Start the engine and verify it's running properly",
+      "id": "1",
+      "status": "completed"
+    },
+    {
+      "content": "Fix ScoutAgent to return signals for all pairs instead of just best",
+      "id": "2a",
+      "status": "completed"
+    },
+    {
+      "content": "Fix TraderAgent meta-dependency to compute its own signal",
+      "id": "2b",
+      "status": "completed"
+    },
+    {
+      "content": "Integrate DashScopeAIAgent into consensus loop",
+      "id": "2c",
+      "status": "completed"
+    },
+    {
+      "content": "Centralize hardcoded fallback data in engine.py",
+      "id": "2d",
+      "status": "completed"
+    },
+    {
+      "content": "Configure Alpaca API keys for live trading",
+      "id": "3",
+      "status": "in_progress"
+    },
+    {
+      "content": "Enable auto-trading with watcher/scheduler",
+      "id": "4",
+      "status": "pending"
+    }
+  ],
+  "sessionId": "b1def2dd-58c4-4d10-b5a3-62781fb9b017"
+}

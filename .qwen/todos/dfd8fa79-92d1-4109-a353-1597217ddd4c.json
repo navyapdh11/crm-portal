@@ -1,0 +1,35 @@
+{
+  "todos": [
+    {
+      "content": "Check network configuration - CCXT works, yfinance fails",
+      "id": "N1",
+      "status": "completed"
+    },
+    {
+      "content": "Build local CSV historical data loader for equities",
+      "id": "N2",
+      "status": "completed"
+    },
+    {
+      "content": "Add CCXT crypto exchange layer with full integration",
+      "id": "N3",
+      "status": "completed"
+    },
+    {
+      "content": "Build unified multi-source data architecture",
+      "id": "N4",
+      "status": "completed"
+    },
+    {
+      "content": "Integrate unified fetcher into API app + add crypto scan endpoint",
+      "id": "N5",
+      "status": "completed"
+    },
+    {
+      "content": "Test live scanning with all data sources",
+      "id": "N6",
+      "status": "completed"
+    }
+  ],
+  "sessionId": "dfd8fa79-92d1-4109-a353-1597217ddd4c"
+}

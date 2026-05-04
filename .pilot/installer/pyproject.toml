@@ -1,0 +1,135 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["launcher*", "installer*"]
+
+[project]
+name = "pilot-shell"
+version = "1.0.0"
+description = "Pilot Shell"
+requires-python = ">=3.12,<3.13"
+readme = "README.md"
+dependencies = [
+    "rich>=14.0.0",
+    "platformdirs>=4.3.6",
+    "cryptography>=44.0.0",
+    "Cython>=3.0.0",
+    "setuptools>=61.0",
+]
+
+[dependency-groups]
+dev = [
+    "basedpyright>=1.32.1",
+    "ruff>=0.12.3",
+    "pytest>=8.3.3",
+    "pytest-cov>=7.0.0",
+    "pytest-asyncio>=0.24.0",
+    "vulture>=2.14",
+    "tox>=4.28.4",
+    "build>=1.3.0",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+pythonpath = ["installer", "launcher", "."]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
+testpaths = ["launcher/tests", "installer/tests"]
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    "ignore::pytest.PytestUnraisableExceptionWarning",
+]
+norecursedirs = ["target/**", ".venv/**", "**/.tox/**", "**/build/**", "misc/"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+exclude = ["target/**", ".venv/**", "**/.tox/**", "**/build/**", "misc/"]
+
+[tool.ruff.format]
+docstring-code-format = true
+quote-style = "double"
+
+[tool.ruff.lint.isort]
+case-sensitive = true
+known-first-party = ["app"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint]
+select = [
+    "E",       # pycodestyle
+    "F",       # pyflakes
+    "I",       # isort
+    "ERA",     # eradicate (detect commented-out code)
+    "PLR0913", # too-many-arguments (max 6)
+    "PLR0915", # too-many-statements (max 60)
+]
+ignore = [
+    "D100",
+    "D104",
+    "E902",
+    "E501",
+    "F401",
+    "F403",
+    "F405",
+    "C901",
+    "B905",
+    "N803",
+    "N806",
+    "N815",
+    "W391",
+    "W292",
+    "SIM105",
+    "B008",
+    "B006",
+    "F821",
+    "B012",
+    "F541",
+    "C408",
+    "B007",
+    "B904",
+    "C416",
+    "B017",
+    "SIM108",
+    "SIM113",
+]
+
+[tool.ruff.lint.pylint]
+max-args = 6
+max-statements = 60
+
+[tool.ruff.lint.per-file-ignores]
+"launcher/tests/*" = ["D", "UP", "PLR0913", "PLR0915"]
+"installer/tests/*" = ["D", "UP", "PLR0913", "PLR0915"]
+"installer/steps/*" = ["PLR0913", "PLR0915"]
+
+[tool.vulture]
+exclude = [".venv/**", "target/**", "**/.tox/**", "**/build/**"]
+min_confidence = 80
+paths = ["installer"]
+
+[tool.basedpyright]
+include = ["installer", "launcher"]
+exclude = [
+    "**/node_modules",
+    "**/__pycache__",
+    "target/**",
+    ".venv/**",
+    "**/.tox/**",
+    "**/build/**",
+    "misc/",
+]
+extraPaths = ["pilot/hooks"]
+venvPath = "."
+venv = ".venv"
+pythonVersion = "3.12"
+typeCheckingMode = "standard"
+reportUnknownMemberType = false
+reportGeneralTypeIssues = true
+reportOptionalMemberAccess = true
+reportImplicitRelativeImport = false
