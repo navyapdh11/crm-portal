@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { ActionModal } from "../components/Modal";
+import { SeoAuditResult, type AuditResult } from "../components/SeoAuditResult";
 
 interface Project {
   id: number;
@@ -23,6 +24,26 @@ const projects: Project[] = [
   { id: 5, name: "API Development", client: "Enterprise Ltd", status: "completed", progress: 100, startDate: "2025-11-01", endDate: "2026-02-28", budget: 55000, team: ["SK", "AL", "TB"] },
   { id: 6, name: "Security Audit", client: "Retail Plus", status: "active", progress: 35, startDate: "2026-03-01", endDate: "2026-05-15", budget: 18000, team: ["NP"] },
 ];
+
+const sampleAudit: AuditResult = {
+  status: "completed",
+  targetUrl: "https://acme-corp.com",
+  analyzedUrl: "https://acme-corp.com/services",
+  location: "Sydney, Australia",
+  task: "Local GEO Dominance",
+  crawlSummary: {
+    pagesVisited: 12,
+    bestScore: 0.92
+  },
+  moeAnalysis: [
+    { expert: "Technical SEO", analysis: "Schema markup is missing for local business entities. Site speed is optimal but hydration errors detected.", status: "success" },
+    { expert: "GEO", analysis: "Generative engine visibility is low for local 'near me' queries. Need to optimize for LLM extraction patterns.", status: "success" },
+    { expert: "AEO", analysis: "Knowledge graph presence is weak. Recommend structured data for FAQs and entity-based content mapping.", status: "success" }
+  ],
+  summary: {
+    response: "Acme Corp has a strong technical foundation but lacks the generative optimization required for 2026 search trends. Focus on semantic entity linking and Answer Engine visibility."
+  }
+};
 
 const statusConfig: Record<string, { label: string; bg: string; text: string; icon: string }> = {
   onboarding: { label: "Onboarding", bg: "var(--color-info-bg)", text: "var(--color-info)", icon: "🚀" },
@@ -50,7 +71,7 @@ function AnimatedProgress({ progress }: { progress: number }) {
   );
 }
 
-function ProjectCard({ project, index }: { project: Project; index: number }) {
+function ProjectCard({ project, index, onClick }: { project: Project; index: number; onClick: () => void }) {
   const config = statusConfig[project.status];
   
   const formatDate = (dateStr: string) => {
@@ -59,7 +80,8 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
   
   return (
     <div 
-      className="p-6 rounded-2xl animate-fade-in-up card-hover"
+      onClick={onClick}
+      className="p-6 rounded-2xl animate-fade-in-up card-hover cursor-pointer"
       style={{ 
         animationDelay: `${0.2 + index * 0.1}s`,
         background: 'var(--color-surface)',
@@ -123,7 +145,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           className="text-sm font-medium px-3 py-1.5 rounded-lg transition-all"
           style={{ color: 'var(--color-accent)', background: 'var(--color-accent-subtle)' }}
         >
-          View Details
+          {project.id === 1 ? "View Audit" : "View Details"}
         </button>
       </div>
     </div>
@@ -133,6 +155,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 export default function Projects() {
   const [filter, setFilter] = useState<string>("all");
   const [showModal, setShowModal] = useState(false);
+  const [showAudit, setShowAudit] = useState(false);
   
   const filteredProjects = filter === "all" ? projects : projects.filter(p => p.status === filter);
   
@@ -158,6 +181,21 @@ export default function Projects() {
           New Project
         </button>
       </div>
+
+      {showAudit && (
+        <div className="mb-8 animate-fade-in">
+          <div className="flex justify-between items-center mb-4">
+            <h2 className="text-xl font-semibold" style={{ color: 'var(--color-text-primary)' }}>Active Audit Analysis</h2>
+            <button 
+              onClick={() => setShowAudit(false)}
+              className="text-sm font-medium" style={{ color: 'var(--color-accent)' }}
+            >
+              Close Audit
+            </button>
+          </div>
+          <SeoAuditResult audit={sampleAudit} />
+        </div>
+      )}
       
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
         {[
@@ -198,7 +236,12 @@ export default function Projects() {
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredProjects.map((project, index) => (
-          <ProjectCard key={project.id} project={project} index={index} />
+          <ProjectCard 
+            key={project.id} 
+            project={project} 
+            index={index} 
+            onClick={() => { if (project.id === 1) setShowAudit(!showAudit); }}
+          />
         ))}
       </div>
       
