@@ -27,24 +27,31 @@ export class LlmAgent extends AgentRunner {
   }
 
   async execute(context: AgentContext): Promise<AgentResult> {
-    const { prompt, messages } = context as { prompt?: string; messages?: Array<{ role: string; content: string }> };
+    const { prompt, messages, modelOverride } = context as { 
+      prompt?: string; 
+      messages?: Array<{ role: string; content: string }>;
+      modelOverride?: string;
+    };
 
     if (!prompt && (!messages || messages.length === 0)) {
       return { success: false, error: "Missing prompt or messages in context" };
     }
 
+    const model = modelOverride || this.config.model;
+    console.log(`[LlmAgent] Executing request using model: ${model}`);
+
     try {
-      const response = await this.callLlm(prompt || "", messages);
+      const response = await this.callLlm(prompt || "", messages, model);
       return { success: true, data: { response } };
     } catch (error) {
       return { success: false, error: error instanceof Error ? error.message : "LLM call failed" };
     }
   }
 
-  private async callLlm(systemPrompt: string, messages?: Array<{ role: string; content: string }>) {
+  private async callLlm(systemPrompt: string, messages?: Array<{ role: string; content: string }>, model?: string) {
     const endpoint = this.getEndpoint();
     const body: Record<string, unknown> = {
-      model: this.config.model,
+      model: model || this.config.model,
       max_tokens: this.config.maxTokens,
       temperature: this.config.temperature,
     };

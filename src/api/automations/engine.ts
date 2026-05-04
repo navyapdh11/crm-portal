@@ -57,9 +57,57 @@ export class AutomationEngine {
     await Promise.all(automations.map(automation => this.execute(automation, context)));
   }
 
-  private async listEnabledAutomations(tenantId: string, trigger: AutomationTrigger) {
-    // Would query DB for enabled automations with matching trigger
-    return [] as Automation[];
+  async listEnabledAutomations(tenantId: string, trigger: AutomationTrigger) {
+    // In a real system, this would query the 'automations' table
+    // For now, we simulate finding enabled automations for the trigger
+    const results = await this.db.query<Automation[]>`
+      SELECT * FROM automations 
+      WHERE tenant_id = ${tenantId} 
+      AND trigger = ${trigger} 
+      AND enabled = true
+    `;
+    return results || [];
+  }
+
+  /**
+   * Worker loop: Poll for pending runs and execute them
+   */
+  async processPendingRuns() {
+    console.log("[AutomationEngine] Checking for pending runs...");
+    const pendingRuns = await this.db.query<AutomationRun[]>`
+      SELECT * FROM automation_runs 
+      WHERE status = 'pending' 
+      ORDER BY created_at ASC 
+      LIMIT 10
+    `;
+
+    if (!pendingRuns || pendingRuns.length === 0) {
+      return;
+    }
+
+    console.log(`[AutomationEngine] Found ${pendingRuns.length} pending runs. Processing...`);
+    
+    for (const run of pendingRuns) {
+      // Mark as running to avoid double-processing
+      await this.db.execute`UPDATE automation_runs SET status = 'running', started_at = ${new Date().toISOString()} WHERE id = ${run.id}`;
+      
+      try {
+        const automation = await this.db.query<Automation>`SELECT * FROM automations WHERE id = ${run.automationId}`;
+        if (automation) {
+          await this.execute(automation, run.result || {}); // Re-using context from run if available
+        } else {
+          throw new Error(`Automation ${run.automationId} not found`);
+        }
+      } catch (error) {
+        await this.db.execute`
+          UPDATE automation_runs 
+          SET status = 'failed', 
+              error = ${error instanceof Error ? error.message : "Execution failed"}, 
+              completed_at = ${new Date().toISOString()} 
+          WHERE id = ${run.id}
+        `;
+      }
+    }
   }
 
   private async execute(automation: Automation, context: Record<string, unknown>) {
