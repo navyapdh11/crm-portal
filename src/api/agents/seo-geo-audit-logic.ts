@@ -1,13 +1,4 @@
 // src/api/agents/seo-geo-audit-logic.ts
-/**
- * Helper to call LLM API
- */
-async function callLLC(prompt: string): Promise<string> {
-  const agent = new LlmAgent();
-  const res = await agent.execute({ tenantId: "system", prompt });
-  return res.data ? (res.data as any).response : "";
-}
-
 import { LlmAgent } from "./llm-agent.js";
 
 /**
@@ -25,12 +16,16 @@ export interface McstNode {
  */
 export async function runMoEAnalysis(url: string, content: string): Promise<any> {
   const experts = ["Technical SEO", "AEO", "GEO", "Content", "Performance", "Links"];
+  const agent = new LlmAgent();
   
   // Use Promise.all to run all expert analyses in parallel
   return Promise.all(experts.map(async (expert) => {
     const prompt = `Analyze this URL for ${expert} expertise: ${url}\nContent Snippet: ${content.substring(0, 500)}`;
     try {
-      return { expert, analysis: await callLLC(prompt), status: "success" };
+      // Access callLlm via execute or direct access if made public
+      // Since execute() is the standard public interface, use it.
+      const result = await agent.execute({ prompt });
+      return { expert, analysis: result.data?.response, status: "success" };
     } catch (err) {
       return { expert, analysis: null, status: "error", error: err instanceof Error ? err.message : "Unknown" };
     }
