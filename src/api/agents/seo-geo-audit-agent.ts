@@ -55,6 +55,7 @@ export class SeoGeoAuditAgent extends LlmAgent {
     // 4. Final Synthesis using Frontier Model
     console.log(`[SeoGeoAuditAgent] Synthesizing final report...`);
     const synthesisResult = await this.execute({
+      tenantId: "system",
       prompt: `Synthesize the following expert SEO/GEO audit results for ${url}.
 Location: ${location}
 Task: ${task}
@@ -64,8 +65,7 @@ Expert Analyses:
 ${JSON.stringify(moeAnalysis, null, 2)}
 
 Provide a cohesive executive summary and a prioritized roadmap for 2026 SEO/GEO readiness. 
-Focus on visibility in both search engines and generative AI agents.`,
-      modelOverride: process.env.FRONTIER_MODEL || "gpt-4"
+Focus on visibility in both search engines and generative AI agents.`
     });
 
     return { 

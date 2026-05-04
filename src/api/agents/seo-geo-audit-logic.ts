@@ -42,8 +42,8 @@ Provide a structured analysis focusing on:
     try {
       // Use FRONTIER model for critical experts, standard for others
       const modelOverride = expert.priority === "critical" ? process.env.FRONTIER_MODEL : process.env.STANDARD_MODEL;
-      const result = await baseAgent.execute({ prompt, modelOverride });
-      return { expert: expert.name, analysis: result.data?.response, status: "success" };
+      const result = await baseAgent.execute({ tenantId: "system", prompt, modelOverride } as any);
+      return { expert: expert.name, analysis: (result.data as any)?.response, status: "success" };
     } catch (err) {
       return { expert: expert.name, analysis: null, status: "error", error: err instanceof Error ? err.message : "Unknown" };
     }
@@ -95,12 +95,13 @@ export async function runMcstCrawl(startUrl: string, baseAgent: LlmAgent, maxPag
 
       // Tiered Routing: Use SSM for quick relevance scoring
       const scoreResult = await baseAgent.execute({
+        tenantId: "system",
         prompt: `On a scale of 0 to 1, how relevant is this page content for a deep SEO/GEO audit? 
 Page: ${node.url}
 Content snippet: ${html.substring(0, 1000)}
 Return ONLY the numerical score.`,
         modelOverride: process.env.SSM_MODEL || "gpt-3.5-turbo"
-      });
+      } as any);
       
       const scoreMatch = (scoreResult.data as any)?.response?.match(/[0-9.]+/);
       const score = scoreMatch ? parseFloat(scoreMatch[0]) : 0.5;
