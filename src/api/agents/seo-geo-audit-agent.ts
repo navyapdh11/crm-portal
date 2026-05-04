@@ -34,29 +34,41 @@ export class SeoGeoAuditAgent extends LlmAgent {
       return { success: false, error: error instanceof Error ? error.message : "Audit failed" };
     }
   }
+private async performAudit(url: string, location: string, task: string): Promise<any> {
+  // Initialize Hermes for orchestration
+  const { HermesAgent } = await import("./hermes-agent.js");
+  const { createPgClient } = await import("../db/client.js");
+  const db = await createPgClient();
+  const hermes = new HermesAgent(db);
 
-  private async performAudit(url: string, location: string, task: string): Promise<any> {
-    // 1. Run MCST Crawl (exploration phase) to find the most relevant page
-    const crawlTree = await runMcstCrawl(url, this, 5);
+  // 1. Run MCST Crawl (exploration phase) to find the most relevant page
+  const crawlTree = await runMcstCrawl(url, this, 5);
 
-    // 2. Selection phase: Find the most relevant node based on LLM scoring
-    let bestNode = crawlTree;
-    const findBest = (node: McstNode) => {
-      if (node.score > bestNode.score) bestNode = node;
-      node.children.forEach(findBest);
-    };
-    findBest(crawlTree);
+  // 2. Selection phase: Find the most relevant node based on LLM scoring
+  let bestNode = crawlTree;
+  const findBest = (node: McstNode) => {
+    if (node.score > bestNode.score) bestNode = node;
+    node.children.forEach(findBest);
+  };
+  findBest(crawlTree);
 
-    console.log(`[SeoGeoAuditAgent] Selected best page: ${bestNode.url} (Relevance Score: ${bestNode.score})`);
+  console.log(`[SeoGeoAuditAgent] Selected best page: ${bestNode.url} (Relevance Score: ${bestNode.score})`);
 
-    // 3. Expert Analysis phase (Mixture of Experts)
-    const moeAnalysis = await runMoEAnalysis(bestNode.url, bestNode.content || "", this);
+  // 3. Expert Analysis phase (Mixture of Experts) via Hermes Dispatch
+  // We dispatch the analysis task to the Hermes orchestrator
+  const dispatchResult = await hermes.execute({
+    action: "run_moe_analysis",
+    targetAgent: "seo-geo-audit-logic", // Assuming a logic wrapper agent exists or we route back to this logic
+    payload: { url: bestNode.url, content: bestNode.content || "" }
+  });
 
-    // 4. Final Synthesis using Frontier Model
-    console.log(`[SeoGeoAuditAgent] Synthesizing final report...`);
-    const synthesisResult = await this.execute({
-      tenantId: "system",
-      prompt: `Synthesize the following expert SEO/GEO audit results for ${url}.
+  const moeAnalysis = (dispatchResult.data as any)?.result || [];
+
+  // 4. Final Synthesis using Frontier Model
+  console.log(`[SeoGeoAuditAgent] Synthesizing final report...`);
+  const synthesisResult = await this.execute({
+    tenantId: "system",
+    prompt: `Synthesize the following expert SEO/GEO audit results for ${url}.
 Location: ${location}
 Task: ${task}
 Target Page analyzed: ${bestNode.url}
@@ -65,8 +77,10 @@ Expert Analyses:
 ${JSON.stringify(moeAnalysis, null, 2)}
 
 Provide a cohesive executive summary and a prioritized roadmap for 2026 SEO/GEO readiness. 
-Focus on visibility in both search engines and generative AI agents.`
-    });
+Focus on visibility in both search engines and generative AI agents.`,
+    modelOverride: process.env.FRONTIER_MODEL || "gpt-4"
+  });
+
 
     return { 
       status: "completed",

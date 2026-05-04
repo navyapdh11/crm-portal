@@ -48,5 +48,8 @@ export async function loadAgents(db: Client) {
   const { HermesAgent } = await import("./hermes-agent.js");
   agents.push(new HermesAgent(db));
 
+  const { ObservabilityAgent } = await import("./observability-agent.js");
+  agents.push(new ObservabilityAgent());
+
   return agents;
   }
