@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { SeoAuditResult, type AuditResult } from "../components/SeoAuditResult";
 
 interface Stat {
   label: string;
@@ -25,6 +26,25 @@ const activities = [
   { type: "project", message: "Project 'Website Redesign' completed", time: "2 days ago", icon: "🎯" },
   { type: "contact", message: "Sarah Johnson updated profile", time: "3 days ago", icon: "✏️" },
 ];
+
+const MOCK_AUDIT: AuditResult = {
+  status: "completed",
+  targetUrl: "https://acme-corp.com",
+  analyzedUrl: "https://acme-corp.com/solutions",
+  location: "Global",
+  task: "Market expansion",
+  crawlSummary: {
+    pagesVisited: 12,
+    bestScore: 0.92
+  },
+  moeAnalysis: [
+    { expert: "Technical SEO", analysis: "Excellent semantic markup. Schema.org data is well-structured for machine reading.", status: "success" },
+    { expert: "GEO", analysis: "Good alignment with search engine patterns, but needs more LLM-specific citations for AIO visibility.", status: "success" }
+  ],
+  summary: {
+    response: "The site is well-positioned for traditional search but requires adjustments for generative AI integration, specifically by adopting structured LLM-readable citation formats."
+  }
+};
 
 function AnimatedNumber({ value, prefix = "", suffix = "" }: { value: number; prefix?: string; suffix?: string }) {
   const [displayValue, setDisplayValue] = useState(0);
@@ -88,15 +108,25 @@ function StatCard({ stat, index }: { stat: Stat; index: number }) {
 }
 
 export default function Dashboard() {
+  const [showAudit, setShowAudit] = useState(false);
+
   return (
     <div className="py-6">
-      <div className="mb-8">
-        <h1 className="text-3xl font-semibold mb-2 animate-fade-in-up" style={{ fontFamily: 'var(--font-display)', color: 'var(--color-text-primary)' }}>
-          Dashboard
-        </h1>
-        <p className="animate-fade-in-up animate-stagger-1" style={{ color: 'var(--color-text-secondary)' }}>
-          Welcome back! Here's what's happening with your business.
-        </p>
+      <div className="mb-8 flex justify-between items-center">
+        <div>
+            <h1 className="text-3xl font-semibold mb-2 animate-fade-in-up" style={{ fontFamily: 'var(--font-display)', color: 'var(--color-text-primary)' }}>
+              Dashboard
+            </h1>
+            <p className="animate-fade-in-up animate-stagger-1" style={{ color: 'var(--color-text-secondary)' }}>
+              Welcome back! Here's what's happening with your business.
+            </p>
+        </div>
+        <button 
+            onClick={() => setShowAudit(!showAudit)}
+            className="btn-primary flex items-center gap-2 animate-fade-in-up"
+        >
+            {showAudit ? "Hide Audit" : "Run SEO/GEO Audit"}
+        </button>
       </div>
       
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
@@ -105,6 +135,12 @@ export default function Dashboard() {
         ))}
       </div>
       
+      {showAudit && (
+        <div className="mb-8">
+          <SeoAuditResult audit={MOCK_AUDIT} />
+        </div>
+      )}
+
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div 
           className="p-6 rounded-2xl animate-fade-in-up animate-stagger-5"
