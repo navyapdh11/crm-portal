@@ -27,7 +27,7 @@ export class LlmAgent extends AgentRunner {
   }
 
   async execute(context: AgentContext): Promise<AgentResult> {
-    const { prompt, messages, modelOverride } = context as { 
+    const { prompt, messages, modelOverride } = context as unknown as { 
       prompt?: string; 
       messages?: Array<{ role: string; content: string }>;
       modelOverride?: string;

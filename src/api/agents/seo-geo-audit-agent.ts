@@ -57,6 +57,7 @@ private async performAudit(url: string, location: string, task: string): Promise
   // 3. Expert Analysis phase (Mixture of Experts) via Hermes Dispatch
   // We dispatch the analysis task to the Hermes orchestrator
   const dispatchResult = await hermes.execute({
+    tenantId: "system",
     action: "run_moe_analysis",
     targetAgent: "seo-geo-audit-logic", // Assuming a logic wrapper agent exists or we route back to this logic
     payload: { url: bestNode.url, content: bestNode.content || "" }

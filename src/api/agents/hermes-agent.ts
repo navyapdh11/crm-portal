@@ -18,7 +18,7 @@ export class HermesAgent extends AgentRunner {
   }
 
   async execute(context: AgentContext): Promise<AgentResult> {
-    const { action, payload, targetAgent } = context as { 
+    const { action, payload, targetAgent } = context as unknown as { 
       action: string; 
       payload: any; 
       targetAgent?: string 

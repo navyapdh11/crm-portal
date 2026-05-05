@@ -14,7 +14,7 @@ export class ObservabilityAgent extends AgentRunner {
   }
 
   async execute(context: AgentContext): Promise<AgentResult> {
-    const { spanName, attributes, timestamp } = context as { 
+    const { spanName, attributes, timestamp } = context as unknown as { 
       spanName: string; 
       attributes: Record<string, unknown>; 
       timestamp: string 
