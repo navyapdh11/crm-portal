@@ -17,5 +17,5 @@
     "paths": { "@/*": ["./*"] }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules", "src/api", "crm-portal-clean", "deploy_crm", ".backup_projects", "AI-Hedge-Fund", "open-interpreter", "remotion2", "spec"]
+  "exclude": ["node_modules", "src/api", "crm-portal-clean", "deploy_crm", "crm-hostinger", ".backup_projects", "AI-Hedge-Fund", "open-interpreter", "remotion2", "spec"]
 }
