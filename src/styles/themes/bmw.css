@@ -1,0 +1,15 @@
+:root[data-theme="bmw"] {
+  --canvas: #ffffff;
+  --surface-card: #fafafa;
+  --surface-dark: #1a2129;
+  --primary: #1c69d4;
+  --primary-active: #0653b6;
+  --ink: #262626;
+  --body: #3c3c3c;
+  --muted: #6b6b6b;
+  --hairline: #e6e6e6;
+  --on-primary: #ffffff;
+  --radius: 0px;
+  --font-display: 'BMW Type Next Latin', system-ui, sans-serif;
+  --font-body: 'BMW Type Next Latin Light', system-ui, sans-serif;
+}

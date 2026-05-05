@@ -1,0 +1,15 @@
+:root[data-theme="shopify"] {
+  --canvas: #000000;
+  --surface-card: #02090a;
+  --surface-dark: #061a1c;
+  --primary: #36f4a4;
+  --primary-active: #2fd6a1;
+  --ink: #ffffff;
+  --body: #a1a1aa;
+  --muted: #71717a;
+  --hairline: #1e2c31;
+  --on-primary: #000000;
+  --radius: 9999px;
+  --font-display: 'NeueHaasGrotesk', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+}

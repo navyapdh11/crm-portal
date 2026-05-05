@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "../src/styles/themes/bmw.css";
+@import "../src/styles/themes/shopify.css";
+@import "../src/styles/themes/nepal.css";
+
 :root {
   --font-display: 'Playfair Display', serif;
   --font-body: 'DM Sans', sans-serif;

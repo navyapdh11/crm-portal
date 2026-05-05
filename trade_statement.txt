@@ -1,0 +1,5 @@
+--- Enterprise Trading Statement ---
+Final Balance: 994.00
+Total PnL: -6.00
+Win Rate: 44.00%
+Sharpe Ratio: -1.56
