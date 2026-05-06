@@ -1,11 +1,11 @@
 import { Router } from "express";
-import { sql, createClient, type Client } from "./client.js";
+import { createClient, type Client } from "./client.js";
 
 export const contactsRouter = Router();
 
 export type CreateContactParams = {
   tenantId: string;
-  userId: string;
+  ownerId: string;
   fullName: string;
   email?: string;
   phone?: string;
@@ -20,9 +20,10 @@ export async function createContact(db: Client, params: CreateContactParams) {
   const now = new Date().toISOString();
   
   return db.query(
-    sql`INSERT INTO contacts (id, tenant_id, owner_id, full_name, email, phone, company, title, source, metadata, created_at, updated_at)
-        VALUES (${id}, ${params.tenantId}, ${params.userId}, ${params.fullName}, ${params.email}, ${params.phone}, ${params.company}, ${params.title}, ${params.source}, ${JSON.stringify(params.metadata || {})}, ${now}, ${now})
+    `INSERT INTO contacts (id, tenant_id, owner_id, full_name, email, phone, company, title, source, metadata, created_at, updated_at)
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)
         RETURNING *`,
+    [id, params.tenantId, params.ownerId, params.fullName, params.email, params.phone, params.company, params.title, params.source, JSON.stringify(params.metadata || {}), now, now]
   );
 }
 
@@ -51,13 +52,13 @@ export async function listContacts(db: Client, tenantId: string, filters: { sear
   }
 
   const data = await db.query(
-    sql`SELECT * FROM contacts ${sql(whereClause)} ORDER BY created_at DESC LIMIT ${limit} OFFSET ${offset}`,
-    ...params
+    `SELECT * FROM contacts ${whereClause} ORDER BY created_at DESC LIMIT $${paramIndex++} OFFSET $${paramIndex++}`,
+    [...params, limit, offset]
   );
   
   const countResult = await db.query(
-    sql`SELECT COUNT(*) as total FROM contacts ${sql(whereClause)}`,
-    ...params
+    `SELECT COUNT(*) as total FROM contacts ${whereClause}`,
+    params
   );
 
   return {
@@ -65,15 +66,16 @@ export async function listContacts(db: Client, tenantId: string, filters: { sear
     pagination: {
       page,
       limit,
-      total: countResult.total,
-      has_more: offset + data.length < countResult.total,
+      total: (countResult as any)[0].total,
+      has_more: offset + (data as any).length < (countResult as any)[0].total,
     },
   };
 }
 
 export async function getContact(db: Client, tenantId: string, contactId: string) {
   return db.query(
-    sql`SELECT * FROM contacts WHERE id = ${contactId} AND tenant_id = ${tenantId}`,
+    `SELECT * FROM contacts WHERE id = $1 AND tenant_id = $2`,
+    [contactId, tenantId]
   );
 }
 
@@ -121,13 +123,14 @@ export async function updateContact(db: Client, tenantId: string, contactId: str
   values.push(tenantId, contactId);
 
   return db.query(
-    sql`UPDATE contacts SET ${fields.map((f, i) => `${f} = $${i + 1}`).join(", ")} WHERE id = $${paramIndex + 1} AND tenant_id = $${paramIndex} RETURNING *`,
-    ...values
+    `UPDATE contacts SET ${fields.join(", ")} WHERE tenant_id = $${paramIndex++} AND id = $${paramIndex} RETURNING *`,
+    values
   );
 }
 
 export async function deleteContact(db: Client, tenantId: string, contactId: string) {
   return db.execute(
-    sql`DELETE FROM contacts WHERE id = ${contactId} AND tenant_id = ${tenantId}`,
+    `DELETE FROM contacts WHERE id = $1 AND tenant_id = $2`,
+    [contactId, tenantId]
   );
 }

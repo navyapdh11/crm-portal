@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { sql, type Client } from "./client.js";
+import { type Client } from "./client.js";
 
 export const projectsRouter = Router();
 
@@ -7,7 +7,7 @@ export type ProjectStatus = "onboarding" | "active" | "paused" | "completed" | "
 
 export type CreateProjectParams = {
   tenantId: string;
-  userId: string;
+  ownerId: string;
   clientContactId: string;
   dealId?: string;
   name: string;
@@ -25,9 +25,10 @@ export async function createProject(db: Client, params: CreateProjectParams) {
   const now = new Date().toISOString();
   
   return db.query(
-    sql`INSERT INTO projects (id, tenant_id, client_contact_id, deal_id, name, description, status, start_date, end_date, budget, budget_hours, owner_id, metadata, created_at, updated_at)
-        VALUES (${id}, ${params.tenantId}, ${params.clientContactId}, ${params.dealId}, ${params.name}, ${params.description}, ${params.status || 'onboarding'}, ${params.startDate}, ${params.endDate}, ${params.budget}, ${params.budgetHours}, ${params.userId}, ${JSON.stringify(params.metadata || {})}, ${now}, ${now})
+    `INSERT INTO projects (id, tenant_id, client_contact_id, deal_id, name, description, status, start_date, end_date, budget, budget_hours, owner_id, metadata, created_at, updated_at)
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)
         RETURNING *`,
+    [id, params.tenantId, params.clientContactId, params.dealId, params.name, params.description, params.status || 'onboarding', params.startDate, params.endDate, params.budget, params.budgetHours, params.ownerId, JSON.stringify(params.metadata || {}), now, now]
   );
 }
 
@@ -43,17 +44,17 @@ export async function listProjects(db: Client, tenantId: string, filters: { stat
   if (clientContactId) { whereClause += ` AND client_contact_id = $${paramIndex++}`; params.push(clientContactId); }
 
   const data = await db.query(
-    sql`SELECT * FROM projects ${sql(whereClause)} ORDER BY created_at DESC LIMIT ${limit} OFFSET ${offset}`,
-    ...params
+    `SELECT * FROM projects ${whereClause} ORDER BY created_at DESC LIMIT $${paramIndex++} OFFSET $${paramIndex++}`,
+    [...params, limit, offset]
   );
   
-  const countResult = await db.query(sql`SELECT COUNT(*) as total FROM projects ${sql(whereClause)}`, ...params);
+  const countResult = await db.query(`SELECT COUNT(*) as total FROM projects ${whereClause}`, params);
 
-  return { data, pagination: { page, limit, total: countResult.total, has_more: offset + data.length < countResult.total } };
+  return { data, pagination: { page, limit, total: (countResult as any)[0].total, has_more: offset + (data as any).length < (countResult as any)[0].total } };
 }
 
 export async function getProject(db: Client, tenantId: string, projectId: string) {
-  return db.query(sql`SELECT * FROM projects WHERE id = ${projectId} AND tenant_id = ${tenantId}`);
+  return db.query(`SELECT * FROM projects WHERE id = $1 AND tenant_id = $2`, [projectId, tenantId]);
 }
 
 export async function updateProject(db: Client, tenantId: string, projectId: string, updates: Partial<CreateProjectParams>) {
@@ -76,11 +77,11 @@ export async function updateProject(db: Client, tenantId: string, projectId: str
   values.push(tenantId, projectId);
 
   return db.query(
-    sql`UPDATE projects SET ${fields.map((f, i) => `${f} = $${i + 1}`).join(", ")} WHERE id = $${paramIndex + 1} AND tenant_id = $${paramIndex} RETURNING *`,
-    ...values
+    `UPDATE projects SET ${fields.join(", ")} WHERE tenant_id = $${paramIndex++} AND id = $${paramIndex} RETURNING *`,
+    values
   );
 }
 
 export async function deleteProject(db: Client, tenantId: string, projectId: string) {
-  return db.execute(sql`DELETE FROM projects WHERE id = ${projectId} AND tenant_id = ${tenantId}`);
+  return db.execute(`DELETE FROM projects WHERE id = $1 AND tenant_id = $2`, [projectId, tenantId]);
 }

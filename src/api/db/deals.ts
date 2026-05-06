@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { sql, type Client } from "./client.js";
+import { type Client } from "./client.js";
 
 export const dealsRouter = Router();
 
@@ -7,7 +7,7 @@ export type DealStage = "lead" | "qualified" | "proposal" | "negotiation" | "clo
 
 export type CreateDealParams = {
   tenantId: string;
-  userId: string;
+  ownerId: string;
   name: string;
   stage: DealStage;
   contactId?: string;
@@ -24,9 +24,10 @@ export async function createDeal(db: Client, params: CreateDealParams) {
   const now = new Date().toISOString();
   
   return db.query(
-    sql`INSERT INTO deals (id, tenant_id, contact_id, name, stage, amount, currency, close_date, probability, owner_id, notes, metadata, created_at, updated_at)
-        VALUES (${id}, ${params.tenantId}, ${params.contactId}, ${params.name}, ${params.stage}, ${params.amount}, ${params.currency}, ${params.closeDate}, ${params.probability}, ${params.userId}, ${params.notes}, ${JSON.stringify(params.metadata || {})}, ${now}, ${now})
+    `INSERT INTO deals (id, tenant_id, contact_id, name, stage, amount, currency, close_date, probability, owner_id, notes, metadata, created_at, updated_at)
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14)
         RETURNING *`,
+    [id, params.tenantId, params.contactId, params.name, params.stage, params.amount, params.currency, params.closeDate, params.probability, params.ownerId, params.notes, JSON.stringify(params.metadata || {}), now, now]
   );
 }
 
@@ -52,23 +53,23 @@ export async function listDeals(db: Client, tenantId: string, filters: { stage?:
   }
 
   const data = await db.query(
-    sql`SELECT * FROM deals ${sql(whereClause)} ORDER BY created_at DESC LIMIT ${limit} OFFSET ${offset}`,
-    ...params
+    `SELECT * FROM deals ${whereClause} ORDER BY created_at DESC LIMIT $${paramIndex++} OFFSET $${paramIndex++}`,
+    [...params, limit, offset]
   );
   
   const countResult = await db.query(
-    sql`SELECT COUNT(*) as total FROM deals ${sql(whereClause)}`,
-    ...params
+    `SELECT COUNT(*) as total FROM deals ${whereClause}`,
+    params
   );
 
   return {
     data,
-    pagination: { page, limit, total: countResult.total, has_more: offset + data.length < countResult.total },
+    pagination: { page, limit, total: (countResult as any)[0].total, has_more: offset + (data as any).length < (countResult as any)[0].total },
   };
 }
 
 export async function getDeal(db: Client, tenantId: string, dealId: string) {
-  return db.query(sql`SELECT * FROM deals WHERE id = ${dealId} AND tenant_id = ${tenantId}`);
+  return db.query(`SELECT * FROM deals WHERE id = $1 AND tenant_id = $2`, [dealId, tenantId]);
 }
 
 export async function updateDeal(db: Client, tenantId: string, dealId: string, updates: Partial<CreateDealParams>) {
@@ -92,11 +93,11 @@ export async function updateDeal(db: Client, tenantId: string, dealId: string, u
   values.push(tenantId, dealId);
 
   return db.query(
-    sql`UPDATE deals SET ${fields.map((f, i) => `${f} = $${i + 1}`).join(", ")} WHERE id = $${paramIndex + 1} AND tenant_id = $${paramIndex} RETURNING *`,
-    ...values
+    `UPDATE deals SET ${fields.join(", ")} WHERE tenant_id = $${paramIndex++} AND id = $${paramIndex} RETURNING *`,
+    values
   );
 }
 
 export async function deleteDeal(db: Client, tenantId: string, dealId: string) {
-  return db.execute(sql`DELETE FROM deals WHERE id = ${dealId} AND tenant_id = ${tenantId}`);
+  return db.execute(`DELETE FROM deals WHERE id = $1 AND tenant_id = $2`, [dealId, tenantId]);
 }

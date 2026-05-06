@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { sql, type Client } from "./client.js";
+import { type Client } from "./client.js";
 
 export const invoicesRouter = Router();
 
@@ -24,9 +24,10 @@ export async function createInvoice(db: Client, params: CreateInvoiceParams) {
   const now = new Date().toISOString();
   
   return db.query(
-    sql`INSERT INTO invoices (id, tenant_id, client_contact_id, deal_id, number, currency, subtotal, tax, total, paid_amount, due_date, status, notes, metadata, created_at, updated_at)
-        VALUES (${id}, ${params.tenantId}, ${params.clientContactId}, ${params.dealId}, ${params.number}, ${params.currency}, ${params.subtotal || 0}, ${params.tax || 0}, ${params.total}, 0, ${params.dueDate}, 'draft', ${params.notes}, ${JSON.stringify(params.metadata || {})}, ${now}, ${now})
+    `INSERT INTO invoices (id, tenant_id, client_contact_id, deal_id, number, currency, subtotal, tax, total, paid_amount, due_date, status, notes, metadata, created_at, updated_at)
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16)
         RETURNING *`,
+    [id, params.tenantId, params.clientContactId, params.dealId, params.number, params.currency, params.subtotal || 0, params.tax || 0, params.total, 0, params.dueDate, 'draft', params.notes, JSON.stringify(params.metadata || {}), now, now]
   );
 }
 
@@ -44,20 +45,20 @@ export async function listInvoices(db: Client, tenantId: string, filters: { stat
   if (toDate) { whereClause += ` AND created_at <= $${paramIndex++}`; params.push(toDate); }
 
   const data = await db.query(
-    sql`SELECT * FROM invoices ${sql(whereClause)} ORDER BY created_at DESC LIMIT ${limit} OFFSET ${offset}`,
-    ...params
+    `SELECT * FROM invoices ${whereClause} ORDER BY created_at DESC LIMIT $${paramIndex++} OFFSET $${paramIndex++}`,
+    [...params, limit, offset]
   );
   
   const countResult = await db.query(
-    sql`SELECT COUNT(*) as total FROM invoices ${sql(whereClause)}`,
-    ...params
+    `SELECT COUNT(*) as total FROM invoices ${whereClause}`,
+    params
   );
 
-  return { data, pagination: { page, limit, total: countResult.total, has_more: offset + data.length < countResult.total } };
+  return { data, pagination: { page, limit, total: (countResult as any)[0].total, has_more: offset + (data as any).length < (countResult as any)[0].total } };
 }
 
 export async function getInvoice(db: Client, tenantId: string, invoiceId: string) {
-  return db.query(sql`SELECT * FROM invoices WHERE id = ${invoiceId} AND tenant_id = ${tenantId}`);
+  return db.query(`SELECT * FROM invoices WHERE id = $1 AND tenant_id = $2`, [invoiceId, tenantId]);
 }
 
 export async function updateInvoice(db: Client, tenantId: string, invoiceId: string, updates: Partial<CreateInvoiceParams & { status: InvoiceStatus; paidAmount: number; paidAt: string }>) {
@@ -76,11 +77,11 @@ export async function updateInvoice(db: Client, tenantId: string, invoiceId: str
   values.push(tenantId, invoiceId);
 
   return db.query(
-    sql`UPDATE invoices SET ${fields.map((f, i) => `${f} = $${i + 1}`).join(", ")} WHERE id = $${paramIndex + 1} AND tenant_id = $${paramIndex} RETURNING *`,
-    ...values
+    `UPDATE invoices SET ${fields.join(", ")} WHERE tenant_id = $${paramIndex++} AND id = $${paramIndex} RETURNING *`,
+    values
   );
 }
 
 export async function deleteInvoice(db: Client, tenantId: string, invoiceId: string) {
-  return db.execute(sql`DELETE FROM invoices WHERE id = ${invoiceId} AND tenant_id = ${tenantId}`);
+  return db.execute(`DELETE FROM invoices WHERE id = $1 AND tenant_id = $2`, [invoiceId, tenantId]);
 }

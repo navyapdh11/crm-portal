@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { sql, type Client } from "./client.js";
+import { type Client } from "./client.js";
 
 export const auditRouter = Router();
 
@@ -24,9 +24,10 @@ export async function logAuditEvent(
   const now = new Date().toISOString();
 
   return db.query(
-    sql`INSERT INTO audit_events (id, tenant_id, actor_type, actor_id, action, target_type, target_id, fields_modified, changes, metadata, occurred_at)
-        VALUES (${id}, ${params.tenantId}, ${params.actorType}, ${params.actorId}, ${params.action}, ${params.targetType}, ${params.targetId}, ${params.fieldsModified ? JSON.stringify(params.fieldsModified) : null}, ${params.changes ? JSON.stringify(params.changes) : null}, ${params.metadata ? JSON.stringify(params.metadata) : null}, ${now})
+    `INSERT INTO audit_events (id, tenant_id, actor_type, actor_id, action, target_type, target_id, fields_modified, changes, metadata, occurred_at)
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
         RETURNING *`,
+    [id, params.tenantId, params.actorType, params.actorId, params.action, params.targetType, params.targetId, params.fieldsModified ? JSON.stringify(params.fieldsModified) : null, params.changes ? JSON.stringify(params.changes) : null, params.metadata ? JSON.stringify(params.metadata) : null, now]
   );
 }
 
@@ -55,14 +56,14 @@ export async function listAuditEvents(
   if (toDate) { whereClause += ` AND occurred_at <= $${paramIndex++}`; params.push(toDate); }
 
   const data = await db.query(
-    sql`SELECT * FROM audit_events ${sql(whereClause)} ORDER BY occurred_at DESC LIMIT ${limit} OFFSET ${offset}`,
-    ...params
+    `SELECT * FROM audit_events ${whereClause} ORDER BY occurred_at DESC LIMIT $${paramIndex++} OFFSET $${paramIndex++}`,
+    [...params, limit, offset]
   );
   
   const countResult = await db.query(
-    sql`SELECT COUNT(*) as total FROM audit_events ${sql(whereClause)}`,
-    ...params
+    `SELECT COUNT(*) as total FROM audit_events ${whereClause}`,
+    params
   );
 
-  return { data, pagination: { page, limit, total: (countResult as any).total, has_more: offset + (data as any[]).length < (countResult as any).total } };
+  return { data, pagination: { page, limit, total: (countResult as any)[0].total, has_more: offset + (data as any[]).length < (countResult as any)[0].total } };
 }

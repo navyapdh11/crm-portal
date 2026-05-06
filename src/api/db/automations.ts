@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { sql, type Client } from "./client.js";
+import { type Client } from "./client.js";
 import { AutomationEngine } from "../automations/engine.js";
 
 export const automationsRouter = Router();
@@ -9,33 +9,32 @@ export async function createAutomation(db: Client, tenantId: string, data: { nam
   const now = new Date().toISOString();
 
   return db.query(
-    sql`INSERT INTO automations (id, tenant_id, name, trigger, action, enabled, metadata, created_at, updated_at)
-        VALUES (${id}, ${tenantId}, ${data.name}, ${data.trigger}, ${JSON.stringify(data.action)}, ${data.enabled !== false}, ${JSON.stringify(data.metadata || {})}, ${now}, ${now})
+    `INSERT INTO automations (id, tenant_id, name, trigger, action, enabled, metadata, created_at, updated_at)
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
         RETURNING *`,
+    [id, tenantId, data.name, data.trigger, JSON.stringify(data.action), data.enabled !== false, JSON.stringify(data.metadata || {}), now, now]
   );
 }
 
 export async function listAutomations(db: Client, tenantId: string, trigger?: string) {
-  const conditions = ["tenant_id = $1"];
+  let query = "SELECT * FROM automations WHERE tenant_id = $1";
   const params: unknown[] = [tenantId];
   let idx = 2;
 
   if (trigger) {
-    conditions.push(`trigger = $${idx++}`);
+    query += ` AND trigger = $${idx++}`;
     params.push(trigger);
   }
 
-  const whereClause = conditions.join(" AND ");
+  query += " ORDER BY created_at DESC";
 
-  return db.query(
-    sql`SELECT * FROM automations WHERE ${whereClause} ORDER BY created_at DESC`,
-    ...params,
-  );
+  return db.query(query, params);
 }
 
 export async function getAutomation(db: Client, tenantId: string, automationId: string) {
   return db.query(
-    sql`SELECT * FROM automations WHERE id = ${automationId} AND tenant_id = ${tenantId}`,
+    `SELECT * FROM automations WHERE id = $1 AND tenant_id = $2`,
+    [automationId, tenantId]
   );
 }
 
@@ -71,14 +70,15 @@ export async function updateAutomation(db: Client, tenantId: string, automationI
   values.push(tenantId, automationId);
 
   return db.query(
-    sql`UPDATE automations SET ${fields.join(", ")} WHERE id = $${paramIndex + 1} AND tenant_id = $${paramIndex} RETURNING *`,
-    ...values,
+    `UPDATE automations SET ${fields.join(", ")} WHERE tenant_id = $${paramIndex++} AND id = $${paramIndex} RETURNING *`,
+    values
   );
 }
 
 export async function deleteAutomation(db: Client, tenantId: string, automationId: string) {
   return db.execute(
-    sql`DELETE FROM automations WHERE id = ${automationId} AND tenant_id = ${tenantId}`,
+    `DELETE FROM automations WHERE id = $1 AND tenant_id = $2`,
+    [automationId, tenantId]
   );
 }
 
@@ -119,8 +119,8 @@ automationsRouter.get("/:tenantId/automations/:automationId", async (req, res) =
     const { tenantId, automationId } = req.params;
 
     const result = await getAutomation(db, tenantId, automationId);
-    if (!result) return res.status(404).json({ error: { code: "NOT_FOUND", message: "Automation not found" } });
-    return res.status(200).json({ data: result });
+    if (!result || (Array.isArray(result) && result.length === 0)) return res.status(404).json({ error: { code: "NOT_FOUND", message: "Automation not found" } });
+    return res.status(200).json({ data: Array.isArray(result) ? result[0] : result });
   } catch (error) {
     res.status(500).json({ error: { code: "INTERNAL_ERROR", message: "Failed to get automation" } });
   }
@@ -132,8 +132,8 @@ automationsRouter.patch("/:tenantId/automations/:automationId", async (req, res)
     const { tenantId, automationId } = req.params;
 
     const result = await updateAutomation(db, tenantId, automationId, req.body);
-    if (!result) return res.status(404).json({ error: { code: "NOT_FOUND", message: "Automation not found" } });
-    return res.status(200).json({ data: result });
+    if (!result || (Array.isArray(result) && result.length === 0)) return res.status(404).json({ error: { code: "NOT_FOUND", message: "Automation not found" } });
+    return res.status(200).json({ data: Array.isArray(result) ? result[0] : result });
   } catch (error) {
     res.status(500).json({ error: { code: "INTERNAL_ERROR", message: "Failed to update automation" } });
   }
@@ -173,7 +173,7 @@ automationsRouter.get("/:tenantId/runs", async (req, res) => {
 
     query += " ORDER BY created_at DESC LIMIT 50";
 
-    const result = await db.query(sql(query), ...params);
+    const result = await db.query(query, params);
     return res.status(200).json({ data: result });
   } catch (error) {
     res.status(500).json({ error: { code: "INTERNAL_ERROR", message: "Failed to list automation runs" } });
@@ -186,7 +186,8 @@ automationsRouter.get("/:tenantId/runs/:runId", async (req, res) => {
     const { tenantId, runId } = req.params;
 
     const result = await db.query(
-      sql`SELECT * FROM automation_runs WHERE id = ${runId} AND tenant_id = ${tenantId}`
+      "SELECT * FROM automation_runs WHERE id = $1 AND tenant_id = $2",
+      [runId, tenantId]
     );
     
     if (!result || (Array.isArray(result) && result.length === 0)) {
