@@ -6,8 +6,16 @@ export type InvoiceId = string & { __brand: "invoiceId" };
 export type ProjectId = string & { __brand: "projectId" };
 
 export interface DatabaseClient {
-  query<T>(strings: TemplateStringsArray, ...values: unknown[]): Promise<T>;
-  execute(strings: TemplateStringsArray, ...values: unknown[]): Promise<{ rowCount: number }>;
+  query<T>(strings: TemplateStringsArray | string, ...values: unknown[]): Promise<T>;
+  execute(strings: TemplateStringsArray | string, ...values: unknown[]): Promise<{ rowCount: number }>;
+}
+
+export async function createClient(): Promise<DatabaseClient> {
+  const dbUrl = process.env.DATABASE_URL || "sqlite://:memory:";
+  if (dbUrl.startsWith("postgres://") || dbUrl.startsWith("postgresql://")) {
+    return createPgClient();
+  }
+  return createSqliteClient();
 }
 
 export async function createPgClient(): Promise<DatabaseClient> {
@@ -15,19 +23,21 @@ export async function createPgClient(): Promise<DatabaseClient> {
   const { Pool } = pg;
   
   const pool = new Pool({
-    connectionString: process.env.DATABASE_URL || "postgresql://localhost:5432/crm",
+    connectionString: process.env.DATABASE_URL,
     max: 20,
     idleTimeoutMillis: 30000,
     connectionTimeoutMillis: 2000,
   });
 
   return {
-    async query<T>(strings: TemplateStringsArray, ...values: unknown[]): Promise<T> {
-      const result = await pool.query(strings[0], values);
-      return result.rows[0] as T;
+    async query<T>(strings: TemplateStringsArray | string, ...values: unknown[]): Promise<T> {
+      const query = typeof strings === 'string' ? strings : strings[0];
+      const result = await pool.query(query, values);
+      return result.rows as unknown as T;
     },
-    async execute(strings: TemplateStringsArray, ...values: unknown[]): Promise<{ rowCount: number }> {
-      const res = await pool.query(strings[0], values);
+    async execute(strings: TemplateStringsArray | string, ...values: unknown[]): Promise<{ rowCount: number }> {
+      const query = typeof strings === 'string' ? strings : strings[0];
+      const res = await pool.query(query, values);
       return { rowCount: res.rowCount ?? 0 };
     },
   };
@@ -39,13 +49,31 @@ export async function createSqliteClient(): Promise<DatabaseClient> {
   const db = betterSqlite3(process.env.DATABASE_PATH || ":memory:");
 
   return {
-    async query<T>(strings: TemplateStringsArray, ...values: unknown[]): Promise<T> {
-      const stmt = db.prepare(strings[0]);
-      return stmt.get(...values) as T;
+    async query<T>(strings: TemplateStringsArray | string, ...values: unknown[]): Promise<T> {
+      let query: string;
+      let args: unknown[];
+      if (typeof strings === 'string') {
+        query = strings;
+        args = values;
+      } else {
+        query = strings.join("?");
+        args = values;
+      }
+      const stmt = db.prepare(query);
+      return stmt.all(...args) as T;
     },
-    async execute(strings: TemplateStringsArray, ...values: unknown[]): Promise<{ rowCount: number }> {
-      const stmt = db.prepare(strings[0]);
-      const info = stmt.run(...values);
+    async execute(strings: TemplateStringsArray | string, ...values: unknown[]): Promise<{ rowCount: number }> {
+      let query: string;
+      let args: unknown[];
+      if (typeof strings === 'string') {
+        query = strings;
+        args = values;
+      } else {
+        query = strings.join("?");
+        args = values;
+      }
+      const stmt = db.prepare(query);
+      const info = stmt.run(...args);
       return { rowCount: info.changes };
     },
   };

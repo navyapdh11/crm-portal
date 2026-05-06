@@ -41,6 +41,14 @@ private async performAudit(url: string, location: string, task: string): Promise
   const db = await createPgClient();
   const hermes = new HermesAgent(db);
 
+  // Fetch LLM provider configuration from DB
+  const providers = await db.query<any[]>`SELECT * FROM llm_providers WHERE tenant_id = 'system' AND provider = 'openai'`;
+  const provider = Array.isArray(providers) ? providers[0] : providers;
+  
+  // Decrypt if necessary, as listLlmProviders does it, but direct query might not
+  const { decrypt } = await import("../utils/crypto.js");
+  const apiKey = provider ? (provider.api_key.length > 50 ? decrypt(provider.api_key) : provider.api_key) : process.env.OPENAI_API_KEY;
+
   // 1. Run MCST Crawl (exploration phase) to find the most relevant page
   const crawlTree = await runMcstCrawl(url, this, 5);
 
@@ -55,18 +63,19 @@ private async performAudit(url: string, location: string, task: string): Promise
   console.log(`[SeoGeoAuditAgent] Selected best page: ${bestNode.url} (Relevance Score: ${bestNode.score})`);
 
   // 3. Expert Analysis phase (Mixture of Experts) via Hermes Dispatch
-  // We dispatch the analysis task to the Hermes orchestrator
   const dispatchResult = await hermes.execute({
     tenantId: "system",
     action: "run_moe_analysis",
-    targetAgent: "seo-geo-audit-logic", // Assuming a logic wrapper agent exists or we route back to this logic
-    payload: { url: bestNode.url, content: bestNode.content || "" }
+    targetAgent: "seo-geo-audit-logic",
+    payload: { url: bestNode.url, content: bestNode.content || "", apiKey }
   });
 
   const moeAnalysis = (dispatchResult.data as any)?.result || [];
 
   // 4. Final Synthesis using Frontier Model
   console.log(`[SeoGeoAuditAgent] Synthesizing final report...`);
+  // Note: Assuming LlmAgent can handle a custom apiKey or model config if we updated it,
+  // otherwise, we might need to pass the apiKey directly if the agent supports it.
   const synthesisResult = await this.execute({
     tenantId: "system",
     prompt: `Synthesize the following expert SEO/GEO audit results for ${url}.
@@ -79,24 +88,24 @@ ${JSON.stringify(moeAnalysis, null, 2)}
 
 Provide a cohesive executive summary and a prioritized roadmap for 2026 SEO/GEO readiness. 
 Focus on visibility in both search engines and generative AI agents.`,
-    modelOverride: process.env.FRONTIER_MODEL || "gpt-4"
+    modelOverride: process.env.FRONTIER_MODEL || "gpt-4",
+    apiKey // Passing apiKey if the Agent supports it
   });
 
-
-    return { 
-      status: "completed",
-      targetUrl: url,
-      analyzedUrl: bestNode.url,
-      location,
-      task,
-      metrics: {
-        pagesVisited: this.countNodes(crawlTree),
-        bestRelevanceScore: bestNode.score
-      },
-      expertFindings: moeAnalysis,
-      summary: synthesisResult.data
-    };
-  }
+  return { 
+    status: "completed",
+    targetUrl: url,
+    analyzedUrl: bestNode.url,
+    location,
+    task,
+    metrics: {
+      pagesVisited: this.countNodes(crawlTree),
+      bestRelevanceScore: bestNode.score
+    },
+    expertFindings: moeAnalysis,
+    summary: synthesisResult.data
+  };
+}
 
   private countNodes(node: McstNode): number {
     return 1 + node.children.reduce((acc, child) => acc + this.countNodes(child), 0);

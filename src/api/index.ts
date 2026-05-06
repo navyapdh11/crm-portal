@@ -5,6 +5,7 @@ import { invoicesRouter } from "./db/invoices.js";
 import { projectsRouter } from "./db/projects.js";
 import { automationsRouter } from "./db/automations.js";
 import { auditRouter } from "./db/audit.js";
+import { llmProvidersRouter } from "./db/llm-providers.js";
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use("/tenants", invoicesRouter);
 app.use("/tenants", projectsRouter);
 app.use("/tenants", automationsRouter);
 app.use("/tenants", auditRouter);
+app.use("/tenants", llmProvidersRouter);
 
 app.use("/internal/agents", automationsRouter);
 

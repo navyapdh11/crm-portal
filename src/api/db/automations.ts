@@ -151,6 +151,54 @@ automationsRouter.delete("/:tenantId/automations/:automationId", async (req, res
   }
 });
 
+// Automation Runs Routes
+automationsRouter.get("/:tenantId/runs", async (req, res) => {
+  try {
+    const db: Client = req.app.locals.db;
+    const { tenantId } = req.params;
+    const { automationId, status } = req.query;
+
+    let query = "SELECT * FROM automation_runs WHERE tenant_id = $1";
+    const params: any[] = [tenantId];
+    let idx = 2;
+
+    if (automationId) {
+      query += ` AND automation_id = $${idx++}`;
+      params.push(automationId);
+    }
+    if (status) {
+      query += ` AND status = $${idx++}`;
+      params.push(status);
+    }
+
+    query += " ORDER BY created_at DESC LIMIT 50";
+
+    const result = await db.query(sql(query), ...params);
+    return res.status(200).json({ data: result });
+  } catch (error) {
+    res.status(500).json({ error: { code: "INTERNAL_ERROR", message: "Failed to list automation runs" } });
+  }
+});
+
+automationsRouter.get("/:tenantId/runs/:runId", async (req, res) => {
+  try {
+    const db: Client = req.app.locals.db;
+    const { tenantId, runId } = req.params;
+
+    const result = await db.query(
+      sql`SELECT * FROM automation_runs WHERE id = ${runId} AND tenant_id = ${tenantId}`
+    );
+    
+    if (!result || (Array.isArray(result) && result.length === 0)) {
+      return res.status(404).json({ error: { code: "NOT_FOUND", message: "Run not found" } });
+    }
+    
+    return res.status(200).json({ data: Array.isArray(result) ? result[0] : result });
+  } catch (error) {
+    res.status(500).json({ error: { code: "INTERNAL_ERROR", message: "Failed to get automation run" } });
+  }
+});
+
 // Trigger route for internal agents
 automationsRouter.post("/trigger", async (req, res) => {
   try {

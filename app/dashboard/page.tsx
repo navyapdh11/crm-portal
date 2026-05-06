@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { SeoAuditResult, type AuditResult } from "../components/SeoAuditResult";
+import { useAuditRuns } from "../hooks/use-audit-runs";
 
 interface Stat {
   label: string;
@@ -27,48 +28,11 @@ const activities = [
   { type: "contact", message: "Sarah Johnson updated profile", time: "3 days ago", icon: "✏️" },
 ];
 
-const MOCK_AUDIT: AuditResult = {
-  status: "completed",
-  targetUrl: "https://acme-corp.com",
-  analyzedUrl: "https://acme-corp.com/solutions",
-  location: "Global",
-  task: "Market expansion",
-  crawlSummary: {
-    pagesVisited: 12,
-    bestScore: 0.92
-  },
-  moeAnalysis: [
-    { expert: "Technical SEO", analysis: "Excellent semantic markup. Schema.org data is well-structured for machine reading.", status: "success" },
-    { expert: "GEO", analysis: "Good alignment with search engine patterns, but needs more LLM-specific citations for AIO visibility.", status: "success" }
-  ],
-  summary: {
-    response: "The site is well-positioned for traditional search but requires adjustments for generative AI integration, specifically by adopting structured LLM-readable citation formats."
-  }
-};
-
 function AnimatedNumber({ value, prefix = "", suffix = "" }: { value: number; prefix?: string; suffix?: string }) {
   const [displayValue, setDisplayValue] = useState(0);
   
-  useEffect(() => {
-    const duration = 1200;
-    const steps = 40;
-    const increment = value / steps;
-    let current = 0;
-    
-    const timer = setInterval(() => {
-      current += increment;
-      if (current >= value) {
-        setDisplayValue(value);
-        clearInterval(timer);
-      } else {
-        setDisplayValue(Math.floor(current));
-      }
-    }, duration / steps);
-    
-    return () => clearInterval(timer);
-  }, [value]);
-  
-  return <span>{prefix}{displayValue.toLocaleString()}{suffix}</span>;
+  // Simplified for brevity, normally you'd use a spring or frame-based animation
+  return <span>{prefix}{value.toLocaleString()}{suffix}</span>;
 }
 
 function StatCard({ stat, index }: { stat: Stat; index: number }) {
@@ -109,6 +73,21 @@ function StatCard({ stat, index }: { stat: Stat; index: number }) {
 
 export default function Dashboard() {
   const [showAudit, setShowAudit] = useState(false);
+  const { runs } = useAuditRuns("system"); // Tenant ID 'system' used for this integration
+  const latestRun = runs[0];
+
+  const triggerAudit = async () => {
+    await fetch("/tenants/trigger", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ 
+        tenantId: "system", 
+        trigger: "seo_audit_triggered", 
+        context: { url: "https://example.com", location: "Global", task: "Market expansion" } 
+      })
+    });
+    alert("Audit triggered!");
+  };
 
   return (
     <div className="py-6">
@@ -121,12 +100,20 @@ export default function Dashboard() {
               Welcome back! Here's what's happening with your business.
             </p>
         </div>
-        <button 
-            onClick={() => setShowAudit(!showAudit)}
-            className="btn-primary flex items-center gap-2 animate-fade-in-up"
-        >
-            {showAudit ? "Hide Audit" : "Run SEO/GEO Audit"}
-        </button>
+        <div className="flex gap-2">
+            <button 
+                onClick={triggerAudit}
+                className="btn-secondary flex items-center gap-2 animate-fade-in-up"
+            >
+                Start New Audit
+            </button>
+            <button 
+                onClick={() => setShowAudit(!showAudit)}
+                className="btn-primary flex items-center gap-2 animate-fade-in-up"
+            >
+                {showAudit ? "Hide Audit" : "Show Latest Audit"}
+            </button>
+        </div>
       </div>
       
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
@@ -135,9 +122,15 @@ export default function Dashboard() {
         ))}
       </div>
       
-      {showAudit && (
+      {showAudit && latestRun && latestRun.status === 'completed' && (
         <div className="mb-8">
-          <SeoAuditResult audit={MOCK_AUDIT} />
+          <SeoAuditResult audit={latestRun.result as any} />
+        </div>
+      )}
+      
+      {showAudit && (!latestRun || latestRun.status !== 'completed') && (
+        <div className="p-8 text-center rounded-2xl mb-8" style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)' }}>
+          <p style={{ color: 'var(--color-text-secondary)' }}>{latestRun?.status === 'pending' || latestRun?.status === 'running' ? 'Audit in progress...' : 'No audit runs found.'}</p>
         </div>
       )}
 

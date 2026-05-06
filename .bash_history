@@ -1,8 +1,3 @@
-        hawkes = HawkesGate()
-        rewards, q_tots, next_q_tots = [], [], []
-
-        for i in range(1, len(data)-30):
-            ret = (data.iloc[i] - data.iloc[i-1]).mean()
             p1, p2, p3 = data.iloc[i][['BTC-USD','ETH-USD','SOL-USD']].values
             beta, _ = kf.update(p1, p2, p3)
             if abs(ret) > 0.03: hawkes.add_event(i)
@@ -498,3 +493,8 @@ gemini
 geminu
 gemini
 gemini 
+proot-distro login ubuntu
+gemini
+gemini
+gemini
+gemini
